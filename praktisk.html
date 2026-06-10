@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Praktisk · Paris-basen uge 41</title>
+<meta name="description" content="Lufthavnstransport, billetter, vejr, nødnumre og pakkeliste for Paris-turen 6.-9. oktober 2026.">
+<style>
+  :root{--navy:#1f2a44;--navy2:#2c3a5c;--cream:#faf7f2;--card:#fff;--red:#c0392b;--gold:#b08d2f;--green:#1e7d4f;--amber:#b45309;--ink:#26303f;--muted:#6b7280;--line:#e6e0d6}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--cream);color:var(--ink);line-height:1.55}
+  a{color:var(--red)}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 18px}
+  header.hero{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;padding:38px 0 26px}
+  header.hero h1{margin:0 0 6px;font-size:clamp(24px,4vw,38px)}
+  header.hero p{margin:4px 0;color:#d8dceb;font-size:16px}
+  .facts{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+  .fact{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);padding:6px 12px;border-radius:999px;font-size:14px}
+  nav.toc{position:sticky;top:0;z-index:1000;background:var(--navy);box-shadow:0 2px 8px rgba(0,0,0,.25)}
+  nav.toc .wrap{display:flex;gap:2px;flex-wrap:wrap;justify-content:center;padding:2px 18px}
+  nav.toc a{color:#e8eaf2;text-decoration:none;padding:11px 13px;font-size:14.5px;white-space:nowrap}
+  nav.toc a:hover{background:rgba(255,255,255,.1)}
+  nav.toc a.on{background:rgba(255,255,255,.16);font-weight:700}
+  section{padding:34px 0 6px}
+  h2{font-size:25px;margin:0 0 4px;color:var(--navy)}
+  h3{color:var(--navy);margin:20px 0 8px}
+  .sub{color:var(--muted);margin:0 0 16px;font-size:15px}
+  .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+  .panel h4{margin:0 0 8px;color:var(--navy)}
+  .panel ul{margin:6px 0;padding-left:20px;font-size:14.5px}
+  .panel li{margin:5px 0}
+  .callout{background:#fdf3e3;border-left:4px solid var(--gold);padding:12px 16px;border-radius:0 10px 10px 0;margin:16px 0;font-size:15px}
+  .callout.green{background:#e9f5ee;border-color:var(--green)}
+  .callout.red{background:#fbeae7;border-color:var(--red)}
+  .btn{display:inline-block;background:var(--red);color:#fff;text-decoration:none;padding:9px 15px;border-radius:8px;font-size:14.5px;font-weight:600}
+  .btn:hover{filter:brightness(1.08)}
+  .btn.ghost{background:transparent;color:var(--navy);border:1px solid var(--navy)}
+  .btn.green{background:var(--green)}
+  .quick{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+  .tablewrap{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-top:10px}
+  table{border-collapse:collapse;width:100%;font-size:14px;min-width:600px}
+  th,td{padding:9px 10px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  thead th{background:var(--navy);color:#fff;font-weight:600}
+  thead th a{color:#fff}
+  tbody tr:nth-child(even){background:#faf8f4}
+  .small{font-size:12.5px;color:var(--muted)}
+  .badge{font-size:12px;padding:3px 9px;border-radius:999px;background:#eef1f7;color:var(--navy);font-weight:600}
+  .badge.gold{background:#f6ecd4;color:#8a6d1f}
+  .badge.green{background:#e2f2e9;color:var(--green)}
+  #map,.bigmap{height:520px;border-radius:12px;border:1px solid var(--line);z-index:1}
+  .legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px;font-size:14px}
+  .dot{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:5px;vertical-align:-1px}
+  .day{background:var(--card);border:1px solid var(--line);border-radius:14px;margin:18px 0;overflow:hidden}
+  .day .dhead{background:var(--navy);color:#fff;padding:12px 18px;font-size:17px;font-weight:700}
+  .day .dbody{padding:6px 18px 14px}
+  .step{display:grid;grid-template-columns:64px 1fr;gap:12px;padding:10px 0;border-bottom:1px dashed var(--line)}
+  .step:last-child{border-bottom:none}
+  .step .tid{font-weight:800;color:var(--navy);font-size:14.5px;padding-top:2px}
+  .step p{margin:0;font-size:14.5px}
+  .step .small{display:block;margin-top:3px}
+  .chk{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px}
+  .chk label{display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px dashed var(--line);font-size:15px;cursor:pointer}
+  .chk label:last-child{border-bottom:none}
+  .chk input{transform:scale(1.25);accent-color:var(--green);margin-top:3px}
+  .chk input:checked + span{text-decoration:line-through;color:var(--muted)}
+  .imgs{display:grid;grid-template-columns:2fr 1fr;gap:4px;border-radius:12px;overflow:hidden}
+  .imgs img{width:100%;height:100%;object-fit:cover;display:block}
+  .imgs .side{display:grid;grid-template-rows:1fr 1fr;gap:4px}
+  .pages{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:14px}
+  .pcard{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;text-decoration:none;color:var(--ink);display:block}
+  .pcard:hover{border-color:var(--navy);box-shadow:0 4px 12px rgba(31,42,68,.12)}
+  .pcard .ic{font-size:30px}
+  .pcard b{display:block;color:var(--navy);font-size:17px;margin:6px 0 4px}
+  .pcard span{font-size:13.5px;color:var(--muted)}
+  #countdown{font-size:15px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);border-radius:10px;display:inline-block;padding:8px 14px;margin-top:12px;font-weight:600}
+  footer{margin-top:42px;padding:24px 0;background:var(--navy);color:#cfd5e6;font-size:13.5px}
+  footer a{color:#fff}
+  @media(max-width:640px){
+    nav.toc{position:static} nav.toc a{padding:8px 9px;font-size:13px}
+    section{padding:24px 0 4px} h2{font-size:21px}
+    #map,.bigmap{height:380px} header.hero{padding:28px 0 20px}
+    .fact{font-size:12.5px;padding:5px 10px} table{font-size:13px}
+    .step{grid-template-columns:52px 1fr}
+  }
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+  <h1>🧳 Praktisk — alt det kedelige, samlet ét sted</h1>
+  <p>Lufthavn, billetter, vejr, nødnumre og pakkeliste for turen 6.–9. oktober 2026.</p>
+</div></header>
+<nav class="toc"><div class="wrap">
+  <a href="index.html">🏠 Hjem</a>
+  <a href="kvarteret.html">📍 Kvarteret</a>
+  <a href="dagsplaner.html">📅 Dagsplaner</a>
+  <a href="praktisk.html" class="on">🧳 Praktisk</a>
+  <a href="valget.html">🏛️ Valg-arkiv</a>
+</div></nav>
+<div class="wrap">
+
+<section>
+  <h2>✈️ Lufthavn ↔ lejlighed</h2>
+  <div class="grid2">
+    <div class="panel">
+      <h4>Ankomst tirsdag (lander 13.45)</h4>
+      <ul>
+        <li><strong>RER B</strong> fra CDG-terminalen → <strong>Gare du Nord</strong> (ca. 35 min., ca. 13 €/person — billetten gælder også metroskiftet)</li>
+        <li>Skift til <strong>metro 5, retning Place d'Italie</strong> → 4 stop → <strong>Richard-Lenoir</strong></li>
+        <li>1 minuts gang: <a href="https://www.google.com/maps/search/?api=1&query=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris%2C%20Paris" target="_blank" rel="noopener">67 Bd Richard-Lenoir</a> — I er fremme ca. 15.45, og indtjekningen åbner kl. 15 ✓</li>
+        <li><strong>Taxi-alternativ:</strong> fast pris 56 € til højre bred (op til 4 pers.) — ca. 45–60 min. afhængigt af trafik. Brug KUN de officielle taxaer fra køen.</li>
+      </ul>
+      <a class="btn" href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&travelmode=transit" target="_blank" rel="noopener">🧭 Rute CDG → lejligheden</a>
+    </div>
+    <div class="panel">
+      <h4>Hjemrejse fredag (fly 20.40)</h4>
+      <ul>
+        <li>Udtjekning kl. 12 — <strong>aftal bagageopbevaring med France</strong>, så I har hele eftermiddagen</li>
+        <li>Afgang fra lejligheden senest <strong>ca. 17.10</strong>: metro 5 → Gare du Nord → RER B → CDG ≈ 60–70 min.</li>
+        <li>Så er I i terminalen ca. 18.30 — to timer før afgang</li>
+        <li>Tjek hvilken terminal flyet går fra, og hold øje med RER-driften samme dag (appen IDF Mobilités viser forstyrrelser)</li>
+      </ul>
+      <a class="btn" href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=A%C3%A9roport%20Charles%20de%20Gaulle%20%28CDG%29%2C%20Paris&travelmode=transit" target="_blank" rel="noopener">🧭 Rute lejligheden → CDG</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>🎫 Billetter &amp; transport i byen</h2>
+  <div class="grid2">
+    <div class="panel">
+      <h4>Det skal I købe</h4>
+      <ul>
+        <li><strong>Navigo Easy-kort</strong> (2 €/stk.) eller billetter direkte i appen <strong>Île-de-France Mobilités</strong></li>
+        <li>Enkelttur metro/RER i byen ca. <strong>2,50 €</strong> · bus ca. 2 €</li>
+        <li>Lufthavnsturen (RER B) er en særskilt billet, ca. 13 €</li>
+        <li>I går det meste fra jeres base — regn med ~3–4 metroture pr. person på hele turen</li>
+        <li class="small">Priser pr. 2025/26 — tjek appen.</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h4>Jeres linjer (1 min. fra døren)</h4>
+      <ul>
+        <li><strong>Linje 5</strong> (Richard-Lenoir): Gare du Nord 8 min., Bastille 2 min., République 2 min.</li>
+        <li><strong>Linje 9</strong> (Saint-Ambroise, 6 min. gang): direkte til Grands Boulevards og Trocadéro/Eiffel-udsigten</li>
+        <li><strong>Linje 1</strong> (fra Bastille): Louvre, Champs-Élysées, La Défense</li>
+        <li>Metroen kører til ca. 00.45 (fre./lør. til 01.45)</li>
+        <li>Hold tasker lukkede og foran kroppen i metroen — lommetyve arbejder ved dørene.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>🌤️ Vejr &amp; pakkeliste</h2>
+  <div class="grid2">
+    <div class="panel">
+      <h4>Oktober i Paris</h4>
+      <ul>
+        <li>Typisk <strong>9–17 °C</strong> — lune eftermiddage, kølige morgener/aftener</li>
+        <li>Regn ca. hver tredje dag — som regel byger, ikke heldagsregn</li>
+        <li>Solnedgang ca. 19.10 — planlæg Trocadéro/Eiffel derefter</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h4>Pak (let — der er vaskemaskine!)</h4>
+      <ul>
+        <li>Lag-på-lag + let regnjakke eller lille paraply</li>
+        <li><strong>Indgåede</strong> sko — I kommer til at gå 10-15 km om dagen</li>
+        <li>EU-stik (type C/E) — ingen adapter nødvendig fra DK</li>
+        <li>Powerbank til kort-navigation</li>
+        <li>Lille rygsæk/net til markedsindkøb torsdag</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>🆘 Hvis noget går galt</h2>
+  <div class="grid2">
+    <div class="panel">
+      <h4>Nødnumre</h4>
+      <ul>
+        <li><strong>112</strong> — fælleseuropæisk nødnummer</li>
+        <li><strong>15</strong> ambulance (SAMU) · <strong>17</strong> politi · <strong>18</strong> brand</li>
+        <li><strong>3624</strong> — SOS Médecins (lægevagt, hjemmebesøg)</li>
+        <li><a href="https://www.google.com/maps/search/pharmacie/@48.8598,2.3718,16z" target="_blank" rel="noopener">Nærmeste apoteker</a> — grønt neonkors; de kan råde om småting</li>
+        <li>Blåt EU-sygesikringskort dækker læge/hospital på offentlige vilkår — husk det + rejseforsikring</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h4>Andet godt at vide</h4>
+      <ul>
+        <li><strong>Mistet/stjålet:</strong> anmeld på nærmeste politistation (commissariat) — krævet til forsikringen. Spær kort via bankens app.</li>
+        <li><strong>Dansk ambassade:</strong> 77 Avenue Marceau, 75116 Paris — tjek åbningstider online</li>
+        <li><strong>Værterne:</strong> Antoine &amp; France svarer hurtigt via Airbnb-appen — brug dem ved problemer med lejligheden</li>
+        <li><strong>Drikkepenge:</strong> service er inkluderet — rund evt. op eller læg 5-10 % ved god betjening</li>
+        <li><strong>Apps:</strong> Île-de-France Mobilités (billetter), Bonjour RATP (metro), Google Maps offline, Airbnb, Notre-Dame de Paris (tidsbilletter)</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout"><strong>Uge 41-bonus:</strong> Montmartres vinhøstfestival <strong>Fête des Vendanges</strong> ligger traditionelt netop i jeres uge — gratis gadefest med boder, smagninger og optog. Tjek det officielle program inden torsdagsturen til Montmartre.</div>
+</section>
+
+</div>
+<footer><div class="wrap">
+  <p><strong>Basen:</strong> <a href="https://www.google.com/maps/search/?api=1&query=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris%2C%20Paris" target="_blank" rel="noopener">67 Boulevard Richard-Lenoir, 75011 Paris</a> · 6.–9. oktober 2026 · 3 voksne · vært: Antoine &amp; France ·
+  <a href="https://www.airbnb.dk/rooms/1120183965838403602?adults=3&check_in=2026-10-06&check_out=2026-10-09" target="_blank" rel="noopener">Airbnb-opslaget ↗</a></p>
+  <p>Arkiv fra beslutningsfasen: <a href="valget.html">sammenligningen af alle 11 lejligheder</a> · <a href="omraader.html">områdevurderingerne</a> · <a href="https://github.com/qvisty/paristur">github.com/qvisty/paristur</a></p>
+</div></footer>
+<script>
+
+</script>
+</body>
+</html>

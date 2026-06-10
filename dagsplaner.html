@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dagsplaner · Paris-basen uge 41</title>
+<meta name="description" content="Time-for-time-planer for 6.-9. oktober 2026 med base på 67 Bd Richard-Lenoir.">
+<style>
+  :root{--navy:#1f2a44;--navy2:#2c3a5c;--cream:#faf7f2;--card:#fff;--red:#c0392b;--gold:#b08d2f;--green:#1e7d4f;--amber:#b45309;--ink:#26303f;--muted:#6b7280;--line:#e6e0d6}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--cream);color:var(--ink);line-height:1.55}
+  a{color:var(--red)}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 18px}
+  header.hero{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;padding:38px 0 26px}
+  header.hero h1{margin:0 0 6px;font-size:clamp(24px,4vw,38px)}
+  header.hero p{margin:4px 0;color:#d8dceb;font-size:16px}
+  .facts{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+  .fact{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);padding:6px 12px;border-radius:999px;font-size:14px}
+  nav.toc{position:sticky;top:0;z-index:1000;background:var(--navy);box-shadow:0 2px 8px rgba(0,0,0,.25)}
+  nav.toc .wrap{display:flex;gap:2px;flex-wrap:wrap;justify-content:center;padding:2px 18px}
+  nav.toc a{color:#e8eaf2;text-decoration:none;padding:11px 13px;font-size:14.5px;white-space:nowrap}
+  nav.toc a:hover{background:rgba(255,255,255,.1)}
+  nav.toc a.on{background:rgba(255,255,255,.16);font-weight:700}
+  section{padding:34px 0 6px}
+  h2{font-size:25px;margin:0 0 4px;color:var(--navy)}
+  h3{color:var(--navy);margin:20px 0 8px}
+  .sub{color:var(--muted);margin:0 0 16px;font-size:15px}
+  .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+  .panel h4{margin:0 0 8px;color:var(--navy)}
+  .panel ul{margin:6px 0;padding-left:20px;font-size:14.5px}
+  .panel li{margin:5px 0}
+  .callout{background:#fdf3e3;border-left:4px solid var(--gold);padding:12px 16px;border-radius:0 10px 10px 0;margin:16px 0;font-size:15px}
+  .callout.green{background:#e9f5ee;border-color:var(--green)}
+  .callout.red{background:#fbeae7;border-color:var(--red)}
+  .btn{display:inline-block;background:var(--red);color:#fff;text-decoration:none;padding:9px 15px;border-radius:8px;font-size:14.5px;font-weight:600}
+  .btn:hover{filter:brightness(1.08)}
+  .btn.ghost{background:transparent;color:var(--navy);border:1px solid var(--navy)}
+  .btn.green{background:var(--green)}
+  .quick{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+  .tablewrap{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-top:10px}
+  table{border-collapse:collapse;width:100%;font-size:14px;min-width:600px}
+  th,td{padding:9px 10px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  thead th{background:var(--navy);color:#fff;font-weight:600}
+  thead th a{color:#fff}
+  tbody tr:nth-child(even){background:#faf8f4}
+  .small{font-size:12.5px;color:var(--muted)}
+  .badge{font-size:12px;padding:3px 9px;border-radius:999px;background:#eef1f7;color:var(--navy);font-weight:600}
+  .badge.gold{background:#f6ecd4;color:#8a6d1f}
+  .badge.green{background:#e2f2e9;color:var(--green)}
+  #map,.bigmap{height:520px;border-radius:12px;border:1px solid var(--line);z-index:1}
+  .legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px;font-size:14px}
+  .dot{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:5px;vertical-align:-1px}
+  .day{background:var(--card);border:1px solid var(--line);border-radius:14px;margin:18px 0;overflow:hidden}
+  .day .dhead{background:var(--navy);color:#fff;padding:12px 18px;font-size:17px;font-weight:700}
+  .day .dbody{padding:6px 18px 14px}
+  .step{display:grid;grid-template-columns:64px 1fr;gap:12px;padding:10px 0;border-bottom:1px dashed var(--line)}
+  .step:last-child{border-bottom:none}
+  .step .tid{font-weight:800;color:var(--navy);font-size:14.5px;padding-top:2px}
+  .step p{margin:0;font-size:14.5px}
+  .step .small{display:block;margin-top:3px}
+  .chk{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px}
+  .chk label{display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px dashed var(--line);font-size:15px;cursor:pointer}
+  .chk label:last-child{border-bottom:none}
+  .chk input{transform:scale(1.25);accent-color:var(--green);margin-top:3px}
+  .chk input:checked + span{text-decoration:line-through;color:var(--muted)}
+  .imgs{display:grid;grid-template-columns:2fr 1fr;gap:4px;border-radius:12px;overflow:hidden}
+  .imgs img{width:100%;height:100%;object-fit:cover;display:block}
+  .imgs .side{display:grid;grid-template-rows:1fr 1fr;gap:4px}
+  .pages{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:14px}
+  .pcard{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;text-decoration:none;color:var(--ink);display:block}
+  .pcard:hover{border-color:var(--navy);box-shadow:0 4px 12px rgba(31,42,68,.12)}
+  .pcard .ic{font-size:30px}
+  .pcard b{display:block;color:var(--navy);font-size:17px;margin:6px 0 4px}
+  .pcard span{font-size:13.5px;color:var(--muted)}
+  #countdown{font-size:15px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);border-radius:10px;display:inline-block;padding:8px 14px;margin-top:12px;font-weight:600}
+  footer{margin-top:42px;padding:24px 0;background:var(--navy);color:#cfd5e6;font-size:13.5px}
+  footer a{color:#fff}
+  @media(max-width:640px){
+    nav.toc{position:static} nav.toc a{padding:8px 9px;font-size:13px}
+    section{padding:24px 0 4px} h2{font-size:21px}
+    #map,.bigmap{height:380px} header.hero{padding:28px 0 20px}
+    .fact{font-size:12.5px;padding:5px 10px} table{font-size:13px}
+    .step{grid-template-columns:52px 1fr}
+  }
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+  <h1>📅 Dagsplaner — tirsdag til fredag</h1>
+  <p>Time-for-time-forslag bygget om jeres fly (lander 13.45, hjemrejse 20.40) og basen på Richard-Lenoir. Det er forslag — byt rundt, som vejret og benene vil.</p>
+</div></header>
+<nav class="toc"><div class="wrap">
+  <a href="index.html">🏠 Hjem</a>
+  <a href="kvarteret.html">📍 Kvarteret</a>
+  <a href="dagsplaner.html" class="on">📅 Dagsplaner</a>
+  <a href="praktisk.html">🧳 Praktisk</a>
+  <a href="valget.html">🏛️ Valg-arkiv</a>
+</div></nav>
+<div class="wrap">
+
+<section>
+  <div class="callout green"><strong>Tre tommelfingerregler:</strong> ① Book Louvre, Notre-Dame og evt. restaurant hjemmefra (se <a href="index.html#chk">tjeklisten</a>). ② Louvre er lukket tirsdag — derfor ligger det onsdag. ③ Alt under 20 minutters gang er hurtigere til fods end med metro, når man tæller trapper med.</div>
+
+  <div class="day"><div class="dhead">Tirsdag 6. oktober — ankomst &amp; kvarteret</div><div class="dbody">
+    <div class="step"><span class="tid">13.45</span><p><strong>I lander i CDG.</strong> Pas + bagage tager typisk 30–45 min. Følg skiltene mod <em>RER B</em>.</p></div>
+    <div class="step"><span class="tid">14.45</span><p><strong>RER B mod Paris</strong> (ca. 13 €/person — køb i automat eller IDF-appen). Stå af på <strong>Gare du Nord</strong> efter ca. 35 min. <span class="small">Alternativ: taxi, fast pris 56 € for alle tre.</span></p></div>
+    <div class="step"><span class="tid">15.30</span><p>Skift til <strong>metro linje 5 (retning Place d'Italie)</strong> → 4 stop til <strong>Richard-Lenoir</strong> (8 min.) → 1 minuts gang til nr. 67. <a href='https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&travelmode=transit' target='_blank' rel='noopener'>🧭 Hele ruten</a></p></div>
+    <div class="step"><span class="tid">16.00</span><p><strong>Indtjekning</strong> (åben fra kl. 15) — France tager ofte selv imod. Pak ud, vejr balkonen ind, find velkomstjuicen 🧃</p></div>
+    <div class="step"><span class="tid">17.00</span><p><strong>Kvarters-loop:</strong> op ad <a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8649,2.3705&travelmode=walking" target="_blank" rel="noopener">Rue Oberkampf</a> (apéro på Café Charbon?) → République → hjem langs boulevarden. I har set jeres kvarter inden aftensmad.</p></div>
+    <div class="step"><span class="tid">19.30</span><p><strong>Middag tæt på:</strong> Rue de Charonne eller Rue Oberkampf — bare gå, til noget frister. <span class="small">Træt af rejsen? Der er også god takeaway og supermarked om hjørnet.</span></p></div>
+    <div class="step"><span class="tid">21.30</span><p>Aftensmuk afstikker: <a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8556,2.3655&travelmode=walking" target="_blank" rel="noopener">Place des Vosges</a> under arkadebelysningen (13 min.) — eller bare tidlig seng.</p></div>
+  </div></div>
+
+  <div class="day"><div class="dhead">Onsdag 7. oktober — det store centrum: Louvre, øerne &amp; Marais</div><div class="dbody">
+    <div class="step"><span class="tid">08.30</span><p>Croissant fra nærmeste bageri — spis den på balkonen.</p></div>
+    <div class="step"><span class="tid">09.30</span><p><strong>Louvre</strong> (book 9.30-billet hjemmefra!). Metro: Bastille → linje 1 → Palais Royal (15 min.) eller 25 min. gang gennem Marais. <a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=Mus%C3%A9e%20du%20Louvre%2C%20Paris&travelmode=transit" target="_blank" rel="noopener">🧭 Rute</a> <span class="small">Fokusér på 2–3 afdelinger — Louvre kan ikke "ses færdig".</span></p></div>
+    <div class="step"><span class="tid">12.30</span><p>Gå gennem <strong>Tuilerierne</strong> → over <strong>Pont Neuf</strong> til Île de la Cité.</p></div>
+    <div class="step"><span class="tid">13.00</span><p><strong>Frokost i Marais:</strong> falafel i Rue des Rosiers eller crêpes hos Breizh Café. <a href="https://www.google.com/maps/search/?api=1&query=Rue%20des%20Rosiers%2C%20Paris%2C%20Paris" target="_blank" rel="noopener">📍 Rue des Rosiers</a></p></div>
+    <div class="step"><span class="tid">14.30</span><p><strong>Notre-Dame</strong> (gratis tidsbillet via appen) og en is på øen — eller <strong>Musée Carnavalet/Picasso</strong>, hvis vejret driller. <a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=Cath%C3%A9drale%20Notre-Dame%20de%20Paris&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></p></div>
+    <div class="step"><span class="tid">16.30</span><p><strong>Place des Vosges</strong> + vinduesshopping i Rue des Francs-Bourgeois på vejen.</p></div>
+    <div class="step"><span class="tid">18.00</span><p>Hjem til fods ad Rue Saint-Antoine/boulevarden (15 min.) — hvil benene en time.</p></div>
+    <div class="step"><span class="tid">20.00</span><p>Middag: har I booket <strong>Clamato/Bistrot Paul Bert</strong>, er det i aften. Ellers: Marché des Enfants Rouges lukker tidligt, så vælg bistroerne på Charonne.</p></div>
+  </div></div>
+
+  <div class="day"><div class="dhead">Torsdag 8. oktober — marked, Montmartre &amp; Eiffeltårnet</div><div class="dbody">
+    <div class="step"><span class="tid">08.00</span><p><strong>Marché Bastille</strong> — markedsdag på jeres egen boulevard (7–14.30)! Køb ost, skinke og frugt; aflever varerne hjemme i køleskabet. <a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8551,2.3698&travelmode=walking" target="_blank" rel="noopener">🧭 7 min. gang</a></p></div>
+    <div class="step"><span class="tid">10.00</span><p><strong>Montmartre:</strong> linje 5 → Gare du Nord → linje 2 → Anvers (ca. 25 min.). Op ad trapperne (eller kabelbanen) til <strong>Sacré-Cœur</strong>. <a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=Basilique%20du%20Sacr%C3%A9-C%C5%93ur%2C%20Paris&travelmode=transit" target="_blank" rel="noopener">🧭 Rute</a> <span class="small">Uge 41 er traditionelt <strong>Fête des Vendanges</strong> — vinhøstfest med boder og optog. Tjek programmet!</span></p></div>
+    <div class="step"><span class="tid">13.00</span><p>Frokost ved <strong>Rue des Abbesses/Rue Lepic</strong> — det lokale Montmartre bag bakken.</p></div>
+    <div class="step"><span class="tid">15.00</span><p>Metro 12 fra Abbesses → Concorde: <strong>Musée d'Orsay</strong> (impressionisterne) eller gåtur Champs-Élysées → <strong>Triumfbuen</strong> (udsigt fra taget!). <a href='https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=Mus%C3%A9e%20d%20Orsay%2C%20Paris&travelmode=transit' target='_blank' rel='noopener'>🧭 Rute</a></p></div>
+    <div class="step"><span class="tid">18.15</span><p><strong>Trocadéro</strong> (linje 9 direkte hjem bagefter!): solnedgang over <strong>Eiffeltårnet</strong> fra esplanaden — i oktober går solen ned ca. 19.10. <a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=Place%20du%20Trocad%C3%A9ro%2C%20Paris&travelmode=transit" target="_blank" rel="noopener">🧭 Rute</a></p></div>
+    <div class="step"><span class="tid">19.30</span><p>Se tårnet <strong>funkle</strong> ved hver hele time efter mørkets frembrud — og tag så linje 9 fra Trocadéro direkte til Saint-Ambroise (30 min.), 6 min. fra døren.</p></div>
+    <div class="step"><span class="tid">20.45</span><p>Sen middag i kvarteret — torsdag aften er Rue Oberkampf i topform.</p></div>
+  </div></div>
+
+  <div class="day"><div class="dhead">Fredag 9. oktober — udtjek kl. 12, fly 20.40</div><div class="dbody">
+    <div class="step"><span class="tid">08.30</span><p>Morgentur på <strong>Coulée Verte</strong> (højbaneparken) eller sidste croissant på en café ved Place des Vosges. <a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8493,2.3715&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></p></div>
+    <div class="step"><span class="tid">10.30</span><p>Hjem, pak færdig, tøm køleskabet.</p></div>
+    <div class="step"><span class="tid">12.00</span><p><strong>Udtjekning.</strong> Stil bagagen hos France (aftal i forvejen!) — ellers bagageopbevaring ved Gare du Nord/Bastille (fx Nannybag-butikker).</p></div>
+    <div class="step"><span class="tid">12.30</span><p>Afskedsfrokost i Marais eller ved kanalen — det, I ikke nåede. <span class="small">Mangler I souvenirs: Rue des Francs-Bourgeois eller markedsboderne.</span></p></div>
+    <div class="step"><span class="tid">15.30</span><p>Sidste is/kaffe — og en stille tur langs Port de l'Arsenal, hvis der er tid.</p></div>
+    <div class="step"><span class="tid">16.45</span><p><strong>Hent bagagen.</strong></p></div>
+    <div class="step"><span class="tid">17.10</span><p><strong>Afgang mod CDG:</strong> linje 5 fra Richard-Lenoir → Gare du Nord → RER B → CDG (i alt ca. 60–70 min.). <a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=A%C3%A9roport%20Charles%20de%20Gaulle%20%28CDG%29%2C%20Paris&travelmode=transit" target="_blank" rel="noopener">🧭 Rute</a> <span class="small">Taxa-alternativ: bestil til kl. 17.30, fast pris 56 €.</span></p></div>
+    <div class="step"><span class="tid">18.30</span><p>I lufthavnen ca. 2 timer før — sikkerhedskontrol + en sidste pain au chocolat.</p></div>
+    <div class="step"><span class="tid">20.40</span><p><strong>Flyet letter.</strong> Au revoir, Paris! 🇫🇷</p></div>
+  </div></div>
+
+  <div class="callout"><strong>Regnvejrs-jokere:</strong> <a href="https://www.google.com/maps/search/?api=1&query=Atelier%20des%20Lumi%C3%A8res%2C%20Paris" target="_blank" rel="noopener">Atelier des Lumières</a> (14 min. gang — book online), Musée Carnavalet (gratis), Galeries Lafayettes kuppel, eller passagerne ved Grands Boulevards (linje 9 direkte).</div>
+</section>
+
+</div>
+<footer><div class="wrap">
+  <p><strong>Basen:</strong> <a href="https://www.google.com/maps/search/?api=1&query=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris%2C%20Paris" target="_blank" rel="noopener">67 Boulevard Richard-Lenoir, 75011 Paris</a> · 6.–9. oktober 2026 · 3 voksne · vært: Antoine &amp; France ·
+  <a href="https://www.airbnb.dk/rooms/1120183965838403602?adults=3&check_in=2026-10-06&check_out=2026-10-09" target="_blank" rel="noopener">Airbnb-opslaget ↗</a></p>
+  <p>Arkiv fra beslutningsfasen: <a href="valget.html">sammenligningen af alle 11 lejligheder</a> · <a href="omraader.html">områdevurderingerne</a> · <a href="https://github.com/qvisty/paristur">github.com/qvisty/paristur</a></p>
+</div></footer>
+<script>
+
+</script>
+</body>
+</html>

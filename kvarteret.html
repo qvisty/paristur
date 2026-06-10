@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kvarteret · Paris-basen uge 41</title>
+<meta name="description" content="Alt i gåafstand fra 67 Bd Richard-Lenoir: seværdigheder, markeder, parker, metro og spisesteder.">
+<link rel="stylesheet" href="vendor/leaflet.css">
+<style>
+  :root{--navy:#1f2a44;--navy2:#2c3a5c;--cream:#faf7f2;--card:#fff;--red:#c0392b;--gold:#b08d2f;--green:#1e7d4f;--amber:#b45309;--ink:#26303f;--muted:#6b7280;--line:#e6e0d6}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--cream);color:var(--ink);line-height:1.55}
+  a{color:var(--red)}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 18px}
+  header.hero{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;padding:38px 0 26px}
+  header.hero h1{margin:0 0 6px;font-size:clamp(24px,4vw,38px)}
+  header.hero p{margin:4px 0;color:#d8dceb;font-size:16px}
+  .facts{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+  .fact{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);padding:6px 12px;border-radius:999px;font-size:14px}
+  nav.toc{position:sticky;top:0;z-index:1000;background:var(--navy);box-shadow:0 2px 8px rgba(0,0,0,.25)}
+  nav.toc .wrap{display:flex;gap:2px;flex-wrap:wrap;justify-content:center;padding:2px 18px}
+  nav.toc a{color:#e8eaf2;text-decoration:none;padding:11px 13px;font-size:14.5px;white-space:nowrap}
+  nav.toc a:hover{background:rgba(255,255,255,.1)}
+  nav.toc a.on{background:rgba(255,255,255,.16);font-weight:700}
+  section{padding:34px 0 6px}
+  h2{font-size:25px;margin:0 0 4px;color:var(--navy)}
+  h3{color:var(--navy);margin:20px 0 8px}
+  .sub{color:var(--muted);margin:0 0 16px;font-size:15px}
+  .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+  .panel h4{margin:0 0 8px;color:var(--navy)}
+  .panel ul{margin:6px 0;padding-left:20px;font-size:14.5px}
+  .panel li{margin:5px 0}
+  .callout{background:#fdf3e3;border-left:4px solid var(--gold);padding:12px 16px;border-radius:0 10px 10px 0;margin:16px 0;font-size:15px}
+  .callout.green{background:#e9f5ee;border-color:var(--green)}
+  .callout.red{background:#fbeae7;border-color:var(--red)}
+  .btn{display:inline-block;background:var(--red);color:#fff;text-decoration:none;padding:9px 15px;border-radius:8px;font-size:14.5px;font-weight:600}
+  .btn:hover{filter:brightness(1.08)}
+  .btn.ghost{background:transparent;color:var(--navy);border:1px solid var(--navy)}
+  .btn.green{background:var(--green)}
+  .quick{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+  .tablewrap{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-top:10px}
+  table{border-collapse:collapse;width:100%;font-size:14px;min-width:600px}
+  th,td{padding:9px 10px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  thead th{background:var(--navy);color:#fff;font-weight:600}
+  thead th a{color:#fff}
+  tbody tr:nth-child(even){background:#faf8f4}
+  .small{font-size:12.5px;color:var(--muted)}
+  .badge{font-size:12px;padding:3px 9px;border-radius:999px;background:#eef1f7;color:var(--navy);font-weight:600}
+  .badge.gold{background:#f6ecd4;color:#8a6d1f}
+  .badge.green{background:#e2f2e9;color:var(--green)}
+  #map,.bigmap{height:520px;border-radius:12px;border:1px solid var(--line);z-index:1}
+  .legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px;font-size:14px}
+  .dot{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:5px;vertical-align:-1px}
+  .day{background:var(--card);border:1px solid var(--line);border-radius:14px;margin:18px 0;overflow:hidden}
+  .day .dhead{background:var(--navy);color:#fff;padding:12px 18px;font-size:17px;font-weight:700}
+  .day .dbody{padding:6px 18px 14px}
+  .step{display:grid;grid-template-columns:64px 1fr;gap:12px;padding:10px 0;border-bottom:1px dashed var(--line)}
+  .step:last-child{border-bottom:none}
+  .step .tid{font-weight:800;color:var(--navy);font-size:14.5px;padding-top:2px}
+  .step p{margin:0;font-size:14.5px}
+  .step .small{display:block;margin-top:3px}
+  .chk{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px}
+  .chk label{display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px dashed var(--line);font-size:15px;cursor:pointer}
+  .chk label:last-child{border-bottom:none}
+  .chk input{transform:scale(1.25);accent-color:var(--green);margin-top:3px}
+  .chk input:checked + span{text-decoration:line-through;color:var(--muted)}
+  .imgs{display:grid;grid-template-columns:2fr 1fr;gap:4px;border-radius:12px;overflow:hidden}
+  .imgs img{width:100%;height:100%;object-fit:cover;display:block}
+  .imgs .side{display:grid;grid-template-rows:1fr 1fr;gap:4px}
+  .pages{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:14px}
+  .pcard{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;text-decoration:none;color:var(--ink);display:block}
+  .pcard:hover{border-color:var(--navy);box-shadow:0 4px 12px rgba(31,42,68,.12)}
+  .pcard .ic{font-size:30px}
+  .pcard b{display:block;color:var(--navy);font-size:17px;margin:6px 0 4px}
+  .pcard span{font-size:13.5px;color:var(--muted)}
+  #countdown{font-size:15px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);border-radius:10px;display:inline-block;padding:8px 14px;margin-top:12px;font-weight:600}
+  footer{margin-top:42px;padding:24px 0;background:var(--navy);color:#cfd5e6;font-size:13.5px}
+  footer a{color:#fff}
+  @media(max-width:640px){
+    nav.toc{position:static} nav.toc a{padding:8px 9px;font-size:13px}
+    section{padding:24px 0 4px} h2{font-size:21px}
+    #map,.bigmap{height:380px} header.hero{padding:28px 0 20px}
+    .fact{font-size:12.5px;padding:5px 10px} table{font-size:13px}
+    .step{grid-template-columns:52px 1fr}
+  }
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+  <h1>📍 Kvarteret — alt i gåafstand fra nr. 67</h1>
+  <p>I bor i trekanten mellem Marais, Bastille og République — pariserne kalder hjørnet "le onzième". Her er alt det, I kan nå til fods, med gåtider og ruter fra hoveddøren.</p>
+</div></header>
+<nav class="toc"><div class="wrap">
+  <a href="index.html">🏠 Hjem</a>
+  <a href="kvarteret.html" class="on">📍 Kvarteret</a>
+  <a href="dagsplaner.html">📅 Dagsplaner</a>
+  <a href="praktisk.html">🧳 Praktisk</a>
+  <a href="valget.html">🏛️ Valg-arkiv</a>
+</div></nav>
+<div class="wrap">
+
+<section>
+  <h2>🗺️ Kortet over jeres kvarter</h2>
+  <p class="sub">Alle markører linker til Google Maps + gårute fra lejligheden.</p>
+  <div id="map"></div>
+  <div class="legend"><span><span class="dot" style="background:#1f2a44"></span>🏠 Lejligheden</span><span><span class="dot" style="background:#c0392b"></span>Seværdigheder</span><span><span class="dot" style="background:#b45309"></span>Mad & markeder</span><span><span class="dot" style="background:#1e7d4f"></span>Parker & vand</span><span><span class="dot" style="background:#1f6feb"></span>Metro</span></div>
+</section>
+
+<section>
+  <h2>🗼 Seværdigheder</h2>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Sted</th><th>Gåtid</th><th>Hvorfor</th><th></th></tr></thead>
+    <tbody>
+      <tr><td><strong><a href="https://www.google.com/maps/search/?api=1&query=Place%20des%20Vosges%2C%20Paris" target="_blank" rel="noopener">Place des Vosges</a></strong></td><td style="white-space:nowrap">🚶 13 min.</td><td>Paris' smukkeste plads (1612) med arkader og Victor Hugos hus (gratis museum).</td><td><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8556,2.3655&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></td></tr>
+      <tr><td><strong><a href="https://www.google.com/maps/search/?api=1&query=Mus%C3%A9e%20Carnavalet%2C%20Paris" target="_blank" rel="noopener">Musée Carnavalet (gratis!)</a></strong></td><td style="white-space:nowrap">🚶 15 min.</td><td>Paris' byhistorie i to palæer — gratis fast samling og en oase af en gård. Lukket mandag.</td><td><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8576,2.3622&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></td></tr>
+      <tr><td><strong><a href="https://www.google.com/maps/search/?api=1&query=Mus%C3%A9e%20Picasso%2C%20Paris" target="_blank" rel="noopener">Musée Picasso</a></strong></td><td style="white-space:nowrap">🚶 17 min.</td><td>Verdens største Picasso-samling i smukke Hôtel Salé. Lukket mandag.</td><td><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8598,2.3622&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></td></tr>
+      <tr><td><strong><a href="https://www.google.com/maps/search/?api=1&query=Rue%20des%20Rosiers%2C%20Paris" target="_blank" rel="noopener">Rue des Rosiers (falafel!)</a></strong></td><td style="white-space:nowrap">🚶 16 min.</td><td>Det jødiske kvarters hovedgade — L'As du Fallafel er institutionen (lukket fredag aften/lørdag).</td><td><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8572,2.359&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></td></tr>
+      <tr><td><strong><a href="https://www.google.com/maps/search/?api=1&query=Place%20de%20la%20Bastille%20%26%20Operaen%2C%20Paris" target="_blank" rel="noopener">Place de la Bastille & Operaen</a></strong></td><td style="white-space:nowrap">🚶 12 min.</td><td>Revolutionspladsen med Julisøjlen og Opéra Bastille — enden af jeres boulevard.</td><td><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8532,2.3692&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></td></tr>
+      <tr><td><strong><a href="https://www.google.com/maps/search/?api=1&query=Cirque%20d%27Hiver%2C%20Paris" target="_blank" rel="noopener">Cirque d'Hiver</a></strong></td><td style="white-space:nowrap">🚶 6 min.</td><td>Verdens ældste fungerende cirkusbygning (1852) — tjek om der er forestilling.</td><td><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8632,2.3674&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></td></tr>
+      <tr><td><strong><a href="https://www.google.com/maps/search/?api=1&query=Place%20de%20la%20R%C3%A9publique%2C%20Paris" target="_blank" rel="noopener">Place de la République</a></strong></td><td style="white-space:nowrap">🚶 12 min.</td><td>Østbyens store knudepunkt med Marianne-statuen — 5 metrolinjer.</td><td><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8675,2.3633&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></td></tr>
+      <tr><td><strong><a href="https://www.google.com/maps/search/?api=1&query=Atelier%20des%20Lumi%C3%A8res%2C%20Paris" target="_blank" rel="noopener">Atelier des Lumières</a></strong></td><td style="white-space:nowrap">🚶 14 min.</td><td>Immersiv digital kunst projiceret på 10 m høje vægge i et gammelt jernstøberi — book online.</td><td><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8612,2.3812&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></td></tr>
+      <tr><td><strong><a href="https://www.google.com/maps/search/?api=1&query=P%C3%A8re%20Lachaise%2C%20Paris" target="_blank" rel="noopener">Père Lachaise</a></strong></td><td style="white-space:nowrap">🚶 25 min.</td><td>Verdens mest besøgte kirkegård: Oscar Wilde, Edith Piaf, Jim Morrison, Chopin. Gratis.</td><td><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8614,2.3933&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></td></tr>
+      <tr><td><strong><a href="https://www.google.com/maps/search/?api=1&query=Centre%20Pompidou-omr%C3%A5det%2C%20Paris" target="_blank" rel="noopener">Centre Pompidou-området</a></strong></td><td style="white-space:nowrap">🚶 20 min.</td><td>Beaubourg, Stravinsky-fontænen og gadelivet omkring (tjek åbningsstatus — bygningen renoveres).</td><td><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8607,2.3522&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></td></tr>
+      <tr><td><strong><a href="https://www.google.com/maps/search/?api=1&query=%C3%8Ele%20de%20la%20Cit%C3%A9%20%26%20Notre-Dame%2C%20Paris" target="_blank" rel="noopener">Île de la Cité & Notre-Dame</a></strong></td><td style="white-space:nowrap">🚶 27 min.</td><td>Katedralen er genåbnet efter branden — book gratis tidsbillet i appen 'Notre-Dame de Paris'.</td><td><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.853,2.3499&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></td></tr>
+    </tbody></table></div>
+  <div class="callout"><strong>Gratis-tip:</strong> Musée Carnavalet (byhistorie) og Maison de Victor Hugo har gratis faste samlinger, Père Lachaise er gratis — og Coulée Verte, Place des Vosges og kanalen koster heller ikke en cent.</div>
+</section>
+
+<section>
+  <h2>🥐 Mad &amp; markeder</h2>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Sted</th><th>Gåtid</th><th>Hvorfor</th><th></th></tr></thead>
+    <tbody>
+      <tr><td><strong><a href="https://www.google.com/maps/search/?api=1&query=March%C3%A9%20Bastille%2C%20Paris" target="_blank" rel="noopener">Marché Bastille (torsdag 7–14.30!)</a></strong></td><td style="white-space:nowrap">🚶 7 min.</td><td>Et af Paris' bedste udendørsmarkeder — på jeres egen boulevard. Ost, østers, rotisseriekylling, blomster. I er der netop en torsdag!</td><td><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8551,2.3698&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></td></tr>
+      <tr><td><strong><a href="https://www.google.com/maps/search/?api=1&query=Rue%20Oberkampf%20%26%20Caf%C3%A9%20Charbon%2C%20Paris" target="_blank" rel="noopener">Rue Oberkampf & Café Charbon</a></strong></td><td style="white-space:nowrap">🚶 8 min.</td><td>Bar- og bistrostrøget mod nord. Café Charbon er kvarterets ikon — perfekt til apéro.</td><td><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8649,2.3705&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></td></tr>
+      <tr><td><strong><a href="https://www.google.com/maps/search/?api=1&query=Rue%20de%20Charonne%2C%20Paris" target="_blank" rel="noopener">Rue de Charonne</a></strong></td><td style="white-space:nowrap">🚶 12 min.</td><td>Boutiques og nogle af byens mest roste restauranter (Septime/Clamato — book i god tid!).</td><td><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8536,2.3795&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></td></tr>
+      <tr><td><strong><a href="https://www.google.com/maps/search/?api=1&query=March%C3%A9%20des%20Enfants%20Rouges%2C%20Paris" target="_blank" rel="noopener">Marché des Enfants Rouges</a></strong></td><td style="white-space:nowrap">🚶 17 min.</td><td>Paris' ældste overdækkede marked (1615) — frokostboder fra hele verden. Lukket mandag.</td><td><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8627,2.3622&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></td></tr>
+      <tr><td><strong><a href="https://www.google.com/maps/search/?api=1&query=March%C3%A9%20d%27Aligre%2C%20Paris" target="_blank" rel="noopener">Marché d'Aligre</a></strong></td><td style="white-space:nowrap">🚶 20 min.</td><td>Råt, billigt og elsket lokalmarked + loppestande. Tirs–søn formiddag.</td><td><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8487,2.3786&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></td></tr>
+    </tbody></table></div>
+  <div class="grid2" style="margin-top:16px">
+    <div class="panel">
+      <h4>🍽️ Spisesteder i kvarteret (klassikere)</h4>
+      <ul>
+        <li><strong><a href="https://www.google.com/maps/search/?api=1&query=L%27As%20du%20Fallafel%2C%20Paris" target="_blank" rel="noopener">L'As du Fallafel</a></strong> (Rue des Rosiers, 16 min.) — Paris' berømteste falafel; tag den to go og spis på Place des Vosges</li>
+        <li><strong><a href="https://www.google.com/maps/search/?api=1&query=Septime%20Paris%2C%20Paris" target="_blank" rel="noopener">Septime</a></strong> / <strong><a href="https://www.google.com/maps/search/?api=1&query=Clamato%20Paris%2C%20Paris" target="_blank" rel="noopener">Clamato</a></strong> (Rue de Charonne, 12 min.) — blandt byens mest roste; Septime kræver booking uger frem, Clamato (fisk/skaldyr) er drop-in</li>
+        <li><strong><a href="https://www.google.com/maps/search/?api=1&query=Bistrot%20Paul%20Bert%20Paris%2C%20Paris" target="_blank" rel="noopener">Bistrot Paul Bert</a></strong> (15 min.) — den klassiske parisiske bistro med entrecôte og soufflé; book</li>
+        <li><strong><a href="https://www.google.com/maps/search/?api=1&query=Caf%C3%A9%20Charbon%20Paris%2C%20Paris" target="_blank" rel="noopener">Café Charbon</a></strong> (Rue Oberkampf, 8 min.) — apéro i 1900-tals-lokale</li>
+        <li><strong><a href="https://www.google.com/maps/search/?api=1&query=Breizh%20Caf%C3%A9%20Marais%2C%20Paris" target="_blank" rel="noopener">Breizh Café</a></strong> (Marais, 15 min.) — Bretagne-crêpes i topklasse</li>
+        <li><strong><a href="https://www.google.com/maps/search/?api=1&query=Du%20Pain%20et%20des%20Id%C3%A9es%20Paris%2C%20Paris" target="_blank" rel="noopener">Du Pain et des Idées</a></strong> (ved kanalen, 15 min.) — legendarisk bageri; prøv "escargot"-sneglen med pistacie (lukket lør/søn)</li>
+      </ul>
+      <p class="small">Tjek altid åbningstider — mange lukker mellem frokost og middag, og nogle holder lukket man/søn.</p>
+    </div>
+    <div class="panel">
+      <h4>🛒 Hverdag i kvarteret</h4>
+      <ul>
+        <li><strong>Torsdag = markedsdag:</strong> Marché Bastille ligger på jeres egen boulevard kl. 7–14.30 — køb ost, brød og frugt til balkon-morgenmad</li>
+        <li><a href="https://www.google.com/maps/search/boulangerie/@48.8598,2.3718,16z" target="_blank" rel="noopener">🥖 Bagerier tæt på jer (Google Maps-søgning)</a></li>
+        <li><a href="https://www.google.com/maps/search/supermarché/@48.8598,2.3718,16z" target="_blank" rel="noopener">🛒 Supermarkeder tæt på jer</a> — der er flere Franprix/Carrefour City i gaderne omkring</li>
+        <li><a href="https://www.google.com/maps/search/pharmacie/@48.8598,2.3718,16z" target="_blank" rel="noopener">💊 Apoteker tæt på jer</a> (grønt neonkors)</li>
+        <li>Vaskemaskine er i lejligheden — pak let!</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>🌳 Parker &amp; vand</h2>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Sted</th><th>Gåtid</th><th>Hvorfor</th><th></th></tr></thead>
+    <tbody>
+      <tr><td><strong><a href="https://www.google.com/maps/search/?api=1&query=Port%20de%20l%27Arsenal%2C%20Paris" target="_blank" rel="noopener">Port de l'Arsenal</a></strong></td><td style="white-space:nowrap">🚶 14 min.</td><td>Lystbådehavnen under Bastille med haveanlæg langs vandet — overset og skøn.</td><td><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8508,2.368&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></td></tr>
+      <tr><td><strong><a href="https://www.google.com/maps/search/?api=1&query=Coul%C3%A9e%20verte%20Ren%C3%A9-Dumont%2C%20Paris" target="_blank" rel="noopener">Coulée verte René-Dumont</a></strong></td><td style="white-space:nowrap">🚶 15 min.</td><td>Verdens første højbanepark (forbilledet for New Yorks High Line) — start ved Bastille og gå mod øst i trækronehøjde.</td><td><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8493,2.3715&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></td></tr>
+      <tr><td><strong><a href="https://www.google.com/maps/search/?api=1&query=Square%20Maurice-Gardette%2C%20Paris" target="_blank" rel="noopener">Square Maurice-Gardette</a></strong></td><td style="white-space:nowrap">🚶 7 min.</td><td>Kvarterets lokale park — legeplads, bænke og parisisk hverdagsliv.</td><td><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8615,2.377&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></td></tr>
+      <tr><td><strong><a href="https://www.google.com/maps/search/?api=1&query=Canal%20Saint-Martin%2C%20Paris" target="_blank" rel="noopener">Canal Saint-Martin</a></strong></td><td style="white-space:nowrap">🚶 14 min.</td><td>Jernbroer, kastanjetræer og caféliv langs vandet — tag en kaffe og se slusebådene.</td><td><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.871,2.3658&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></td></tr>
+    </tbody></table></div>
+</section>
+
+<section>
+  <h2>🚇 Jeres metrostationer</h2>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Sted</th><th>Gåtid</th><th>Hvorfor</th><th></th></tr></thead>
+    <tbody>
+      <tr><td><strong><a href="https://www.google.com/maps/search/?api=1&query=Metro%20Richard-Lenoir%2C%20Paris" target="_blank" rel="noopener">Metro Richard-Lenoir (linje 5)</a></strong></td><td style="white-space:nowrap">🚶 1 min.</td><td>Jeres station — 1 minut fra døren. Linje 5: 8 min. til Gare du Nord.</td><td><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8599,2.3719&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></td></tr>
+      <tr><td><strong><a href="https://www.google.com/maps/search/?api=1&query=Metro%20Br%C3%A9guet-Sabin%2C%20Paris" target="_blank" rel="noopener">Metro Bréguet-Sabin (linje 5)</a></strong></td><td style="white-space:nowrap">🚶 5 min.</td><td>Alternativ station mod Bastille-enden.</td><td><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8562,2.3702&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></td></tr>
+      <tr><td><strong><a href="https://www.google.com/maps/search/?api=1&query=Metro%20Saint-Ambroise%2C%20Paris" target="_blank" rel="noopener">Metro Saint-Ambroise (linje 9)</a></strong></td><td style="white-space:nowrap">🚶 6 min.</td><td>Linje 9 mod Grands Boulevards og Trocadéro.</td><td><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8614,2.3738&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></td></tr>
+      <tr><td><strong><a href="https://www.google.com/maps/search/?api=1&query=Metro%20Oberkampf%2C%20Paris" target="_blank" rel="noopener">Metro Oberkampf (linje 5+9)</a></strong></td><td style="white-space:nowrap">🚶 8 min.</td><td>Knudepunkt mod nord — 5'eren og 9'eren mødes her.</td><td><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8646,2.3683&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></td></tr>
+    </tbody></table></div>
+  <p class="small" style="margin-top:8px">Linje 5 (Richard-Lenoir/Bréguet-Sabin): direkte til Gare du Nord (8 min.), République, Bastille. Linje 9 (Saint-Ambroise/Oberkampf): direkte til Grands Boulevards, Champs-Élysées-kvarteret og Trocadéro. Linje 8 (Bastille/Chemin Vert): mod Invalides/Madeleine — I har reelt hele byen inden for ét skift.</p>
+</section>
+
+<section>
+  <h2>🚶 Tre gåture fra hoveddøren</h2>
+  <div class="grid2">
+    <div class="panel"><h4>1) Marais-sløjfen (1½–2 t)</h4>
+      <p style="font-size:14.5px">Ned ad boulevarden → Bastille → Rue Saint-Antoine → <strong>Place des Vosges</strong> (kig ind hos Victor Hugo) → Rue des Francs-Bourgeois (butikker) → <strong>Carnavalet</strong> → Rue des Rosiers (falafel) → tilbage gennem Rue de Turenne. <a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8556,2.3655&travelmode=walking" target="_blank" rel="noopener">🧭 Start ruten</a></p></div>
+    <div class="panel"><h4>2) Kanal-turen (1½ t)</h4>
+      <p style="font-size:14.5px">Op gennem Rue Oberkampf → <strong>République</strong> → <strong>Canal Saint-Martin</strong> langs vandet til Jardin Villemin → croissant hos Du Pain et des Idées → hjem ad Rue du Faubourg du Temple. <a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.871,2.3658&travelmode=walking" target="_blank" rel="noopener">🧭 Start ruten</a></p></div>
+    <div class="panel"><h4>3) Den grønne linje (2 t)</h4>
+      <p style="font-size:14.5px">Bastille → <strong>Port de l'Arsenal</strong> langs bådene → op på <strong>Coulée Verte</strong> og gå i trækronehøjde mod Viaduc des Arts' gallerier → retur og evt. <strong>Marché d'Aligre</strong> (formiddag). <a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8493,2.3715&travelmode=walking" target="_blank" rel="noopener">🧭 Start ruten</a></p></div>
+  </div>
+</section>
+
+</div>
+<footer><div class="wrap">
+  <p><strong>Basen:</strong> <a href="https://www.google.com/maps/search/?api=1&query=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris%2C%20Paris" target="_blank" rel="noopener">67 Boulevard Richard-Lenoir, 75011 Paris</a> · 6.–9. oktober 2026 · 3 voksne · vært: Antoine &amp; France ·
+  <a href="https://www.airbnb.dk/rooms/1120183965838403602?adults=3&check_in=2026-10-06&check_out=2026-10-09" target="_blank" rel="noopener">Airbnb-opslaget ↗</a></p>
+  <p>Arkiv fra beslutningsfasen: <a href="valget.html">sammenligningen af alle 11 lejligheder</a> · <a href="omraader.html">områdevurderingerne</a> · <a href="https://github.com/qvisty/paristur">github.com/qvisty/paristur</a></p>
+</div></footer>
+<script src="vendor/leaflet.js"></script>
+<script>
+
+try {
+var L = window.leaflet || window.L;
+var APT = [48.8598, 2.3718];
+var ADDR = '67 Boulevard Richard-Lenoir, 75011 Paris';
+var map = L.map('map').setView([48.858, 2.368], 14.4);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:19, attribution:'&copy; OpenStreetMap-bidragydere'}).addTo(map);
+var home = L.divIcon({className:'', html:'<div style="background:#1f2a44;color:#fff;border:3px solid #fff;border-radius:50%;width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-size:19px;box-shadow:0 2px 8px rgba(0,0,0,.45)">🏠</div>', iconSize:[38,38], iconAnchor:[19,19]});
+L.marker(APT, {icon:home, zIndexOffset:1000}).addTo(map).bindPopup('<strong>Jeres lejlighed</strong><br>' + ADDR + '<br><a href="https://www.google.com/maps/search/?api=1&query=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris%2C%20Paris" target="_blank" rel="noopener">Åbn i Google Maps ↗</a>');
+var COL = {'sev':'#c0392b','mad':'#b45309','park':'#1e7d4f','metro':'#1f6feb'};
+var pois = [
+  ["Marché Bastille (torsdag 7–14.30!)", 7, 48.8551, 2.3698, "mad"],
+  ["Rue Oberkampf & Café Charbon", 8, 48.8649, 2.3705, "mad"],
+  ["Rue de Charonne", 12, 48.8536, 2.3795, "mad"],
+  ["Marché des Enfants Rouges", 17, 48.8627, 2.3622, "mad"],
+  ["Marché d'Aligre", 20, 48.8487, 2.3786, "mad"],
+  ["Place des Vosges", 13, 48.8556, 2.3655, "sev"],
+  ["Musée Carnavalet (gratis!)", 15, 48.8576, 2.3622, "sev"],
+  ["Musée Picasso", 17, 48.8598, 2.3622, "sev"],
+  ["Rue des Rosiers (falafel!)", 16, 48.8572, 2.359, "sev"],
+  ["Place de la Bastille & Operaen", 12, 48.8532, 2.3692, "sev"],
+  ["Port de l'Arsenal", 14, 48.8508, 2.368, "park"],
+  ["Coulée verte René-Dumont", 15, 48.8493, 2.3715, "park"],
+  ["Square Maurice-Gardette", 7, 48.8615, 2.377, "park"],
+  ["Cirque d'Hiver", 6, 48.8632, 2.3674, "sev"],
+  ["Place de la République", 12, 48.8675, 2.3633, "sev"],
+  ["Canal Saint-Martin", 14, 48.871, 2.3658, "park"],
+  ["Atelier des Lumières", 14, 48.8612, 2.3812, "sev"],
+  ["Père Lachaise", 25, 48.8614, 2.3933, "sev"],
+  ["Centre Pompidou-området", 20, 48.8607, 2.3522, "sev"],
+  ["Île de la Cité & Notre-Dame", 27, 48.853, 2.3499, "sev"],
+  ["Metro Richard-Lenoir (linje 5)", 1, 48.8599, 2.3719, "metro"],
+  ["Metro Bréguet-Sabin (linje 5)", 5, 48.8562, 2.3702, "metro"],
+  ["Metro Saint-Ambroise (linje 9)", 6, 48.8614, 2.3738, "metro"],
+  ["Metro Oberkampf (linje 5+9)", 8, 48.8646, 2.3683, "metro"]
+];
+pois.forEach(function(p){
+  var q = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(p[0].replace(/\s*\(.*?\)/g,'') + ', Paris');
+  var rute = 'https://www.google.com/maps/dir/?api=1&origin=' + encodeURIComponent(ADDR) + '&destination=' + p[2] + ',' + p[3] + '&travelmode=walking';
+  L.circleMarker([p[2],p[3]], {radius:8, color:'#fff', weight:2, fillColor:COL[p[4]], fillOpacity:.95}).addTo(map)
+    .bindPopup('<strong><a href="'+q+'" target="_blank" rel="noopener">'+p[0]+' ↗</a></strong><br>🚶 ca. '+p[1]+' min. til fods · <a href="'+rute+'" target="_blank" rel="noopener">🧭 Rute</a>');
+});
+} catch(e) { document.getElementById('map').innerHTML = '<div style="padding:30px;text-align:center;color:#6b7280">Kortet kunne ikke indlæses.</div>'; }
+
+</script>
+</body>
+</html>

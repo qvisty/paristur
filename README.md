@@ -1,21 +1,20 @@
 # Paris-tur · uge 41 (6.–9. oktober 2026)
 
-Beslutningsside for familiens valg mellem 11 Airbnb-lejligheder i Paris.
+Familiens **ferie-hjælper** for turen til Paris — med base i den valgte lejlighed på
+**67 Boulevard Richard-Lenoir, 75011 Paris** (11. arrondissement).
 
 **👉 Se siden her: https://qvisty.github.io/paristur/**
 
-Siden indeholder:
+## Siderne
 
-- ⭐ Samlet anbefaling og scoring af alle 11 lejligheder
-- 📊 Sammenligningstabel (pris, senge, bad, faciliteter, afbestilling)
-- 🗺️ Interaktivt kort med lejligheder og seværdigheder
-- 🛏️ "Senge-tjek": kan 3 voksne reelt sove der?
-- 🗼 Seværdigheder med rejsetider fra hver lejlighed
-- 🚇 Transport (lufthavn, metro, billetter)
-- 🧳 Praktisk info om uge 41 (vejr, events, afbestillingsfrister)
-- 🗳️ Familie-afstemning (giv stjerner og del i familiechatten)
+- 🏠 **Hjem** (`index.html`) — lejlighedsfakta, nedtælling, kvarterskort og tjekliste inden afrejse
+- 📍 **Kvarteret** (`kvarteret.html`) — alt i gåafstand: seværdigheder, markeder, parker, metro, spisesteder og tre gåture
+- 📅 **Dagsplaner** (`dagsplaner.html`) — time-for-time-forslag for alle fire dage, bygget om flyene (lander 6/10 kl. 13.45, hjemrejse 9/10 kl. 20.40)
+- 🧳 **Praktisk** (`praktisk.html`) — lufthavn ↔ lejlighed, billetter, vejr, nødnumre, apps og pakkeliste
 
-## Kilder
+## Arkiv fra beslutningsfasen
 
-`*.mhtml`-filerne er de gemte Airbnb-opslag (10. juni 2026, datoer 6.–9. okt. 2026, 3 gæster),
-og `kort.png` er skærmbilledet af Airbnb-søgekortet. Alle data på siden stammer derfra.
+- 🏛️ `valget.html` — sammenligningen af alle 11 lejligheder med scoring, senge-tjek, duel og afstemning
+- 📍 `omraader.html` — områdevurderingerne for alle kandidaternes kvarterer
+
+`*.mhtml`-filerne er de gemte Airbnb-opslag, som dannede datagrundlaget.
