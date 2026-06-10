@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spisesteder &amp; små perler · Paris-basen uge 41</title>
+<meta name="description" content="Spisesteder i kvarteret omkring 67 Bd Richard-Lenoir — og små, hyggelige seværdigheder i gåafstand.">
+<link rel="stylesheet" href="vendor/leaflet.css">
+<style>
+  :root{--navy:#1f2a44;--navy2:#2c3a5c;--cream:#faf7f2;--card:#fff;--red:#c0392b;--gold:#b08d2f;--green:#1e7d4f;--amber:#b45309;--ink:#26303f;--muted:#6b7280;--line:#e6e0d6}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--cream);color:var(--ink);line-height:1.55}
+  a{color:var(--red)}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 18px}
+  header.hero{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;padding:38px 0 26px}
+  header.hero h1{margin:0 0 6px;font-size:clamp(24px,4vw,38px)}
+  header.hero p{margin:4px 0;color:#d8dceb;font-size:16px}
+  .facts{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+  .fact{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);padding:6px 12px;border-radius:999px;font-size:14px}
+  nav.toc{position:sticky;top:0;z-index:1000;background:var(--navy);box-shadow:0 2px 8px rgba(0,0,0,.25)}
+  nav.toc .wrap{display:flex;gap:2px;flex-wrap:wrap;justify-content:center;padding:2px 18px}
+  nav.toc a{color:#e8eaf2;text-decoration:none;padding:11px 13px;font-size:14.5px;white-space:nowrap}
+  nav.toc a:hover{background:rgba(255,255,255,.1)}
+  nav.toc a.on{background:rgba(255,255,255,.16);font-weight:700}
+  section{padding:34px 0 6px}
+  h2{font-size:25px;margin:0 0 4px;color:var(--navy)}
+  h3{color:var(--navy);margin:20px 0 8px}
+  .sub{color:var(--muted);margin:0 0 16px;font-size:15px}
+  .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+  .panel h4{margin:0 0 8px;color:var(--navy)}
+  .panel ul{margin:6px 0;padding-left:20px;font-size:14.5px}
+  .panel li{margin:5px 0}
+  .callout{background:#fdf3e3;border-left:4px solid var(--gold);padding:12px 16px;border-radius:0 10px 10px 0;margin:16px 0;font-size:15px}
+  .callout.green{background:#e9f5ee;border-color:var(--green)}
+  .callout.red{background:#fbeae7;border-color:var(--red)}
+  .btn{display:inline-block;background:var(--red);color:#fff;text-decoration:none;padding:9px 15px;border-radius:8px;font-size:14.5px;font-weight:600}
+  .btn:hover{filter:brightness(1.08)}
+  .btn.ghost{background:transparent;color:var(--navy);border:1px solid var(--navy)}
+  .btn.green{background:var(--green)}
+  .quick{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+  .tablewrap{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-top:10px}
+  table{border-collapse:collapse;width:100%;font-size:14px;min-width:600px}
+  th,td{padding:9px 10px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  thead th{background:var(--navy);color:#fff;font-weight:600}
+  thead th a{color:#fff}
+  tbody tr:nth-child(even){background:#faf8f4}
+  .small{font-size:12.5px;color:var(--muted)}
+  .badge{font-size:12px;padding:3px 9px;border-radius:999px;background:#eef1f7;color:var(--navy);font-weight:600}
+  .badge.gold{background:#f6ecd4;color:#8a6d1f}
+  .badge.green{background:#e2f2e9;color:var(--green)}
+  #map,.bigmap{height:520px;border-radius:12px;border:1px solid var(--line);z-index:1}
+  .legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px;font-size:14px}
+  .dot{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:5px;vertical-align:-1px}
+  .day{background:var(--card);border:1px solid var(--line);border-radius:14px;margin:18px 0;overflow:hidden}
+  .day .dhead{background:var(--navy);color:#fff;padding:12px 18px;font-size:17px;font-weight:700}
+  .day .dbody{padding:6px 18px 14px}
+  .step{display:grid;grid-template-columns:64px 1fr;gap:12px;padding:10px 0;border-bottom:1px dashed var(--line)}
+  .step:last-child{border-bottom:none}
+  .step .tid{font-weight:800;color:var(--navy);font-size:14.5px;padding-top:2px}
+  .step p{margin:0;font-size:14.5px}
+  .step .small{display:block;margin-top:3px}
+  .chk{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px}
+  .chk label{display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px dashed var(--line);font-size:15px;cursor:pointer}
+  .chk label:last-child{border-bottom:none}
+  .chk input{transform:scale(1.25);accent-color:var(--green);margin-top:3px}
+  .chk input:checked + span{text-decoration:line-through;color:var(--muted)}
+  .imgs{display:grid;grid-template-columns:2fr 1fr;gap:4px;border-radius:12px;overflow:hidden}
+  .imgs img{width:100%;height:100%;object-fit:cover;display:block}
+  .imgs .side{display:grid;grid-template-rows:1fr 1fr;gap:4px}
+  .pages{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:14px}
+  .pcard{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;text-decoration:none;color:var(--ink);display:block}
+  .pcard:hover{border-color:var(--navy);box-shadow:0 4px 12px rgba(31,42,68,.12)}
+  .pcard .ic{font-size:30px}
+  .pcard b{display:block;color:var(--navy);font-size:17px;margin:6px 0 4px}
+  .pcard span{font-size:13.5px;color:var(--muted)}
+  #countdown{font-size:15px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);border-radius:10px;display:inline-block;padding:8px 14px;margin-top:12px;font-weight:600}
+  footer{margin-top:42px;padding:24px 0;background:var(--navy);color:#cfd5e6;font-size:13.5px}
+  footer a{color:#fff}
+  @media(max-width:640px){
+    nav.toc{position:static} nav.toc a{padding:8px 9px;font-size:13px}
+    section{padding:24px 0 4px} h2{font-size:21px}
+    #map,.bigmap{height:380px} header.hero{padding:28px 0 20px}
+    .fact{font-size:12.5px;padding:5px 10px} table{font-size:13px}
+    .step{grid-template-columns:52px 1fr}
+  }
+
+  .wish{background:var(--card);border:1px solid var(--line);border-radius:14px;margin:16px 0;padding:18px 20px}
+  .wish .whead{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+  .wish h3{margin:0;font-size:19px}
+  .wish .num{background:var(--navy);color:#fff;border-radius:50%;width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;font-weight:800;flex:none}
+  .wish p{margin:6px 0;font-size:14.5px}
+  .wish ul{margin:6px 0;padding-left:20px;font-size:14.5px}
+  .wish li{margin:4px 0}
+  .wish .wbtns{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+  .recs{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:16px;margin-top:14px}
+  .rec{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+  .rec h4{margin:0 0 6px;color:var(--navy);font-size:16px}
+  .rec p{margin:5px 0;font-size:14px}
+  .rec .wbtns{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+  .rec .wbtns a,.wish .wbtns a{font-size:13px;padding:7px 11px}
+
+  .rest{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:15px 16px}
+  .rest h4{margin:0 0 2px;color:var(--navy);font-size:15.5px}
+  .rest .meta{font-size:12.5px;color:var(--muted);margin-bottom:6px}
+  .rest p{margin:4px 0;font-size:13.5px}
+  .rest .lnk{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;font-size:13px}
+  .gem{border-left:4px solid #7c3aed}
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+  <h1>🍽️ Spisesteder &amp; små perler</h1>
+  <p>I bor i et af Europas bedste madkvarterer — Rue de Charonne, Oberkampf og Paul Bert-gaderne er fyldt med klassikere. Her er de sikre kort i gåafstand, plus de små skjulte seværdigheder, turisterne går forbi.</p>
+</div></header>
+<nav class="toc"><div class="wrap">
+  <a href="index.html">🏠 Hjem</a>
+  <a href="kvarteret.html">📍 Kvarteret</a>
+  <a href="oplevelser.html">🎡 Oplevelser</a>
+  <a href="spisesteder.html" class="on">🍽️ Spisesteder</a>
+  <a href="dagsplaner.html">📅 Dagsplaner</a>
+  <a href="praktisk.html">🧳 Praktisk</a>
+</div></nav>
+<div class="wrap">
+
+<section>
+  <h2>🗺️ Kortet</h2>
+  <p class="sub">🟠 spisesteder · 🟣 små perler — alle med Google Maps-link og gårute fra lejligheden. Placeringer er omtrentlige; tjek adressen via linket.</p>
+  <div id="map"></div>
+  <div class="legend"><span><span class="dot" style="background:#1f2a44"></span>🏠 Lejligheden</span><span><span class="dot" style="background:#b45309"></span>Spisesteder</span><span><span class="dot" style="background:#7c3aed"></span>Små perler</span></div>
+  <div class="callout" style="margin-top:16px"><strong>Tre huskeregler:</strong> ① Book aftensmad de "rigtige" steder — pariserne spiser 20–21.30, og gode borde forsvinder. ② Frokost er et kup: mange €€€-steder har prix-fixe-frokost til halv pris. ③ Køkkenet lukker ofte 14–19.30 — sulten kl. 16 klares hos bagerne.</div>
+</section>
+
+<section>
+  <h2>🏠 Lige om hjørnet (0–10 min.)</h2>
+  <p class="sub">Det nære: steder, I kan beslutte jer for kl. 19 og sidde ved bordet 19.15.</p>
+  <div class="recs" style="grid-template-columns:repeat(auto-fit,minmax(270px,1fr))">
+    <div class="rest"><h4>Ober Mamma</h4><div class="meta">🚶 3 min. · €€ · Book/kø</div><p>Big Mamma-gruppens brusende italiener — på jeres egen boulevard (nr. 107)! Frisk pasta, træovnspizza og festlig stemning. Book online, eller kom til tidlig aftensmad og tag køen.</p>
+    <div class="lnk"><a href="https://www.google.com/maps/search/?api=1&query=Ober%20Mamma%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a href="https://www.tripadvisor.dk/Search?q=Ober%20Mamma%20Paris" target="_blank" rel="noopener">⭐ Tripadvisor</a><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8645,2.369&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></div></div>
+    <div class="rest"><h4>Clown Bar</h4><div class="meta">🚶 6 min. · €€€ · Book</div><p>Fredet cirkus-dekoreret perle klos op ad Cirkus-bygningen — moderne små retter og naturvin. En af kvarterets mest roste; book.</p>
+    <div class="lnk"><a href="https://www.google.com/maps/search/?api=1&query=Clown%20Bar%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a href="https://www.tripadvisor.dk/Search?q=Clown%20Bar%20Paris" target="_blank" rel="noopener">⭐ Tripadvisor</a><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8633,2.367&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></div></div>
+    <div class="rest"><h4>Café Charbon</h4><div class="meta">🚶 8 min. · €€ · Drop-in</div><p>Kvarterets ikon på Rue Oberkampf i et 1900-tals-lokale — perfekt til apéro, brunch eller en sen øl.</p>
+    <div class="lnk"><a href="https://www.google.com/maps/search/?api=1&query=Caf%C3%A9%20Charbon%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a href="https://www.tripadvisor.dk/Search?q=Caf%C3%A9%20Charbon%20Paris" target="_blank" rel="noopener">⭐ Tripadvisor</a><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8649,2.3705&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></div></div>
+    <div class="rest"><h4>Aux Deux Amis</h4><div class="meta">🚶 8 min. · €€ · Drop-in</div><p>Lille, larmende og elsket: småretter og naturvin skulder ved skulder med lokale. Kom tidligt.</p>
+    <div class="lnk"><a href="https://www.google.com/maps/search/?api=1&query=Aux%20Deux%20Amis%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a href="https://www.tripadvisor.dk/Search?q=Aux%20Deux%20Amis%20Paris" target="_blank" rel="noopener">⭐ Tripadvisor</a><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.866,2.3735&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></div></div>
+    <div class="rest"><h4>Astier</h4><div class="meta">🚶 9 min. · €€ · Book</div><p>Klassisk bistro siden 1956 — berømt for det enorme ostebræt, der bare stilles på bordet. Book.</p>
+    <div class="lnk"><a href="https://www.google.com/maps/search/?api=1&query=Astier%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a href="https://www.tripadvisor.dk/Search?q=Astier%20Paris" target="_blank" rel="noopener">⭐ Tripadvisor</a><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8665,2.3745&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></div></div>
+    <div class="rest"><h4>Pierre Sang</h4><div class="meta">🚶 8 min. · €€€ · Book</div><p>Top Chef-kokkens åbne køkken på Oberkampf: fransk-koreansk overraskelsesmenu til fair pris.</p>
+    <div class="lnk"><a href="https://www.google.com/maps/search/?api=1&query=Pierre%20Sang%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a href="https://www.tripadvisor.dk/Search?q=Pierre%20Sang%20Paris" target="_blank" rel="noopener">⭐ Tripadvisor</a><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8655,2.3745&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></div></div>
+  </div>
+</section>
+<section>
+  <h2>🍷 Klassiske bistroer</h2>
+  <p class="sub">Ternede duge, tavlemenuer og det køkken, man rejser til Paris for.</p>
+  <div class="recs" style="grid-template-columns:repeat(auto-fit,minmax(270px,1fr))">
+    <div class="rest"><h4>Chez Paul</h4><div class="meta">🚶 12 min. · €€ · Book</div><p>Old-school Bastille-institution i skæve lokaler fra 1900 — and confit, bøf og stemning som i en fransk film.</p>
+    <div class="lnk"><a href="https://www.google.com/maps/search/?api=1&query=Chez%20Paul%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a href="https://www.tripadvisor.dk/Search?q=Chez%20Paul%20Paris" target="_blank" rel="noopener">⭐ Tripadvisor</a><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8527,2.3727&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></div></div>
+    <div class="rest"><h4>Bistrot Paul Bert</h4><div class="meta">🚶 16 min. · €€€ · Book</div><p>Mange kalder den byens bedste klassiske bistro: entrecôte med bearnaise og en Grand Marnier-soufflé, man husker. Book i god tid.</p>
+    <div class="lnk"><a href="https://www.google.com/maps/search/?api=1&query=Bistrot%20Paul%20Bert%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a href="https://www.tripadvisor.dk/Search?q=Bistrot%20Paul%20Bert%20Paris" target="_blank" rel="noopener">⭐ Tripadvisor</a><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8516,2.3838&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></div></div>
+    <div class="rest"><h4>Le Servan</h4><div class="meta">🚶 13 min. · €€€ · Book</div><p>Moderne kvarterbistro med asiatisk tvist — stor international ros, men stadig afslappet.</p>
+    <div class="lnk"><a href="https://www.google.com/maps/search/?api=1&query=Le%20Servan%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a href="https://www.tripadvisor.dk/Search?q=Le%20Servan%20Paris" target="_blank" rel="noopener">⭐ Tripadvisor</a><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8637,2.3815&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></div></div>
+  </div>
+</section>
+<section>
+  <h2>⭐ Til den store aften</h2>
+  <p class="sub">Kvarteret omkring Rue de Charonne er et af Europas bedste madkvarterer — her er flagskibene.</p>
+  <div class="recs" style="grid-template-columns:repeat(auto-fit,minmax(270px,1fr))">
+    <div class="rest"><h4>Septime</h4><div class="meta">🚶 12 min. · €€€€ · Book NU</div><p>Michelin-stjerne og verdensberømmelse på Rue de Charonne. Skal bookes ugevis frem — slots åbner løbende online.</p>
+    <div class="lnk"><a href="https://www.google.com/maps/search/?api=1&query=Septime%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a href="https://www.tripadvisor.dk/Search?q=Septime%20Paris" target="_blank" rel="noopener">⭐ Tripadvisor</a><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8531,2.3805&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></div></div>
+    <div class="rest"><h4>Clamato</h4><div class="meta">🚶 12 min. · €€€ · Drop-in (kø)</div><p>Septimes skaldyrs-lillebror — ingen reservationer: kom kl. 18.45, skriv jer på, og tag en apéro imens.</p>
+    <div class="lnk"><a href="https://www.google.com/maps/search/?api=1&query=Clamato%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a href="https://www.tripadvisor.dk/Search?q=Clamato%20Paris" target="_blank" rel="noopener">⭐ Tripadvisor</a><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8531,2.3807&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></div></div>
+    <div class="rest"><h4>Le Chateaubriand</h4><div class="meta">🚶 14 min. · €€€€ · Book</div><p>Neobistro-bevægelsens fødested på Avenue Parmentier — fast aftenmenu, der deler vandene og begejstrer. Book.</p>
+    <div class="lnk"><a href="https://www.google.com/maps/search/?api=1&query=Le%20Chateaubriand%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a href="https://www.tripadvisor.dk/Search?q=Le%20Chateaubriand%20Paris" target="_blank" rel="noopener">⭐ Tripadvisor</a><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8668,2.3771&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></div></div>
+  </div>
+</section>
+<section>
+  <h2>🥙 Hurtigt & uformelt</h2>
+  <p class="sub">Frokost på farten eller afslappet aftensmad uden reservation.</p>
+  <div class="recs" style="grid-template-columns:repeat(auto-fit,minmax(270px,1fr))">
+    <div class="rest"><h4>L'As du Fallafel</h4><div class="meta">🚶 16 min. · € · Kø, men hurtig</div><p>Den legendariske falafel i Rue des Rosiers — tag den to go og spis på Place des Vosges. Lukket fredag aften/lørdag.</p>
+    <div class="lnk"><a href="https://www.google.com/maps/search/?api=1&query=L%27As%20du%20Fallafel%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a href="https://www.tripadvisor.dk/Search?q=L%27As%20du%20Fallafel%20Paris" target="_blank" rel="noopener">⭐ Tripadvisor</a><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8572,2.359&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></div></div>
+    <div class="rest"><h4>Marché des Enfants Rouges</h4><div class="meta">🚶 17 min. · €–€€ · Drop-in</div><p>Frokostboder fra hele verden i byens ældste marked (1615) — marokkansk, japansk, italiensk… Lukket mandag.</p>
+    <div class="lnk"><a href="https://www.google.com/maps/search/?api=1&query=March%C3%A9%20des%20Enfants%20Rouges%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a href="https://www.tripadvisor.dk/Search?q=March%C3%A9%20des%20Enfants%20Rouges%20Paris" target="_blank" rel="noopener">⭐ Tripadvisor</a><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8627,2.3622&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></div></div>
+    <div class="rest"><h4>Breizh Café</h4><div class="meta">🚶 15 min. · €€ · Book/kø</div><p>Bretagne-crêpes i topklasse i Marais — galettes med bøghvedemel og saltkaramel til dessert.</p>
+    <div class="lnk"><a href="https://www.google.com/maps/search/?api=1&query=Breizh%20Caf%C3%A9%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a href="https://www.tripadvisor.dk/Search?q=Breizh%20Caf%C3%A9%20Paris" target="_blank" rel="noopener">⭐ Tripadvisor</a><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8608,2.3625&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></div></div>
+    <div class="rest"><h4>Double Dragon</h4><div class="meta">🚶 13 min. · €€ · Drop-in</div><p>Levha-søstrenes asiatiske kantine — sprøde dumplings og fyrige nudler. Ingen reservationer.</p>
+    <div class="lnk"><a href="https://www.google.com/maps/search/?api=1&query=Double%20Dragon%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a href="https://www.tripadvisor.dk/Search?q=Double%20Dragon%20Paris" target="_blank" rel="noopener">⭐ Tripadvisor</a><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8616,2.3818&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></div></div>
+  </div>
+</section>
+<section>
+  <h2>☕ Kaffe, brunch & søde sager</h2>
+  <p class="sub">Morgenbrød, specialkaffe og konditori i verdensklasse.</p>
+  <div class="recs" style="grid-template-columns:repeat(auto-fit,minmax(270px,1fr))">
+    <div class="rest"><h4>Du Pain et des Idées</h4><div class="meta">🚶 15 min. · € · Drop-in</div><p>Et af byens mest berømte bagerier (ved kanalen) — prøv "escargot" med pistacie. Åbent man–fre, lukket weekend!</p>
+    <div class="lnk"><a href="https://www.google.com/maps/search/?api=1&query=Du%20Pain%20et%20des%20Id%C3%A9es%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a href="https://www.tripadvisor.dk/Search?q=Du%20Pain%20et%20des%20Id%C3%A9es%20Paris" target="_blank" rel="noopener">⭐ Tripadvisor</a><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.871,2.3633&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></div></div>
+    <div class="rest"><h4>Utopie</h4><div class="meta">🚶 8 min. · € · Drop-in</div><p>Prisvindende kvarterbageri på Rue Jean-Pierre Timbaud — sort sesam-specialiteter og perfekte croissanter.</p>
+    <div class="lnk"><a href="https://www.google.com/maps/search/?api=1&query=Utopie%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a href="https://www.tripadvisor.dk/Search?q=Utopie%20Paris" target="_blank" rel="noopener">⭐ Tripadvisor</a><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8672,2.3705&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></div></div>
+    <div class="rest"><h4>The Beans on Fire</h4><div class="meta">🚶 8 min. · € · Drop-in</div><p>Specialkaffe-risteri direkte ud til Square Maurice-Gardette — tag koppen med ind i parken.</p>
+    <div class="lnk"><a href="https://www.google.com/maps/search/?api=1&query=The%20Beans%20on%20Fire%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a href="https://www.tripadvisor.dk/Search?q=The%20Beans%20on%20Fire%20Paris" target="_blank" rel="noopener">⭐ Tripadvisor</a><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8617,2.3768&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></div></div>
+    <div class="rest"><h4>La Pâtisserie Cyril Lignac</h4><div class="meta">🚶 16 min. · € · Drop-in</div><p>Stjernekonditorens butik ved Rue Paul Bert — æklairer og tærter, der ligner smykker.</p>
+    <div class="lnk"><a href="https://www.google.com/maps/search/?api=1&query=La%20P%C3%A2tisserie%20Cyril%20Lignac%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a href="https://www.tripadvisor.dk/Search?q=La%20P%C3%A2tisserie%20Cyril%20Lignac%20Paris" target="_blank" rel="noopener">⭐ Tripadvisor</a><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8513,2.3845&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></div></div>
+    <div class="rest"><h4>Café Méricourt</h4><div class="meta">🚶 7 min. · €€ · Drop-in</div><p>Kvarterets hyggeligste brunch (shakshuka!) — 7 minutter fra døren. Kom før kl. 10 i weekenden.</p>
+    <div class="lnk"><a href="https://www.google.com/maps/search/?api=1&query=Caf%C3%A9%20M%C3%A9ricourt%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a href="https://www.tripadvisor.dk/Search?q=Caf%C3%A9%20M%C3%A9ricourt%20Paris" target="_blank" rel="noopener">⭐ Tripadvisor</a><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8643,2.3725&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></div></div>
+  </div>
+</section>
+<section>
+  <h2>🍇 Vinbarer & aftenhygge</h2>
+  <p class="sub">Til den sidste time af aftenen — eller den første.</p>
+  <div class="recs" style="grid-template-columns:repeat(auto-fit,minmax(270px,1fr))">
+    <div class="rest"><h4>Septime La Cave</h4><div class="meta">🚶 12 min. · €€ · Drop-in</div><p>Septimes lille vinbar rundt om hjørnet — naturvin og småplader, når I ikke fik bord hos storebror.</p>
+    <div class="lnk"><a href="https://www.google.com/maps/search/?api=1&query=Septime%20La%20Cave%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a href="https://www.tripadvisor.dk/Search?q=Septime%20La%20Cave%20Paris" target="_blank" rel="noopener">⭐ Tripadvisor</a><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8534,2.38&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></div></div>
+    <div class="rest"><h4>Le Barav</h4><div class="meta">🚶 12 min. · €€ · Book/kø</div><p>Vinbar med egen vinhandel i Marais-kanten — vælg flasken i butikken og drik den til ostebrættet.</p>
+    <div class="lnk"><a href="https://www.google.com/maps/search/?api=1&query=Le%20Barav%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a href="https://www.tripadvisor.dk/Search?q=Le%20Barav%20Paris" target="_blank" rel="noopener">⭐ Tripadvisor</a><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8665,2.362&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>💎 Små, hyggelige seværdigheder</h2>
+  <p class="sub">Skjulte passager, stille pladser og kvarterets hemmeligheder — alle gratis og i gåafstand. Perfekte som afstikkere på vej til noget andet.</p>
+  <div class="recs" style="grid-template-columns:repeat(auto-fit,minmax(270px,1fr))">
+    <div class="rest gem"><h4>Cour Damoye</h4><div class="meta">🚶 8 min. · gratis</div><p>Skjult brostensgyde lige ved Bastille-pladsen — træd ind gennem porten, og larmen forsvinder mellem værksteder og kaffebrænderi.</p>
+    <div class="lnk"><a href="https://www.google.com/maps/search/?api=1&query=Cour%20Damoye%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a href="https://www.tripadvisor.dk/Search?q=Cour%20Damoye%20Paris" target="_blank" rel="noopener">⭐ Tripadvisor</a><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.854,2.3697&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></div></div>
+    <div class="rest gem"><h4>Passage Lhomme</h4><div class="meta">🚶 12 min. · gratis</div><p>Hemmelig håndværkerpassage fra Rue de Charonne med vedbend, gamle skilte og møbelsnedkere — Faubourg Saint-Antoines møbelhistorie i miniature.</p>
+    <div class="lnk"><a href="https://www.google.com/maps/search/?api=1&query=Passage%20Lhomme%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a href="https://www.tripadvisor.dk/Search?q=Passage%20Lhomme%20Paris" target="_blank" rel="noopener">⭐ Tripadvisor</a><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8523,2.3755&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></div></div>
+    <div class="rest gem"><h4>Cité du Figuier</h4><div class="meta">🚶 8 min. · gratis</div><p>Lille brolagt blindgyde fuld af planter og atelierer midt i Oberkampf — stik hovedet ind fra nr. 104.</p>
+    <div class="lnk"><a href="https://www.google.com/maps/search/?api=1&query=Cit%C3%A9%20du%20Figuier%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a href="https://www.tripadvisor.dk/Search?q=Cit%C3%A9%20du%20Figuier%20Paris" target="_blank" rel="noopener">⭐ Tripadvisor</a><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8658,2.3758&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></div></div>
+    <div class="rest gem"><h4>Le M.U.R. Oberkampf</h4><div class="meta">🚶 8 min. · gratis</div><p>Kvarterets roterende street art-væg (107 rue Oberkampf) — nyt værk af en ny kunstner cirka hver anden uge.</p>
+    <div class="lnk"><a href="https://www.google.com/maps/search/?api=1&query=Le%20M.U.R.%20Oberkampf%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a href="https://www.tripadvisor.dk/Search?q=Le%20M.U.R.%20Oberkampf%20Paris" target="_blank" rel="noopener">⭐ Tripadvisor</a><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8646,2.37&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></div></div>
+    <div class="rest gem"><h4>Place du Marché Sainte-Catherine</h4><div class="meta">🚶 14 min. · gratis</div><p>Marais' hyggeligste lille plads: bilfri, brostensbelagt og omkranset af caféborde under træerne.</p>
+    <div class="lnk"><a href="https://www.google.com/maps/search/?api=1&query=Place%20du%20March%C3%A9%20Sainte-Catherine%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a href="https://www.tripadvisor.dk/Search?q=Place%20du%20March%C3%A9%20Sainte-Catherine%20Paris" target="_blank" rel="noopener">⭐ Tripadvisor</a><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8556,2.3617&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></div></div>
+    <div class="rest gem"><h4>Village Saint-Paul</h4><div class="meta">🚶 16 min. · gratis</div><p>Sammenhængende gårdhaver bag Rue Saint-Paul med antikvitetshandlere, keramik og gallerier — nemt at overse, dejligt at fare vild i.</p>
+    <div class="lnk"><a href="https://www.google.com/maps/search/?api=1&query=Village%20Saint-Paul%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a href="https://www.tripadvisor.dk/Search?q=Village%20Saint-Paul%20Paris" target="_blank" rel="noopener">⭐ Tripadvisor</a><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8534,2.3613&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></div></div>
+    <div class="rest gem"><h4>Rue de Lappe</h4><div class="meta">🚶 11 min. · gratis</div><p>Den gamle dansegade bag Bastille med Balajo-dansesalonen fra 1936 — brosten og neonskilte; livlig (og højlydt) efter mørke.</p>
+    <div class="lnk"><a href="https://www.google.com/maps/search/?api=1&query=Rue%20de%20Lappe%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a href="https://www.tripadvisor.dk/Search?q=Rue%20de%20Lappe%20Paris" target="_blank" rel="noopener">⭐ Tripadvisor</a><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8528,2.372&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></div></div>
+    <div class="rest gem"><h4>Rue Crémieux</h4><div class="meta">🚶 20 min. · gratis</div><p>byens mest fotograferede pastelgade — bittesmå farvede huse på række. Husk: folk bor der, så gå stille. Kombinér med Coulée Verte.</p>
+    <div class="lnk"><a href="https://www.google.com/maps/search/?api=1&query=Rue%20Cr%C3%A9mieux%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a href="https://www.tripadvisor.dk/Search?q=Rue%20Cr%C3%A9mieux%20Paris" target="_blank" rel="noopener">⭐ Tripadvisor</a><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.847,2.3712&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></div></div>
+  </div>
+</section>
+
+</div>
+<footer><div class="wrap">
+  <p><strong>Basen:</strong> <a href="https://www.google.com/maps/search/?api=1&query=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris%2C%20Paris" target="_blank" rel="noopener">67 Boulevard Richard-Lenoir, 75011 Paris</a> · 6.–9. oktober 2026 · 3 voksne</p>
+  <p>Anbefalingerne er etablerede klassikere i kvarteret — tjek altid aktuelle anmeldelser og åbningstider via linkene (mange steder lukker søndag/mandag og mellem frokost og middag). Lavet til familiens Paris-tur · <a href="https://github.com/qvisty/paristur">github.com/qvisty/paristur</a></p>
+</div></footer>
+<script src="vendor/leaflet.js"></script>
+<script>
+
+try {
+var L = window.leaflet || window.L;
+var ADDR = '67 Boulevard Richard-Lenoir, 75011 Paris';
+var map = L.map('map').setView([48.858, 2.371], 14.5);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:19, attribution:'&copy; OpenStreetMap-bidragydere'}).addTo(map);
+var home = L.divIcon({className:'', html:'<div style="background:#1f2a44;color:#fff;border:3px solid #fff;border-radius:50%;width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-size:19px;box-shadow:0 2px 8px rgba(0,0,0,.45)">🏠</div>', iconSize:[38,38], iconAnchor:[19,19]});
+L.marker([48.8598, 2.3718], {icon:home, zIndexOffset:1000}).addTo(map).bindPopup('<strong>Jeres lejlighed</strong><br>' + ADDR);
+var COL = {'mad':'#b45309','perle':'#7c3aed'};
+var steder = [
+  ["Ober Mamma", 3, 48.8645, 2.369, "mad"],
+  ["Clown Bar", 6, 48.8633, 2.367, "mad"],
+  ["Café Charbon", 8, 48.8649, 2.3705, "mad"],
+  ["Aux Deux Amis", 8, 48.866, 2.3735, "mad"],
+  ["Astier", 9, 48.8665, 2.3745, "mad"],
+  ["Pierre Sang", 8, 48.8655, 2.3745, "mad"],
+  ["Chez Paul", 12, 48.8527, 2.3727, "mad"],
+  ["Bistrot Paul Bert", 16, 48.8516, 2.3838, "mad"],
+  ["Le Servan", 13, 48.8637, 2.3815, "mad"],
+  ["Septime", 12, 48.8531, 2.3805, "mad"],
+  ["Clamato", 12, 48.8531, 2.3807, "mad"],
+  ["Le Chateaubriand", 14, 48.8668, 2.3771, "mad"],
+  ["L'As du Fallafel", 16, 48.8572, 2.359, "mad"],
+  ["Marché des Enfants Rouges", 17, 48.8627, 2.3622, "mad"],
+  ["Breizh Café", 15, 48.8608, 2.3625, "mad"],
+  ["Double Dragon", 13, 48.8616, 2.3818, "mad"],
+  ["Du Pain et des Idées", 15, 48.871, 2.3633, "mad"],
+  ["Utopie", 8, 48.8672, 2.3705, "mad"],
+  ["The Beans on Fire", 8, 48.8617, 2.3768, "mad"],
+  ["La Pâtisserie Cyril Lignac", 16, 48.8513, 2.3845, "mad"],
+  ["Café Méricourt", 7, 48.8643, 2.3725, "mad"],
+  ["Septime La Cave", 12, 48.8534, 2.38, "mad"],
+  ["Le Barav", 12, 48.8665, 2.362, "mad"],
+  ["Cour Damoye", 8, 48.854, 2.3697, "perle"],
+  ["Passage Lhomme", 12, 48.8523, 2.3755, "perle"],
+  ["Cité du Figuier", 8, 48.8658, 2.3758, "perle"],
+  ["Le M.U.R. Oberkampf", 8, 48.8646, 2.37, "perle"],
+  ["Place du Marché Sainte-Catherine", 14, 48.8556, 2.3617, "perle"],
+  ["Village Saint-Paul", 16, 48.8534, 2.3613, "perle"],
+  ["Rue de Lappe", 11, 48.8528, 2.372, "perle"],
+  ["Rue Crémieux", 20, 48.847, 2.3712, "perle"]
+];
+steder.forEach(function(p){
+  var q = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(p[0] + ', Paris');
+  var rute = 'https://www.google.com/maps/dir/?api=1&origin=' + encodeURIComponent(ADDR) + '&destination=' + p[2] + ',' + p[3] + '&travelmode=walking';
+  L.circleMarker([p[2],p[3]], {radius:8, color:'#fff', weight:2, fillColor:COL[p[4]], fillOpacity:.95}).addTo(map)
+    .bindPopup('<strong><a href="'+q+'" target="_blank" rel="noopener">'+p[0]+' ↗</a></strong><br>🚶 ca. '+p[1]+' min. · <a href="'+rute+'" target="_blank" rel="noopener">🧭 Rute</a>');
+});
+} catch(e) { document.getElementById('map').innerHTML = '<div style="padding:30px;text-align:center;color:#6b7280">Kortet kunne ikke indlæses.</div>'; }
+
+</script>
+</body>
+</html>
