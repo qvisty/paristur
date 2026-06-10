@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oplevelser · Paris-basen uge 41</title>
+<meta name="description" content="Familiens ønskeliste og flere anbefalinger: booking-info, priser, links og ruter fra 67 Bd Richard-Lenoir.">
+<style>
+  :root{--navy:#1f2a44;--navy2:#2c3a5c;--cream:#faf7f2;--card:#fff;--red:#c0392b;--gold:#b08d2f;--green:#1e7d4f;--amber:#b45309;--ink:#26303f;--muted:#6b7280;--line:#e6e0d6}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--cream);color:var(--ink);line-height:1.55}
+  a{color:var(--red)}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 18px}
+  header.hero{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;padding:38px 0 26px}
+  header.hero h1{margin:0 0 6px;font-size:clamp(24px,4vw,38px)}
+  header.hero p{margin:4px 0;color:#d8dceb;font-size:16px}
+  .facts{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+  .fact{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);padding:6px 12px;border-radius:999px;font-size:14px}
+  nav.toc{position:sticky;top:0;z-index:1000;background:var(--navy);box-shadow:0 2px 8px rgba(0,0,0,.25)}
+  nav.toc .wrap{display:flex;gap:2px;flex-wrap:wrap;justify-content:center;padding:2px 18px}
+  nav.toc a{color:#e8eaf2;text-decoration:none;padding:11px 13px;font-size:14.5px;white-space:nowrap}
+  nav.toc a:hover{background:rgba(255,255,255,.1)}
+  nav.toc a.on{background:rgba(255,255,255,.16);font-weight:700}
+  section{padding:34px 0 6px}
+  h2{font-size:25px;margin:0 0 4px;color:var(--navy)}
+  h3{color:var(--navy);margin:20px 0 8px}
+  .sub{color:var(--muted);margin:0 0 16px;font-size:15px}
+  .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+  .panel h4{margin:0 0 8px;color:var(--navy)}
+  .panel ul{margin:6px 0;padding-left:20px;font-size:14.5px}
+  .panel li{margin:5px 0}
+  .callout{background:#fdf3e3;border-left:4px solid var(--gold);padding:12px 16px;border-radius:0 10px 10px 0;margin:16px 0;font-size:15px}
+  .callout.green{background:#e9f5ee;border-color:var(--green)}
+  .callout.red{background:#fbeae7;border-color:var(--red)}
+  .btn{display:inline-block;background:var(--red);color:#fff;text-decoration:none;padding:9px 15px;border-radius:8px;font-size:14.5px;font-weight:600}
+  .btn:hover{filter:brightness(1.08)}
+  .btn.ghost{background:transparent;color:var(--navy);border:1px solid var(--navy)}
+  .btn.green{background:var(--green)}
+  .quick{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+  .tablewrap{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-top:10px}
+  table{border-collapse:collapse;width:100%;font-size:14px;min-width:600px}
+  th,td{padding:9px 10px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  thead th{background:var(--navy);color:#fff;font-weight:600}
+  thead th a{color:#fff}
+  tbody tr:nth-child(even){background:#faf8f4}
+  .small{font-size:12.5px;color:var(--muted)}
+  .badge{font-size:12px;padding:3px 9px;border-radius:999px;background:#eef1f7;color:var(--navy);font-weight:600}
+  .badge.gold{background:#f6ecd4;color:#8a6d1f}
+  .badge.green{background:#e2f2e9;color:var(--green)}
+  #map,.bigmap{height:520px;border-radius:12px;border:1px solid var(--line);z-index:1}
+  .legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px;font-size:14px}
+  .dot{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:5px;vertical-align:-1px}
+  .day{background:var(--card);border:1px solid var(--line);border-radius:14px;margin:18px 0;overflow:hidden}
+  .day .dhead{background:var(--navy);color:#fff;padding:12px 18px;font-size:17px;font-weight:700}
+  .day .dbody{padding:6px 18px 14px}
+  .step{display:grid;grid-template-columns:64px 1fr;gap:12px;padding:10px 0;border-bottom:1px dashed var(--line)}
+  .step:last-child{border-bottom:none}
+  .step .tid{font-weight:800;color:var(--navy);font-size:14.5px;padding-top:2px}
+  .step p{margin:0;font-size:14.5px}
+  .step .small{display:block;margin-top:3px}
+  .chk{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px}
+  .chk label{display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px dashed var(--line);font-size:15px;cursor:pointer}
+  .chk label:last-child{border-bottom:none}
+  .chk input{transform:scale(1.25);accent-color:var(--green);margin-top:3px}
+  .chk input:checked + span{text-decoration:line-through;color:var(--muted)}
+  .imgs{display:grid;grid-template-columns:2fr 1fr;gap:4px;border-radius:12px;overflow:hidden}
+  .imgs img{width:100%;height:100%;object-fit:cover;display:block}
+  .imgs .side{display:grid;grid-template-rows:1fr 1fr;gap:4px}
+  .pages{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:14px}
+  .pcard{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;text-decoration:none;color:var(--ink);display:block}
+  .pcard:hover{border-color:var(--navy);box-shadow:0 4px 12px rgba(31,42,68,.12)}
+  .pcard .ic{font-size:30px}
+  .pcard b{display:block;color:var(--navy);font-size:17px;margin:6px 0 4px}
+  .pcard span{font-size:13.5px;color:var(--muted)}
+  #countdown{font-size:15px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);border-radius:10px;display:inline-block;padding:8px 14px;margin-top:12px;font-weight:600}
+  footer{margin-top:42px;padding:24px 0;background:var(--navy);color:#cfd5e6;font-size:13.5px}
+  footer a{color:#fff}
+  @media(max-width:640px){
+    nav.toc{position:static} nav.toc a{padding:8px 9px;font-size:13px}
+    section{padding:24px 0 4px} h2{font-size:21px}
+    #map,.bigmap{height:380px} header.hero{padding:28px 0 20px}
+    .fact{font-size:12.5px;padding:5px 10px} table{font-size:13px}
+    .step{grid-template-columns:52px 1fr}
+  }
+
+  .wish{background:var(--card);border:1px solid var(--line);border-radius:14px;margin:16px 0;padding:18px 20px}
+  .wish .whead{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+  .wish h3{margin:0;font-size:19px}
+  .wish .num{background:var(--navy);color:#fff;border-radius:50%;width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;font-weight:800;flex:none}
+  .wish p{margin:6px 0;font-size:14.5px}
+  .wish ul{margin:6px 0;padding-left:20px;font-size:14.5px}
+  .wish li{margin:4px 0}
+  .wish .wbtns{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+  .recs{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:16px;margin-top:14px}
+  .rec{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+  .rec h4{margin:0 0 6px;color:var(--navy);font-size:16px}
+  .rec p{margin:5px 0;font-size:14px}
+  .rec .wbtns{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+  .rec .wbtns a,.wish .wbtns a{font-size:13px;padding:7px 11px}
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+  <h1>🎡 Oplevelser — ønskelisten &amp; flere idéer</h1>
+  <p>Først jeres egen liste fra notesblokken — med alt det praktiske: hvad det koster, hvad der skal bookes, og hvordan I kommer derhen fra nr. 67. Derefter flere anbefalinger, der passer til basen og ugen.</p>
+</div></header>
+<nav class="toc"><div class="wrap">
+  <a href="index.html">🏠 Hjem</a>
+  <a href="kvarteret.html">📍 Kvarteret</a>
+  <a href="oplevelser.html" class="on">🎡 Oplevelser</a>
+  <a href="dagsplaner.html">📅 Dagsplaner</a>
+  <a href="praktisk.html">🧳 Praktisk</a>
+</div></nav>
+<div class="wrap">
+
+<section>
+  <h2>📝 Jeres ønskeliste</h2>
+  <p class="sub">De otte punkter fra notesblokken. Tre kræver booking i god tid: <strong>Moulin Rouge</strong>, <strong>Louvre</strong> og <strong>toppen af Eiffeltårnet</strong> — gør det nu, og kryds af på <a href="index.html">tjeklisten</a>.</p>
+<div class="wish">
+  <div class="whead"><span class="num">1</span><h3>⛪ Sainte-Chapelle</h3></div>
+  <div class="badges" style="display:flex;gap:6px;flex-wrap:wrap"><span class="badge gold">Book tidsbillet</span><span class="badge">ca. 13 €</span><span class="badge">~45 min. besøg</span></div>
+
+  <p>Gotikkens smukkeste rum: 1.113 m² glasmosaikker fra 1248, der forvandler hele kapellet til ét stort kalejdoskop, når solen står på. Ligger på Île de la Cité, 100 m fra Notre-Dame — et lille besøg med stor effekt.</p>
+  <ul>
+    <li><strong>Book tidsbillet online</strong> — køen uden billet kan æde en time. Ca. 13 €; gratis for EU-borgere under 26 (medbring ID)</li>
+    <li>Bedst <strong>midt på dagen i solskin</strong>, når lyset står gennem ruderne</li>
+    <li>Kombibillet med nabobygningen Conciergeriet (Marie-Antoinettes fængsel) koster kun lidt ekstra</li>
+    <li><strong>Passer perfekt ind i onsdagsplanen</strong> — I er alligevel på øen mellem Pont Neuf og Notre-Dame</li>
+    <li>NB: lufthavnsagtig sikkerhedskontrol (den ligger i domhuset) — små tasker er hurtigst</li>
+  </ul><div class="wbtns"><a class="btn" href="https://www.sainte-chapelle.fr" target="_blank" rel="noopener">🎟️ Officiel side + billetter</a><a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=Sainte-Chapelle%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a class="btn ghost" href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=Sainte-Chapelle%2C%20Paris&travelmode=transit" target="_blank" rel="noopener">🧭 Rute fra lejligheden</a></div>
+</div>
+<div class="wish">
+  <div class="whead"><span class="num">2</span><h3>✨ Eiffeltårnet, når det blinker om aftenen</h3></div>
+  <div class="badges" style="display:flex;gap:6px;flex-wrap:wrap"><span class="badge green">Gratis at se på</span><span class="badge">Op i tårnet: book</span><span class="badge">ca. 22–37 € op</span></div>
+
+  <p>Hver hele time efter mørkets frembrud <strong>funkler tårnet i 5 minutter</strong> med 20.000 blitzlamper — i oktober fra ca. kl. 20 og frem (sidste funklen ved 23-tiden). Det er allerede tænkt ind i <a href="dagsplaner.html">torsdagsplanen</a>: solnedgang fra Trocadéro ca. 19.10 og funklen kl. 20.</p>
+  <ul>
+    <li><strong>Bedste gratis udsigtspunkter:</strong> Trocadéro-esplanaden (det klassiske postkort), Champ de Mars-plænen (tæt på, picnic-venlig) og Pont de Bir-Hakeim (broen fra "Inception")</li>
+    <li><strong>Vil I op i tårnet?</strong> Book online ugevis i forvejen — elevator til toppen ca. 37 €, 2. sal ca. 22 €, trapper billigere. Aftentur deroppe + funklen set indefra er magisk</li>
+    <li>Linje 9 fra Saint-Ambroise (6 min. fra døren) kører <strong>direkte til Trocadéro</strong> — og direkte hjem igen bagefter</li>
+  </ul><div class="wbtns"><a class="btn" href="https://www.toureiffel.paris/da" target="_blank" rel="noopener">🎟️ Billetter til tårnet</a><a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=Place%20du%20Trocad%C3%A9ro%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a class="btn ghost" href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=Place%20du%20Trocad%C3%A9ro%2C%20Paris&travelmode=transit" target="_blank" rel="noopener">🧭 Rute fra lejligheden</a></div>
+</div>
+<div class="wish">
+  <div class="whead"><span class="num">3</span><h3>💃 Moulin Rouge</h3></div>
+  <div class="badges" style="display:flex;gap:6px;flex-wrap:wrap"><span class="badge gold">Book i god tid!</span><span class="badge">fra ca. 125 €/person</span><span class="badge">ca. 2 timer</span></div>
+
+  <p>Verdens mest berømte kabaret (1889) med fjer, paillet-kostumer, akrobatik og den ægte french cancan under den røde mølle i Pigalle. Turistet? Ja. Et brag af et show? Også ja.</p>
+  <ul>
+    <li><strong>Book online nu</strong> — forestillingerne kl. 21 og 23 udsolges uger i forvejen. Show + ½ fl. champagne fra ca. 125 €/person; middag + show fra ca. 225 €</li>
+    <li><strong>Dresscode:</strong> pænt tøj — ingen shorts, sportstøj eller sneakers</li>
+    <li><strong>Bedste aften for jer: onsdag kl. 21</strong> (tirsdag er ankomstdag, torsdag er Eiffel-aften). Metroen kører til 00.45, så I når nemt hjem efter 21-showet</li>
+    <li>Metro: linje 5 → Stalingrad → linje 2 → <strong>Blanche</strong> (møllen ligger lige ved udgangen), ca. 30 min.</li>
+    <li>Billigere alternativ med samme stemning: en aperitif i Pigalle og møllen set udefra i neonlys</li>
+  </ul><div class="wbtns"><a class="btn" href="https://www.moulinrouge.fr/?lang=en" target="_blank" rel="noopener">🎟️ Officiel side + billetter</a><a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=Moulin%20Rouge%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a class="btn ghost" href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=Moulin%20Rouge%2C%20Paris&travelmode=transit" target="_blank" rel="noopener">🧭 Rute fra lejligheden</a></div>
+</div>
+<div class="wish">
+  <div class="whead"><span class="num">4</span><h3>🛥️ Sejltur på Seinen om aftenen</h3></div>
+  <div class="badges" style="display:flex;gap:6px;flex-wrap:wrap"><span class="badge gold">Book/køb på dagen</span><span class="badge">ca. 16–20 €</span><span class="badge">~1 time</span></div>
+
+  <p>Paris fra vandet, når bygningerne er lyst op: Louvre, Orsay, Notre-Dame, Conciergeriet — og med lidt planlægning ser I <strong>Eiffeltårnet funkle fra båden</strong>.</p>
+  <ul>
+    <li><strong>Nemmest fra jer: Vedettes du Pont Neuf</strong> (afgang under Pont Neuf, 1 times rundtur, ca. 16 € online). Alternativer: Bateaux Parisiens (fra Eiffeltårnets fod) og Bateaux-Mouches (Pont de l'Alma)</li>
+    <li><strong>Timing-tip:</strong> tag en afgang ca. 19.30–21.30 og vær på dækket ved en hel time — så funkler tårnet, mens I sejler</li>
+    <li>Oplagt <strong>tirsdag aften</strong> (rolig ankomstaktivitet) — eller flettet ind <strong>torsdag aften</strong> fra Bateaux Parisiens lige efter Trocadéro-solnedgangen</li>
+    <li>Tag en trøje/jakke med — der er køligt på floden i oktober</li>
+  </ul><div class="wbtns"><a class="btn" href="https://www.vedettesdupontneuf.com/en/" target="_blank" rel="noopener">🎟️ Vedettes du Pont Neuf</a><a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=Vedettes%20du%20Pont%20Neuf%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a class="btn ghost" href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=Pont%20Neuf%2C%20Paris&travelmode=transit" target="_blank" rel="noopener">🧭 Rute fra lejligheden</a></div>
+</div>
+<div class="wish">
+  <div class="whead"><span class="num">5</span><h3>🤍 Sacré-Cœur</h3></div>
+  <div class="badges" style="display:flex;gap:6px;flex-wrap:wrap"><span class="badge green">Gratis (basilika)</span><span class="badge">Kuppel ca. 8 €</span><span class="badge">Fête des Vendanges i jeres uge!</span></div>
+
+  <p>Den hvide basilika på Paris' højeste punkt — udsigten fra trapperne er gratis og blandt byens bedste. Allerede hovednummeret i <a href="dagsplaner.html">torsdagsplanen</a>.</p>
+  <ul>
+    <li>Basilikaen er <strong>gratis</strong> (åben ca. 6.30–22.30) — kuplen (300 trin, ingen elevator) koster ca. 8 € og giver 360°-udsigt</li>
+    <li>Kom <strong>om formiddagen</strong> — færrest mennesker og bedst lys over byen</li>
+    <li><strong>Uge 41-bonus:</strong> Fête des Vendanges (vinhøstfestivalen) fylder Montmartre med boder, smagninger og optog netop i jeres uge — tjek programmet</li>
+    <li>Hold på tasken på trapperne (armbåndssælgere/lommetyve), og gå hjem via Abbesses-siden</li>
+    <li>Metro: linje 5 → Gare du Nord → linje 2 → Anvers, derfra trapper eller kabelbane (alm. metrobillet)</li>
+  </ul><div class="wbtns"><a class="btn" href="https://www.sacre-coeur-montmartre.com/english/" target="_blank" rel="noopener">🎟️ Officiel side</a><a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=Basilique%20du%20Sacr%C3%A9-C%C5%93ur%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a class="btn ghost" href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=Basilique%20du%20Sacr%C3%A9-C%C5%93ur%2C%20Paris&travelmode=transit" target="_blank" rel="noopener">🧭 Rute fra lejligheden</a></div>
+</div>
+<div class="wish">
+  <div class="whead"><span class="num">6</span><h3>🖼️ Musée d'Orsay</h3></div>
+  <div class="badges" style="display:flex;gap:6px;flex-wrap:wrap"><span class="badge gold">Book tidsbillet</span><span class="badge">ca. 16 €</span><span class="badge">Torsdag åbent til 21.45</span></div>
+
+  <p>Impressionisterne — Monet, Renoir, Van Gogh, Degas — i en forvandlet jernbanestation fra 1900. Mere overskueligt end Louvre og manges favoritmuseum i Paris.</p>
+  <ul>
+    <li><strong>Book tidsbillet online</strong> (ca. 16 €; gratis for EU-borgere under 26). Lukket mandag — rammer jer ikke</li>
+    <li><strong>Torsdag er aftenåbent til 21.45</strong> med færre gæster — et oplagt alternativ, hvis I bytter rundt på torsdagsplanen</li>
+    <li>Gå ikke glip af: 5. sal (impressionist-galleriet) og kig ud gennem det store <strong>banegårdsur</strong></li>
+    <li>Transport: bus 69 fra Rue Saint-Antoine kører næsten til døren (kør forbi Louvre undervejs — byens billigste "sightseeingbus"), eller metro via Bastille → linje 1 → Tuileries + 10 min. gang over floden</li>
+  </ul><div class="wbtns"><a class="btn" href="https://www.musee-orsay.fr/en" target="_blank" rel="noopener">🎟️ Officiel side + billetter</a><a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=Mus%C3%A9e%20d%27Orsay%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a class="btn ghost" href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=Mus%C3%A9e%20d%27Orsay%2C%20Paris&travelmode=transit" target="_blank" rel="noopener">🧭 Rute fra lejligheden</a></div>
+</div>
+<div class="wish">
+  <div class="whead"><span class="num">7</span><h3>🏛️ Louvre</h3></div>
+  <div class="badges" style="display:flex;gap:6px;flex-wrap:wrap"><span class="badge gold">Book tidsbillet — krav!</span><span class="badge">ca. 22 €</span><span class="badge">Lukket tirsdag</span></div>
+
+  <p>Verdens største museum: Mona Lisa, Venus fra Milo, Nikė fra Samothrake — og 35.000 andre værker. Planen er <a href="dagsplaner.html">onsdag kl. 9.30</a>, og det er klogt: lukket tirsdag, og formiddagen er roligst.</p>
+  <ul>
+    <li><strong>Tidsbillet online er reelt et krav</strong> (ca. 22 €; gratis under 18 og for EU-borgere under 26). Vælg første tidslot</li>
+    <li><strong>Strategi:</strong> vælg 2–3 afdelinger på forhånd (fx italiensk maleri + græske skulpturer) — Louvre "ses ikke færdig"</li>
+    <li>Indgangstip: indgangen ved <strong>Carrousel du Louvre</strong> (metroens underjordiske indkøbsgade) har ofte kortere kø end pyramiden</li>
+    <li>Onsdag (og fredag) er der typisk <strong>aftenåbent</strong> — tjek hjemmesiden, hvis I hellere vil gå sent</li>
+    <li>Metro: Bastille → linje 1 → Palais Royal–Musée du Louvre (15 min.) eller 25 min. gang gennem Marais</li>
+  </ul><div class="wbtns"><a class="btn" href="https://www.louvre.fr/en" target="_blank" rel="noopener">🎟️ Officiel side + billetter</a><a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=Mus%C3%A9e%20du%20Louvre%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a class="btn ghost" href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=Mus%C3%A9e%20du%20Louvre%2C%20Paris&travelmode=transit" target="_blank" rel="noopener">🧭 Rute fra lejligheden</a></div>
+</div>
+<div class="wish">
+  <div class="whead"><span class="num">8</span><h3>⛪ Notre-Dame</h3></div>
+  <div class="badges" style="display:flex;gap:6px;flex-wrap:wrap"><span class="badge green">Gratis — book tidsbillet</span><span class="badge">~45 min.</span><span class="badge">Genåbnet efter branden</span></div>
+
+  <p>Katedralen er genåbnet efter branden i 2019 — lysere og smukkere end i mands minde, med nyrenset stenværk og genopbygget spir. Et af Europas store genopbygnings­mirakler.</p>
+  <ul>
+    <li><strong>Gratis</strong> — men book en gratis tidsbillet i den officielle app "Notre-Dame de Paris" eller på hjemmesiden for at springe den lange kø over (slots frigives få dage før)</li>
+    <li>Tårnene kræver separat billet og bookes hurtigt — tjek status på hjemmesiden</li>
+    <li>Ligger på Île de la Cité — <strong>samme tur som Sainte-Chapelle</strong> i onsdagsplanen</li>
+    <li>25–30 min. gang fra lejligheden gennem Marais — eller metro til Cité/Châtelet</li>
+  </ul><div class="wbtns"><a class="btn" href="https://www.notredamedeparis.fr/en/" target="_blank" rel="noopener">🎟️ Officiel side + tidsbilletter</a><a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=Cath%C3%A9drale%20Notre-Dame%20de%20Paris%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a class="btn ghost" href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=Cath%C3%A9drale%20Notre-Dame%20de%20Paris&travelmode=walking" target="_blank" rel="noopener">🧭 Rute fra lejligheden</a></div>
+</div>
+</section>
+
+<section>
+  <h2>🗓️ Sådan passer ønskelisten ind i dagsplanerne</h2>
+  <div class="tablewrap"><table style="min-width:520px">
+    <thead><tr><th>Dag</th><th>Ønskeliste-punkter</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Tirsdag aften</strong></td><td>🛥️ Seine-sejltur fra Pont Neuf (rolig ankomst-aktivitet) — eller gem den til torsdag</td></tr>
+      <tr><td><strong>Onsdag</strong></td><td>🏛️ Louvre (9.30, book!) → ⛪ Sainte-Chapelle → ⛪ Notre-Dame — alle tre ligger på ruten. Aften: 💃 Moulin Rouge kl. 21 (book!)</td></tr>
+      <tr><td><strong>Torsdag</strong></td><td>🤍 Sacré-Cœur (formiddag + Fête des Vendanges) → 🖼️ Musée d'Orsay (evt. aftenåbent til 21.45) → ✨ Eiffeltårnet funkler kl. 20 fra Trocadéro — evt. med 🛥️ sejltur fra tårnets fod</td></tr>
+      <tr><td><strong>Fredag</strong></td><td>Buffer: det, vejret eller benene aflyste — Sainte-Chapelle og Notre-Dame er korte besøg, der kan nås inden frokost</td></tr>
+    </tbody>
+  </table></div>
+  <p class="small">Detaljerne time for time står på <a href="dagsplaner.html">dagsplan-siden</a> — byt selv rundt.</p>
+</section>
+
+<section>
+  <h2>💡 Flere anbefalinger</h2>
+  <p class="sub">Udvalgt, så det passer til jeres base og uge — det meste er i gåafstand eller én metrolinje væk.</p>
+  <div class="recs">
+<div class="rec"><h4>Atelier des Lumières</h4><p class="small">14 min. gang</p><p>Immersiv digital kunst: mesterværker projiceret på 10 meter høje vægge til musik i et gammelt jernstøberi — i går aldrig glemmer det. Book online (ca. 17 €).</p><div class="wbtns"><a class="btn" href="https://www.atelier-lumieres.com/en" target="_blank" rel="noopener">🎟️ Officiel side</a><a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=Atelier%20des%20Lumi%C3%A8res%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a class="btn ghost" href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=Atelier%20des%20Lumi%C3%A8res%2C%20Paris&travelmode=transit" target="_blank" rel="noopener">🧭 Rute</a></div></div>
+<div class="rec"><h4>Fête des Vendanges (Montmartre)</h4><p class="small">Netop i uge 41!</p><p>Montmartres vinhøstfestival: gratis gadefest med smagsboder, koncerter og optog omkring byens egen lille vinmark, Clos Montmartre. Tjek programmet, og flet det ind i torsdagsturen.</p><div class="wbtns"><a class="btn" href="https://www.fetedesvendangesdemontmartre.com" target="_blank" rel="noopener">🎟️ Officiel side</a><a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=Clos%20Montmartre%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a class="btn ghost" href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=Clos%20Montmartre%2C%20Paris&travelmode=transit" target="_blank" rel="noopener">🧭 Rute</a></div></div>
+<div class="rec"><h4>Marché Bastille</h4><p class="small">Torsdag 7–14.30 · på jeres boulevard</p><p>Et af byens bedste markeder, 7 minutters gang fra døren: ost, østers, rotisseriekylling og blomster. Køb morgenmad til balkonen — det er allerede skrevet ind i torsdagsplanen.</p><div class="wbtns"><a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=March%C3%A9%20Bastille%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a class="btn ghost" href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=March%C3%A9%20Bastille%2C%20Paris&travelmode=transit" target="_blank" rel="noopener">🧭 Rute</a></div></div>
+<div class="rec"><h4>Coulée Verte & Viaduc des Arts</h4><p class="small">15 min. gang · gratis</p><p>Verdens første højbanepark (forbilledet for New Yorks High Line): gå i trækronehøjde fra Bastille mod øst, og kig ind hos kunsthåndværkerne i viaduktens buer på vejen hjem.</p><div class="wbtns"><a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=Coul%C3%A9e%20verte%20Ren%C3%A9-Dumont%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a class="btn ghost" href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=Coul%C3%A9e%20verte%20Ren%C3%A9-Dumont%2C%20Paris&travelmode=transit" target="_blank" rel="noopener">🧭 Rute</a></div></div>
+<div class="rec"><h4>Musée Carnavalet & Place des Vosges</h4><p class="small">13–15 min. gang · gratis</p><p>Paris' byhistorie i to smukke palæer — gratis fast samling — og byens fineste plads rundt om hjørnet med Victor Hugos hus (også gratis). Marais-sløjfen på kvarter-siden binder det hele sammen.</p><div class="wbtns"><a class="btn" href="https://www.carnavalet.paris.fr/en" target="_blank" rel="noopener">🎟️ Officiel side</a><a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=Mus%C3%A9e%20Carnavalet%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a class="btn ghost" href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=Mus%C3%A9e%20Carnavalet%2C%20Paris&travelmode=transit" target="_blank" rel="noopener">🧭 Rute</a></div></div>
+<div class="rec"><h4>Père Lachaise</h4><p class="small">25 min. gang eller bus 69</p><p>Verdens mest besøgte kirkegård — gratis og enorm. Find Oscar Wilde, Edith Piaf, Chopin og Jim Morrison (kort ved indgangen eller i en app). Smukkest i efterårsløv — altså netop nu.</p><div class="wbtns"><a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=Cimeti%C3%A8re%20du%20P%C3%A8re-Lachaise%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a class="btn ghost" href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=Cimeti%C3%A8re%20du%20P%C3%A8re-Lachaise%2C%20Paris&travelmode=transit" target="_blank" rel="noopener">🧭 Rute</a></div></div>
+<div class="rec"><h4>Triumfbuen — udsigten fra taget</h4><p class="small">Linje 1 fra Bastille</p><p>Mange siger byens bedste udsigt: du står midt i stjernen af 12 avenuer og kan SE Eiffeltårnet (det kan man ikke fra Eiffeltårnet…). Ca. 16 €, book online; EU under 26 gratis. Aftenbesøg = funklende tårn.</p><div class="wbtns"><a class="btn" href="https://www.paris-arc-de-triomphe.fr/en/" target="_blank" rel="noopener">🎟️ Officiel side</a><a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=Arc%20de%20Triomphe%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a class="btn ghost" href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=Arc%20de%20Triomphe%2C%20Paris&travelmode=transit" target="_blank" rel="noopener">🧭 Rute</a></div></div>
+<div class="rec"><h4>Opéra Garnier</h4><p class="small">Linje 9 fra Saint-Ambroise</p><p>Fantomets operahus: marmortrapper, guld og Chagalls loftsmaleri. Selvguidet besøg ca. 15 € — eller fang en forestilling. Kombinér med Galeries Lafayettes gratis art nouveau-kuppel og tagterrasse rundt om hjørnet.</p><div class="wbtns"><a class="btn" href="https://www.operadeparis.fr/en/visits/palais-garnier" target="_blank" rel="noopener">🎟️ Officiel side</a><a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=Palais%20Garnier%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a class="btn ghost" href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=Palais%20Garnier%2C%20Paris&travelmode=transit" target="_blank" rel="noopener">🧭 Rute</a></div></div>
+<div class="rec"><h4>Katakomberne</h4><p class="small">Book LANG tid i forvejen</p><p>20 meter under gaden ligger seks millioner pariseres knogler i kilometervis af gange. Uhyggeligt, fascinerende — og altid udsolgt: book online, så snart I ved, hvilken dag det skal være (ca. 30 €).</p><div class="wbtns"><a class="btn" href="https://www.catacombes.paris.fr/en" target="_blank" rel="noopener">🎟️ Officiel side</a><a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=Catacombes%20de%20Paris%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a class="btn ghost" href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=Catacombes%20de%20Paris%2C%20Paris&travelmode=transit" target="_blank" rel="noopener">🧭 Rute</a></div></div>
+<div class="rec"><h4>Latinerkvarteret & Shakespeare and Company</h4><p class="small">Forlæng onsdagsturen</p><p>Over broen fra Notre-Dame: boghandlen Shakespeare and Company (siden 1951), Panthéon og de små gader om Rue Mouffetard. En fin forlængelse af onsdagens ø-tur, hvis benene kan mere.</p><div class="wbtns"><a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=Shakespeare%20and%20Company%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a class="btn ghost" href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=Shakespeare%20and%20Company%2C%20Paris&travelmode=transit" target="_blank" rel="noopener">🧭 Rute</a></div></div>
+  </div>
+</section>
+
+</div>
+<footer><div class="wrap">
+  <p><strong>Basen:</strong> <a href="https://www.google.com/maps/search/?api=1&query=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris%2C%20Paris" target="_blank" rel="noopener">67 Boulevard Richard-Lenoir, 75011 Paris</a> · 6.–9. oktober 2026 · 3 voksne</p>
+  <p>Priser og åbningstider er cirka (pr. 2025/26) — tjek altid de officielle sider, når I booker. Lavet til familiens Paris-tur · <a href="https://github.com/qvisty/paristur">github.com/qvisty/paristur</a></p>
+</div></footer>
+</body>
+</html>
