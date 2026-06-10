@@ -1,6 +1,6 @@
 # Paris-tur · uge 41 (6.–9. oktober 2026)
 
-Familiens **ferie-hjælper** for turen til Paris — med base i den valgte lejlighed på
+Familiens **ferie-hjælper** for turen til Paris — med base i lejligheden på
 **67 Boulevard Richard-Lenoir, 75011 Paris** (11. arrondissement).
 
 **👉 Se siden her: https://qvisty.github.io/paristur/**
@@ -12,9 +12,4 @@ Familiens **ferie-hjælper** for turen til Paris — med base i den valgte lejli
 - 📅 **Dagsplaner** (`dagsplaner.html`) — time-for-time-forslag for alle fire dage, bygget om flyene (lander 6/10 kl. 13.45, hjemrejse 9/10 kl. 20.40)
 - 🧳 **Praktisk** (`praktisk.html`) — lufthavn ↔ lejlighed, billetter, vejr, nødnumre, apps og pakkeliste
 
-## Arkiv fra beslutningsfasen
-
-- 🏛️ `valget.html` — sammenligningen af alle 11 lejligheder med scoring, senge-tjek, duel og afstemning
-- 📍 `omraader.html` — områdevurderingerne for alle kandidaternes kvarterer
-
-`*.mhtml`-filerne er de gemte Airbnb-opslag, som dannede datagrundlaget.
+`*.mhtml`-filen er det gemte Airbnb-opslag for lejligheden.
