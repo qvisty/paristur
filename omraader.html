@@ -70,6 +70,9 @@
   .tablewrap tbody td:first-child{background:var(--card)}
   .tablewrap tbody tr:nth-child(even) td:first-child{background:#faf8f4}
 
+  .ctrlbar{background:#fff;border-bottom:1px solid var(--line)}
+  .ctrlbar .wrap{display:flex;align-items:center;gap:10px;padding-top:9px;padding-bottom:9px;font-size:14.5px;flex-wrap:wrap}
+  .ctrlbar input{transform:scale(1.25);accent-color:var(--green);margin-right:4px}
   footer{margin-top:40px;padding:24px 0;background:var(--navy);color:#cfd5e6;font-size:13.5px}
   footer a{color:#fff}
   @media(max-width:760px){ .area .cols{grid-template-columns:1fr} .minimap{min-height:240px} }
@@ -114,6 +117,9 @@
     <a href="#omr-smuk">"Smuk"</a>
   </div>
 </nav>
+<div class="ctrlbar"><div class="wrap">
+  <label><input type="checkbox" id="realfilter"> 🛏️ <strong>Vis kun de 4, der reelt kan sove 3 voksne</strong></label>
+</div></div>
 
 <div class="wrap">
 
@@ -128,16 +134,16 @@
   <table>
     <thead><tr><th>Lejlighed</th><th>Arrondissement</th><th>Nærmeste lokale område</th><th>Stemning</th><th>Turist-niveau</th><th>Aftenliv i kvarteret</th><th>Placering-score</th></tr></thead>
     <tbody>
-      <tr><td><strong>🥇 11. arr.</strong> <a class="abnb" href="https://www.airbnb.dk/rooms/1120183965838403602?adults=3&amp;check_in=2026-10-06&amp;check_out=2026-10-09" target="_blank" rel="noopener" title="Åbn på Airbnb" aria-label="Åbn på Airbnb"><svg><use href="#abnb-icon"/></svg></a></td><td>11. (øst)</td><td>Bastille / Richard-Lenoir, Marais som nabo</td><td>Livligt &amp; lokalt</td><td class="meh">Moderat</td><td class="good">Masser — bistroer og barer</td><td class="good">9/10</td></tr>
-      <tr><td><strong>🥈 Alésia</strong> <a class="abnb" href="https://www.airbnb.dk/rooms/23495264?adults=3&amp;check_in=2026-10-06&amp;check_out=2026-10-09" target="_blank" rel="noopener" title="Åbn på Airbnb" aria-label="Åbn på Airbnb"><svg><use href="#abnb-icon"/></svg></a></td><td>14. (syd)</td><td>Alésia / Pernety, Rue Daguerre</td><td>Landsby-roligt</td><td class="good">Næsten ingen</td><td class="meh">Stille, få steder</td><td class="meh">6/10</td></tr>
-      <tr><td><strong>🥉 Moret</strong> <a class="abnb" href="https://www.airbnb.dk/rooms/1350619057738164061?adults=3&amp;check_in=2026-10-06&amp;check_out=2026-10-09" target="_blank" rel="noopener" title="Åbn på Airbnb" aria-label="Åbn på Airbnb"><svg><use href="#abnb-icon"/></svg></a></td><td>11./20. (øst)</td><td>Oberkampf / Ménilmontant</td><td>Kunstner &amp; natteliv</td><td class="good">Lavt — autentisk</td><td class="good">Meget — Oberkampfs barer</td><td class="good">8/10</td></tr>
-      <tr><td><strong>4. République</strong> <a class="abnb" href="https://www.airbnb.dk/rooms/47862961?adults=3&amp;check_in=2026-10-06&amp;check_out=2026-10-09" target="_blank" rel="noopener" title="Åbn på Airbnb" aria-label="Åbn på Airbnb"><svg><use href="#abnb-icon"/></svg></a></td><td>11. (nordøst)</td><td>Goncourt / Canal Saint-Martin / Belleville</td><td>Ungt &amp; trendy</td><td class="good">Lavt — autentisk</td><td class="good">Meget — kanalen og Oberkampf</td><td class="good">9/10</td></tr>
-      <tr><td><strong>5. 15. arr.</strong> <a class="abnb" href="https://www.airbnb.dk/rooms/899755328165068761?adults=3&amp;check_in=2026-10-06&amp;check_out=2026-10-09" target="_blank" rel="noopener" title="Åbn på Airbnb" aria-label="Åbn på Airbnb"><svg><use href="#abnb-icon"/></svg></a></td><td>15. (sydvest)</td><td>Plaisance / Convention, Montparnasse i gåafstand</td><td>Roligt boligkvarter</td><td class="good">Næsten ingen</td><td class="bad">Meget stille</td><td class="meh">6/10</td></tr>
-      <tr><td><strong>6. Central Apt</strong> <a class="abnb" href="https://www.airbnb.dk/rooms/548988108775834378?adults=3&amp;check_in=2026-10-06&amp;check_out=2026-10-09" target="_blank" rel="noopener" title="Åbn på Airbnb" aria-label="Åbn på Airbnb"><svg><use href="#abnb-icon"/></svg></a></td><td>Formentlig 20. (øst) — adresse efter booking</td><td>Omkring Père Lachaise / Gambetta (aflæst fra jeres kort)</td><td>"Småby"-roligt</td><td class="good">Næsten ingen</td><td class="meh">Lokale barer, tidlig lukketid</td><td class="meh">5/10</td></tr>
-      <tr><td><strong>7. Marais</strong> <a class="abnb" href="https://www.airbnb.dk/rooms/996248087678148991?adults=3&amp;check_in=2026-10-06&amp;check_out=2026-10-09" target="_blank" rel="noopener" title="Åbn på Airbnb" aria-label="Åbn på Airbnb"><svg><use href="#abnb-icon"/></svg></a></td><td>4. (centrum!)</td><td>Marais' hjerte, Notre-Dame i gåafstand</td><td>Historisk &amp; myldrende</td><td class="bad">Højt</td><td class="good">Masser — barer og restauranter</td><td class="good">10/10</td></tr>
-      <tr><td><strong>8. Trocadéro</strong> <a class="abnb" href="https://www.airbnb.dk/rooms/1645879859559196531?adults=3&amp;check_in=2026-10-06&amp;check_out=2026-10-09" target="_blank" rel="noopener" title="Åbn på Airbnb" aria-label="Åbn på Airbnb"><svg><use href="#abnb-icon"/></svg></a></td><td>16. (vest)</td><td>Trocadéro / Passy</td><td>Elegant &amp; poleret</td><td class="meh">Højt ved pladsen, roligt bagved</td><td class="bad">Dødt efter kl. 21</td><td class="good">8/10</td></tr>
-      <tr><td><strong>9. Sacré-Cœur</strong> <a class="abnb" href="https://www.airbnb.dk/rooms/1674581832293601653?adults=3&amp;check_in=2026-10-06&amp;check_out=2026-10-09" target="_blank" rel="noopener" title="Åbn på Airbnb" aria-label="Åbn på Airbnb"><svg><use href="#abnb-icon"/></svg></a></td><td>18. (nord)</td><td>Montmartre-bakken ved basilikaen</td><td>Postkort-Paris</td><td class="bad">Maksimalt</td><td class="meh">Turistet; lokalt ved Abbesses</td><td class="meh">7/10</td></tr>
-      <tr><td><strong>10. "Smuk"</strong> <a class="abnb" href="https://www.airbnb.dk/rooms/984535059794693345?adults=3&amp;check_in=2026-10-06&amp;check_out=2026-10-09" target="_blank" rel="noopener" title="Åbn på Airbnb" aria-label="Åbn på Airbnb"><svg><use href="#abnb-icon"/></svg></a></td><td>10./11. (øst-centrum)</td><td>Place de la République</td><td>Storby-puls</td><td class="meh">Moderat</td><td class="good">Meget — République-knudepunktet</td><td class="good">8/10</td></tr>
+      <tr data-slug="arr11"><td><strong>🥇 11. arr.</strong> <a class="abnb" href="https://www.airbnb.dk/rooms/1120183965838403602?adults=3&amp;check_in=2026-10-06&amp;check_out=2026-10-09" target="_blank" rel="noopener" title="Åbn på Airbnb" aria-label="Åbn på Airbnb"><svg><use href="#abnb-icon"/></svg></a></td><td>11. (øst)</td><td>Bastille / Richard-Lenoir, Marais som nabo</td><td>Livligt &amp; lokalt</td><td class="meh">Moderat</td><td class="good">Masser — bistroer og barer</td><td class="good">9/10</td></tr>
+      <tr data-slug="alesia"><td><strong>🥈 Alésia</strong> <a class="abnb" href="https://www.airbnb.dk/rooms/23495264?adults=3&amp;check_in=2026-10-06&amp;check_out=2026-10-09" target="_blank" rel="noopener" title="Åbn på Airbnb" aria-label="Åbn på Airbnb"><svg><use href="#abnb-icon"/></svg></a></td><td>14. (syd)</td><td>Alésia / Pernety, Rue Daguerre</td><td>Landsby-roligt</td><td class="good">Næsten ingen</td><td class="meh">Stille, få steder</td><td class="meh">6/10</td></tr>
+      <tr data-slug="moret"><td><strong>🥉 Moret</strong> <a class="abnb" href="https://www.airbnb.dk/rooms/1350619057738164061?adults=3&amp;check_in=2026-10-06&amp;check_out=2026-10-09" target="_blank" rel="noopener" title="Åbn på Airbnb" aria-label="Åbn på Airbnb"><svg><use href="#abnb-icon"/></svg></a></td><td>11./20. (øst)</td><td>Oberkampf / Ménilmontant</td><td>Kunstner &amp; natteliv</td><td class="good">Lavt — autentisk</td><td class="good">Meget — Oberkampfs barer</td><td class="good">8/10</td></tr>
+      <tr data-slug="republique"><td><strong>4. République</strong> <a class="abnb" href="https://www.airbnb.dk/rooms/47862961?adults=3&amp;check_in=2026-10-06&amp;check_out=2026-10-09" target="_blank" rel="noopener" title="Åbn på Airbnb" aria-label="Åbn på Airbnb"><svg><use href="#abnb-icon"/></svg></a></td><td>11. (nordøst)</td><td>Goncourt / Canal Saint-Martin / Belleville</td><td>Ungt &amp; trendy</td><td class="good">Lavt — autentisk</td><td class="good">Meget — kanalen og Oberkampf</td><td class="good">9/10</td></tr>
+      <tr data-slug="arr15"><td><strong>5. 15. arr.</strong> <a class="abnb" href="https://www.airbnb.dk/rooms/899755328165068761?adults=3&amp;check_in=2026-10-06&amp;check_out=2026-10-09" target="_blank" rel="noopener" title="Åbn på Airbnb" aria-label="Åbn på Airbnb"><svg><use href="#abnb-icon"/></svg></a></td><td>15. (sydvest)</td><td>Plaisance / Convention, Montparnasse i gåafstand</td><td>Roligt boligkvarter</td><td class="good">Næsten ingen</td><td class="bad">Meget stille</td><td class="meh">6/10</td></tr>
+      <tr data-slug="central"><td><strong>6. Central Apt</strong> <a class="abnb" href="https://www.airbnb.dk/rooms/548988108775834378?adults=3&amp;check_in=2026-10-06&amp;check_out=2026-10-09" target="_blank" rel="noopener" title="Åbn på Airbnb" aria-label="Åbn på Airbnb"><svg><use href="#abnb-icon"/></svg></a></td><td>Formentlig 20. (øst) — adresse efter booking</td><td>Omkring Père Lachaise / Gambetta (aflæst fra jeres kort)</td><td>"Småby"-roligt</td><td class="good">Næsten ingen</td><td class="meh">Lokale barer, tidlig lukketid</td><td class="meh">5/10</td></tr>
+      <tr data-slug="marais"><td><strong>7. Marais</strong> <a class="abnb" href="https://www.airbnb.dk/rooms/996248087678148991?adults=3&amp;check_in=2026-10-06&amp;check_out=2026-10-09" target="_blank" rel="noopener" title="Åbn på Airbnb" aria-label="Åbn på Airbnb"><svg><use href="#abnb-icon"/></svg></a></td><td>4. (centrum!)</td><td>Marais' hjerte, Notre-Dame i gåafstand</td><td>Historisk &amp; myldrende</td><td class="bad">Højt</td><td class="good">Masser — barer og restauranter</td><td class="good">10/10</td></tr>
+      <tr data-slug="trocadero"><td><strong>8. Trocadéro</strong> <a class="abnb" href="https://www.airbnb.dk/rooms/1645879859559196531?adults=3&amp;check_in=2026-10-06&amp;check_out=2026-10-09" target="_blank" rel="noopener" title="Åbn på Airbnb" aria-label="Åbn på Airbnb"><svg><use href="#abnb-icon"/></svg></a></td><td>16. (vest)</td><td>Trocadéro / Passy</td><td>Elegant &amp; poleret</td><td class="meh">Højt ved pladsen, roligt bagved</td><td class="bad">Dødt efter kl. 21</td><td class="good">8/10</td></tr>
+      <tr data-slug="sacrecoeur"><td><strong>9. Sacré-Cœur</strong> <a class="abnb" href="https://www.airbnb.dk/rooms/1674581832293601653?adults=3&amp;check_in=2026-10-06&amp;check_out=2026-10-09" target="_blank" rel="noopener" title="Åbn på Airbnb" aria-label="Åbn på Airbnb"><svg><use href="#abnb-icon"/></svg></a></td><td>18. (nord)</td><td>Montmartre-bakken ved basilikaen</td><td>Postkort-Paris</td><td class="bad">Maksimalt</td><td class="meh">Turistet; lokalt ved Abbesses</td><td class="meh">7/10</td></tr>
+      <tr data-slug="smuk"><td><strong>10. "Smuk"</strong> <a class="abnb" href="https://www.airbnb.dk/rooms/984535059794693345?adults=3&amp;check_in=2026-10-06&amp;check_out=2026-10-09" target="_blank" rel="noopener" title="Åbn på Airbnb" aria-label="Åbn på Airbnb"><svg><use href="#abnb-icon"/></svg></a></td><td>10./11. (øst-centrum)</td><td>Place de la République</td><td>Storby-puls</td><td class="meh">Moderat</td><td class="good">Meget — République-knudepunktet</td><td class="good">8/10</td></tr>
     </tbody>
   </table>
   </div>
@@ -487,6 +493,21 @@ mini('map-smuk', [48.868, 2.367], 14, [48.8675, 2.3690], [
     el.innerHTML = '<div style="padding:30px;text-align:center;color:#6b7280">Kortet kunne ikke indlæses.</div>';
   });
 }
+
+var REAL = ['arr11','alesia','moret','republique'];
+var realbox = document.getElementById('realfilter');
+function applyReal(on){
+  document.querySelectorAll('tr[data-slug]').forEach(function(el){
+    if(REAL.indexOf(el.dataset.slug) < 0) el.style.display = on ? 'none' : '';
+  });
+  document.querySelectorAll('section.area').forEach(function(el){
+    var slug = el.id.replace('omr-','');
+    if(REAL.indexOf(slug) < 0) el.style.display = on ? 'none' : '';
+  });
+  localStorage.setItem('parisreal', on ? '1' : '');
+}
+realbox.addEventListener('change', function(){ applyReal(realbox.checked); });
+if(localStorage.getItem('parisreal') === '1'){ realbox.checked = true; applyReal(true); }
 </script>
 </body>
 </html>
