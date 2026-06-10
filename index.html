@@ -24,7 +24,7 @@
   .fact{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);padding:6px 12px;border-radius:999px;font-size:14px}
 
   nav.toc{position:sticky;top:0;z-index:1000;background:var(--navy);box-shadow:0 2px 8px rgba(0,0,0,.25)}
-  nav.toc .wrap{display:flex;gap:2px;overflow-x:auto}
+  nav.toc .wrap{display:flex;gap:2px;flex-wrap:wrap;justify-content:center;padding-top:2px;padding-bottom:2px}
   nav.toc a{color:#e8eaf2;text-decoration:none;padding:11px 13px;font-size:14px;white-space:nowrap}
   nav.toc a:hover{background:rgba(255,255,255,.1)}
 
@@ -100,12 +100,32 @@
   .vname input{padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-size:15px;width:220px;max-width:100%}
   #voteout{white-space:pre-wrap;background:#f6f3ec;border-radius:8px;padding:12px;font-size:13.5px;display:none;margin-top:10px}
 
+
+  .abnb{display:inline-flex;align-items:center;justify-content:center;width:21px;height:21px;border-radius:6px;background:#ff385c;flex:none;vertical-align:middle;margin-left:6px;text-decoration:none}
+  .abnb svg{width:12px;height:12px;fill:#fff}
+  .abnb:hover{filter:brightness(1.12)}
+  .tablewrap th:first-child,.tablewrap td:first-child{position:sticky;left:0;z-index:2;box-shadow:2px 0 4px rgba(0,0,0,.05)}
+  .tablewrap thead th:first-child{background:var(--navy);z-index:3}
+  .tablewrap tbody td:first-child{background:var(--card)}
+  .tablewrap tbody tr:nth-child(even) td:first-child{background:#faf8f4}
   footer{margin-top:44px;padding:26px 0;background:var(--navy);color:#cfd5e6;font-size:13.5px}
   footer a{color:#fff}
-  @media(max-width:640px){ .vrow{grid-template-columns:1fr auto} .vrow .hint{display:none} }
+  @media(max-width:640px){
+    .vrow{grid-template-columns:1fr auto} .vrow .hint{display:none}
+    nav.toc{position:static}
+    nav.toc a{padding:7px 8px;font-size:12.5px}
+    section{padding:26px 0 6px}
+    h2{font-size:21px}
+    #map{height:380px}
+    .apt .imgs{height:150px}
+    header.hero{padding:30px 0 22px}
+    .fact{font-size:12.5px;padding:5px 10px}
+    table{font-size:13px}
+  }
 </style>
 </head>
 <body>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true"><symbol id="abnb-icon" viewBox="0 0 448 512"><!-- Airbnb-ikon fra Font Awesome Free 6.6.0 (CC BY 4.0) --><path d="M224 373.12c-25.24-31.67-40.08-59.43-45-83.18-22.55-88 112.61-88 90.06 0-5.45 24.25-20.29 52-45 83.18zm138.15 73.23c-42.06 18.31-83.67-10.88-119.3-50.47 103.9-130.07 46.11-200-18.85-200-54.92 0-85.16 46.51-73.28 100.5 6.93 29.19 25.23 62.39 54.43 99.5-32.53 36.05-60.55 52.69-85.15 54.92-50 7.43-89.11-41.06-71.3-91.09 15.1-39.16 111.72-231.18 115.87-241.56 15.75-30.07 25.56-57.4 59.38-57.4 32.34 0 43.4 25.94 60.37 59.87 36 70.62 89.35 177.48 114.84 239.09 13.17 33.07-1.37 71.29-37.01 86.64zm47-136.12C280.27 35.93 273.13 32 224 32c-45.52 0-64.87 31.67-84.66 72.79C33.18 317.1 22.89 347.19 22 349.81-3.22 419.14 48.74 480 111.63 480c21.71 0 60.61-6.06 112.37-62.4 58.68 63.78 101.26 62.4 112.37 62.4 62.89.05 114.85-60.86 89.61-130.19.02-3.89-16.82-38.9-16.82-39.58z"/></symbol></svg>
 
 <header class="hero">
   <div class="wrap">
@@ -145,19 +165,19 @@
   <div class="podium">
     <div class="pod win">
       <span class="medal">🥇</span>
-      <h4>1. Lejlighed i 11. arrondissement</h4>
+      <h4>1. Lejlighed i 11. arrondissement <a class="abnb" href="https://www.airbnb.dk/rooms/1120183965838403602?adults=3&amp;check_in=2026-10-06&amp;check_out=2026-10-09" target="_blank" rel="noopener" title="Åbn på Airbnb" aria-label="Åbn på Airbnb"><svg><use href="#abnb-icon"/></svg></a></h4>
       <p class="score">8,5 / 10 · 4.819 kr</p>
       <p>5,0★ og i top 1 % på Airbnb. Ægte sovesofa (Muji), balkon på 7. sal, aircondition, midt mellem Marais, Bastille og République. Den trygge og centrale allrounder.</p>
     </div>
     <div class="pod">
       <span class="medal">🥈</span>
-      <h4>2. Workshop i Alésia (14. arr.)</h4>
+      <h4>2. Workshop i Alésia (14. arr.) <a class="abnb" href="https://www.airbnb.dk/rooms/23495264?adults=3&amp;check_in=2026-10-06&amp;check_out=2026-10-09" target="_blank" rel="noopener" title="Åbn på Airbnb" aria-label="Åbn på Airbnb"><svg><use href="#abnb-icon"/></svg></a></h4>
       <p class="score">7,5 / 10 · 4.204 kr</p>
       <p>551 anmeldelser (4,86★), central aircondition, opvaske- og vaskemaskine, næstbilligst. Men: ét åbent rum (alle sover sammen) og kvarteret er roligt, ikke centralt.</p>
     </div>
     <div class="pod">
       <span class="medal">🥉</span>
-      <h4>3. Suite ved République (11. arr.)</h4>
+      <h4>3. Suite ved République (11. arr.) <a class="abnb" href="https://www.airbnb.dk/rooms/47862961?adults=3&amp;check_in=2026-10-06&amp;check_out=2026-10-09" target="_blank" rel="noopener" title="Åbn på Airbnb" aria-label="Åbn på Airbnb"><svg><use href="#abnb-icon"/></svg></a></h4>
       <p class="score">7,2 / 10 · 4.563 kr</p>
       <p>Superlivligt kvarter ved Canal Saint-Martin, metro på hjørnet, 1½ badeværelse. Men kun 27 m² — det er trangt for 3 voksne i 3 dage.</p>
     </div>
@@ -182,27 +202,27 @@
     </thead>
     <tbody>
       <tr>
-        <td><strong>🥇 11. arr.</strong> (Marais/Bastille)</td><td><strong>8,5</strong></td><td>4.819 kr</td><td>536 kr</td>
+        <td><strong>🥇 11. arr.</strong> (Marais/Bastille) <a class="abnb" href="https://www.airbnb.dk/rooms/1120183965838403602?adults=3&amp;check_in=2026-10-06&amp;check_out=2026-10-09" target="_blank" rel="noopener" title="Åbn på Airbnb" aria-label="Åbn på Airbnb"><svg><use href="#abnb-icon"/></svg></a></td><td><strong>8,5</strong></td><td>4.819 kr</td><td>536 kr</td>
         <td class="good">5,0★ (45) · Top 1 %</td><td class="good">Muji-sovesofa ✓</td><td>34 m², separat sovealkove</td><td>1</td><td class="good">Ja (mobil)</td><td class="good">Ja</td><td>7. sal, 2 elevatorer + balkon</td><td class="good">kl. 12</td><td class="meh">6. sep.</td>
       </tr>
       <tr>
-        <td><strong>🥈 Alésia</strong> (14. arr.)</td><td><strong>7,5</strong></td><td>4.204 kr</td><td>467 kr</td>
+        <td><strong>🥈 Alésia</strong> (14. arr.) <a class="abnb" href="https://www.airbnb.dk/rooms/23495264?adults=3&amp;check_in=2026-10-06&amp;check_out=2026-10-09" target="_blank" rel="noopener" title="Åbn på Airbnb" aria-label="Åbn på Airbnb"><svg><use href="#abnb-icon"/></svg></a></td><td><strong>7,5</strong></td><td>4.204 kr</td><td>467 kr</td>
         <td class="good">4,86★ (551)</td><td class="good">Sovesofa ✓</td><td>Lille studio, ét rum</td><td>1</td><td class="good">Ja (central)</td><td class="good">Ja + opvask</td><td>Stueetage</td><td>kl. 11</td><td class="good">1. okt.</td>
       </tr>
       <tr>
-        <td><strong>🥉 République</strong> (11. arr.)</td><td><strong>7,2</strong></td><td>4.563 kr</td><td>507 kr</td>
+        <td><strong>🥉 République</strong> (11. arr.) <a class="abnb" href="https://www.airbnb.dk/rooms/47862961?adults=3&amp;check_in=2026-10-06&amp;check_out=2026-10-09" target="_blank" rel="noopener" title="Åbn på Airbnb" aria-label="Åbn på Airbnb"><svg><use href="#abnb-icon"/></svg></a></td><td><strong>7,2</strong></td><td>4.563 kr</td><td>507 kr</td>
         <td class="good">4,7★ (383)</td><td class="good">Sovesofa ✓</td><td class="bad">27 m² — trangt</td><td class="good">1½</td><td class="bad">Nej (ventilator)</td><td class="bad">Nej</td><td>Stueetage</td><td>kl. 11</td><td class="meh">6. sep.</td>
       </tr>
       <tr>
-        <td><strong>4. 15. arr.</strong> (balkon)</td><td>5,9</td><td class="bad">5.141 kr</td><td class="bad">571 kr</td>
+        <td><strong>4. 15. arr.</strong> (balkon) <a class="abnb" href="https://www.airbnb.dk/rooms/899755328165068761?adults=3&amp;check_in=2026-10-06&amp;check_out=2026-10-09" target="_blank" rel="noopener" title="Åbn på Airbnb" aria-label="Åbn på Airbnb"><svg><use href="#abnb-icon"/></svg></a></td><td>5,9</td><td class="bad">5.141 kr</td><td class="bad">571 kr</td>
         <td class="good">4,86★ (130)</td><td class="bad">Alm. sofa, 130 cm ⚠️</td><td>2 rum + stor balkon</td><td>1</td><td class="bad">Nej</td><td class="good">Ja</td><td>4. sal, elevator</td><td class="bad">kl. 10</td><td class="good">1. okt.</td>
       </tr>
       <tr>
-        <td><strong>5. Trocadéro</strong> (16. arr.)</td><td>5,1</td><td>4.371 kr</td><td>486 kr</td>
+        <td><strong>5. Trocadéro</strong> (16. arr.) <a class="abnb" href="https://www.airbnb.dk/rooms/1645879859559196531?adults=3&amp;check_in=2026-10-06&amp;check_out=2026-10-09" target="_blank" rel="noopener" title="Åbn på Airbnb" aria-label="Åbn på Airbnb"><svg><use href="#abnb-icon"/></svg></a></td><td>5,1</td><td>4.371 kr</td><td>486 kr</td>
         <td class="meh">4,8★ (kun 10)</td><td class="bad">Gammel sofa ⚠️</td><td>Pæn, men kun 16 faciliteter</td><td>1</td><td class="bad">Nej</td><td class="bad">Nej</td><td>?</td><td>?</td><td class="meh">6. sep.</td>
       </tr>
       <tr>
-        <td><strong>6. Sacré-Cœur</strong> (18. arr.)</td><td>4,9</td><td class="good">4.042 kr</td><td class="good">449 kr</td>
+        <td><strong>6. Sacré-Cœur</strong> (18. arr.) <a class="abnb" href="https://www.airbnb.dk/rooms/1674581832293601653?adults=3&amp;check_in=2026-10-06&amp;check_out=2026-10-09" target="_blank" rel="noopener" title="Åbn på Airbnb" aria-label="Åbn på Airbnb"><svg><use href="#abnb-icon"/></svg></a></td><td>4,9</td><td class="good">4.042 kr</td><td class="good">449 kr</td>
         <td class="bad">Nyt opslag (1 omtale)</td><td class="bad">Kun 1 seng! ⚠️</td><td>45 m² — størst</td><td>1</td><td class="bad">Nej</td><td class="good">Ja</td><td>Stueetage</td><td>kl. 11</td><td class="good">1. okt.</td>
       </tr>
     </tbody>
@@ -237,7 +257,7 @@
         <div class="side"><img src="img/arr11_1.avif" alt=""><img src="img/arr11_2.avif" alt=""></div>
       </div>
       <div class="body">
-        <h3>🥇 Lejlighed i Paris 11. arr.</h3>
+        <h3>🥇 Lejlighed i Paris 11. arr. <a class="abnb" href="https://www.airbnb.dk/rooms/1120183965838403602?adults=3&amp;check_in=2026-10-06&amp;check_out=2026-10-09" target="_blank" rel="noopener" title="Åbn på Airbnb" aria-label="Åbn på Airbnb"><svg><use href="#abnb-icon"/></svg></a></h3>
         <div class="badges"><span class="badge gold">Top 1 % på Airbnb</span><span class="badge green">Superhost</span><span class="badge">5,0★ · 45 omtaler</span></div>
         <div class="price">4.819 kr <span>· 536 kr pr. person/nat</span></div>
         <p class="meta">34 m² · 7. sal med 2 elevatorer og balkon · mellem Marais, Bastille og République · metro 5/8/9 om hjørnet · vært: Antoine &amp; France</p>
@@ -263,7 +283,7 @@
         <div class="side"><img src="img/alesia_1.avif" alt=""><img src="img/alesia_2.avif" alt=""></div>
       </div>
       <div class="body">
-        <h3>🥈 Workshop i hjertet af Alésia</h3>
+        <h3>🥈 Workshop i hjertet af Alésia <a class="abnb" href="https://www.airbnb.dk/rooms/23495264?adults=3&amp;check_in=2026-10-06&amp;check_out=2026-10-09" target="_blank" rel="noopener" title="Åbn på Airbnb" aria-label="Åbn på Airbnb"><svg><use href="#abnb-icon"/></svg></a></h3>
         <div class="badges"><span class="badge gold">Gæstefavorit</span><span class="badge green">Superhost</span><span class="badge">4,86★ · 551 omtaler</span></div>
         <div class="price">4.204 kr <span>· 467 kr pr. person/nat</span></div>
         <p class="meta">Arkitektrenoveret studio i stueetagen · 14. arr. (Alésia) · metro 4 · vært: Jérémy (7 år, svarer inden for en time)</p>
@@ -289,7 +309,7 @@
         <div class="side"><img src="img/republique_1.avif" alt=""><img src="img/republique_2.avif" alt=""></div>
       </div>
       <div class="body">
-        <h3>🥉 Dejlig suite 4P · République / Canal Saint-Martin</h3>
+        <h3>🥉 Dejlig suite 4P · République / Canal Saint-Martin <a class="abnb" href="https://www.airbnb.dk/rooms/47862961?adults=3&amp;check_in=2026-10-06&amp;check_out=2026-10-09" target="_blank" rel="noopener" title="Åbn på Airbnb" aria-label="Åbn på Airbnb"><svg><use href="#abnb-icon"/></svg></a></h3>
         <div class="badges"><span class="badge gold">Gæstefavorit</span><span class="badge green">Superhost</span><span class="badge">4,7★ · 383 omtaler</span></div>
         <div class="price">4.563 kr <span>· 507 kr pr. person/nat</span></div>
         <p class="meta">27 m² i stueetagen af Haussmann-ejendom · 11. arr. ved Canal Saint-Martin · metro Goncourt på hjørnet · vært: Joy (virksomhed, 3.383 omtaler i alt)</p>
@@ -315,7 +335,7 @@
         <div class="side"><img src="img/arr15_1.avif" alt=""><img src="img/arr15_2.avif" alt=""></div>
       </div>
       <div class="body">
-        <h3>4. To lyse værelser med balkon · 15. arr.</h3>
+        <h3>4. To lyse værelser med balkon · 15. arr. <a class="abnb" href="https://www.airbnb.dk/rooms/899755328165068761?adults=3&amp;check_in=2026-10-06&amp;check_out=2026-10-09" target="_blank" rel="noopener" title="Åbn på Airbnb" aria-label="Åbn på Airbnb"><svg><use href="#abnb-icon"/></svg></a></h3>
         <div class="badges"><span class="badge gold">Gæstefavorit</span><span class="badge green">Superhost</span><span class="badge">4,86★ · 130 omtaler</span></div>
         <div class="price">5.141 kr <span>· 571 kr pr. person/nat</span></div>
         <p class="meta">2 rum på 4. sal med elevator og stor balkon · 15. arr. mellem Montparnasse, Alésia og Convention · metro Plaisance (linje 13), bus 62/95 · vært: Vahe (7 år)</p>
@@ -340,7 +360,7 @@
         <div class="side"><img src="img/trocadero_1.avif" alt=""><img src="img/trocadero_2.avif" alt=""></div>
       </div>
       <div class="body">
-        <h3>5. Luksuslejlighed · Trocadéro (16. arr.)</h3>
+        <h3>5. Luksuslejlighed · Trocadéro (16. arr.) <a class="abnb" href="https://www.airbnb.dk/rooms/1645879859559196531?adults=3&amp;check_in=2026-10-06&amp;check_out=2026-10-09" target="_blank" rel="noopener" title="Åbn på Airbnb" aria-label="Åbn på Airbnb"><svg><use href="#abnb-icon"/></svg></a></h3>
         <div class="badges"><span class="badge">4,8★ · kun 10 omtaler</span><span class="badge red">Værtsprofil 4,41★</span></div>
         <div class="price">4.371 kr <span>· 486 kr pr. person/nat</span></div>
         <p class="meta">Nyrenoveret · 16. arr. mellem Trocadéro og Pont de Bir-Hakeim · ca. 15 min. gang til Eiffeltårnet · vært: Anthony (virksomhed, 1 år)</p>
@@ -365,7 +385,7 @@
         <div class="side"><img src="img/sacrecoeur_1.avif" alt=""><img src="img/sacrecoeur_2.avif" alt=""></div>
       </div>
       <div class="body">
-        <h3>6. Elegant etværelses · 1 min. fra Sacré-Cœur (18. arr.)</h3>
+        <h3>6. Elegant etværelses · 1 min. fra Sacré-Cœur (18. arr.) <a class="abnb" href="https://www.airbnb.dk/rooms/1674581832293601653?adults=3&amp;check_in=2026-10-06&amp;check_out=2026-10-09" target="_blank" rel="noopener" title="Åbn på Airbnb" aria-label="Åbn på Airbnb"><svg><use href="#abnb-icon"/></svg></a></h3>
         <div class="badges"><span class="badge red">Nyt opslag · 1 omtale</span><span class="badge red">Værtsprofil 4,46★</span></div>
         <div class="price">4.042 kr <span>· 449 kr pr. person/nat</span></div>
         <p class="meta">45 m² i stueetagen · Montmartre, 1 minut fra Sacré-Cœur · vært: Aleksandr (1 år)</p>
@@ -394,12 +414,12 @@
   <table>
     <thead><tr><th>Lejlighed</th><th>Seng 1+2</th><th>Soveplads nr. 3</th><th>Dom</th></tr></thead>
     <tbody>
-      <tr><td>🥇 11. arr.</td><td>Dobbeltseng i separat sovealkove</td><td>Muji-sovesofa i stuen — gæster kalder den "meget komfortabel"</td><td class="good">✅ OK — bedste løsning</td></tr>
-      <tr><td>🥈 Alésia</td><td>Dobbeltseng</td><td>Sovesofa — men i samme rum som dobbeltsengen (studio)</td><td class="meh">🟡 OK, men nul privatliv</td></tr>
-      <tr><td>🥉 République</td><td>Queensize 160×200 i soveværelse</td><td>Sovesofa i lille stue</td><td class="good">✅ OK — men trangt (27 m²)</td></tr>
-      <tr><td>4. 15. arr.</td><td>Dobbeltseng i soveværelse</td><td class="bad">Almindelig sofa 130×200 — gæst bekræfter: ikke en sovesofa</td><td class="bad">❌ Problem</td></tr>
-      <tr><td>5. Trocadéro</td><td>Dobbeltseng (+ "2 senge" iflg. opslag)</td><td class="bad">Sofa som gæst kalder "gammel … ikke til at sove på"</td><td class="bad">❌ Problem</td></tr>
-      <tr><td>6. Sacré-Cœur</td><td>1 seng i soveværelse</td><td class="bad">Findes ikke — opslaget angiver kun 1 seng i alt</td><td class="bad">❌ Dealbreaker</td></tr>
+      <tr><td>🥇 11. arr. <a class="abnb" href="https://www.airbnb.dk/rooms/1120183965838403602?adults=3&amp;check_in=2026-10-06&amp;check_out=2026-10-09" target="_blank" rel="noopener" title="Åbn på Airbnb" aria-label="Åbn på Airbnb"><svg><use href="#abnb-icon"/></svg></a></td><td>Dobbeltseng i separat sovealkove</td><td>Muji-sovesofa i stuen — gæster kalder den "meget komfortabel"</td><td class="good">✅ OK — bedste løsning</td></tr>
+      <tr><td>🥈 Alésia <a class="abnb" href="https://www.airbnb.dk/rooms/23495264?adults=3&amp;check_in=2026-10-06&amp;check_out=2026-10-09" target="_blank" rel="noopener" title="Åbn på Airbnb" aria-label="Åbn på Airbnb"><svg><use href="#abnb-icon"/></svg></a></td><td>Dobbeltseng</td><td>Sovesofa — men i samme rum som dobbeltsengen (studio)</td><td class="meh">🟡 OK, men nul privatliv</td></tr>
+      <tr><td>🥉 République <a class="abnb" href="https://www.airbnb.dk/rooms/47862961?adults=3&amp;check_in=2026-10-06&amp;check_out=2026-10-09" target="_blank" rel="noopener" title="Åbn på Airbnb" aria-label="Åbn på Airbnb"><svg><use href="#abnb-icon"/></svg></a></td><td>Queensize 160×200 i soveværelse</td><td>Sovesofa i lille stue</td><td class="good">✅ OK — men trangt (27 m²)</td></tr>
+      <tr><td>4. 15. arr. <a class="abnb" href="https://www.airbnb.dk/rooms/899755328165068761?adults=3&amp;check_in=2026-10-06&amp;check_out=2026-10-09" target="_blank" rel="noopener" title="Åbn på Airbnb" aria-label="Åbn på Airbnb"><svg><use href="#abnb-icon"/></svg></a></td><td>Dobbeltseng i soveværelse</td><td class="bad">Almindelig sofa 130×200 — gæst bekræfter: ikke en sovesofa</td><td class="bad">❌ Problem</td></tr>
+      <tr><td>5. Trocadéro <a class="abnb" href="https://www.airbnb.dk/rooms/1645879859559196531?adults=3&amp;check_in=2026-10-06&amp;check_out=2026-10-09" target="_blank" rel="noopener" title="Åbn på Airbnb" aria-label="Åbn på Airbnb"><svg><use href="#abnb-icon"/></svg></a></td><td>Dobbeltseng (+ "2 senge" iflg. opslag)</td><td class="bad">Sofa som gæst kalder "gammel … ikke til at sove på"</td><td class="bad">❌ Problem</td></tr>
+      <tr><td>6. Sacré-Cœur <a class="abnb" href="https://www.airbnb.dk/rooms/1674581832293601653?adults=3&amp;check_in=2026-10-06&amp;check_out=2026-10-09" target="_blank" rel="noopener" title="Åbn på Airbnb" aria-label="Åbn på Airbnb"><svg><use href="#abnb-icon"/></svg></a></td><td>1 seng i soveværelse</td><td class="bad">Findes ikke — opslaget angiver kun 1 seng i alt</td><td class="bad">❌ Dealbreaker</td></tr>
     </tbody>
   </table>
   </div>
@@ -417,7 +437,7 @@
   <p class="sub">Omtrentlig rejsetid med metro/til fods fra lejlighed til seværdighed (dør til dør, afrundet). Grøn = gåafstand.</p>
   <div class="tablewrap">
   <table>
-    <thead><tr><th>Seværdighed</th><th>🥇 11. arr.</th><th>🥈 Alésia</th><th>🥉 République</th><th>15. arr.</th><th>Trocadéro</th><th>Sacré-Cœur</th></tr></thead>
+    <thead><tr><th>Seværdighed</th><th>🥇 11. arr. <a class="abnb" href="https://www.airbnb.dk/rooms/1120183965838403602?adults=3&amp;check_in=2026-10-06&amp;check_out=2026-10-09" target="_blank" rel="noopener" title="Åbn på Airbnb" aria-label="Åbn på Airbnb"><svg><use href="#abnb-icon"/></svg></a></th><th>🥈 Alésia <a class="abnb" href="https://www.airbnb.dk/rooms/23495264?adults=3&amp;check_in=2026-10-06&amp;check_out=2026-10-09" target="_blank" rel="noopener" title="Åbn på Airbnb" aria-label="Åbn på Airbnb"><svg><use href="#abnb-icon"/></svg></a></th><th>🥉 République <a class="abnb" href="https://www.airbnb.dk/rooms/47862961?adults=3&amp;check_in=2026-10-06&amp;check_out=2026-10-09" target="_blank" rel="noopener" title="Åbn på Airbnb" aria-label="Åbn på Airbnb"><svg><use href="#abnb-icon"/></svg></a></th><th>15. arr. <a class="abnb" href="https://www.airbnb.dk/rooms/899755328165068761?adults=3&amp;check_in=2026-10-06&amp;check_out=2026-10-09" target="_blank" rel="noopener" title="Åbn på Airbnb" aria-label="Åbn på Airbnb"><svg><use href="#abnb-icon"/></svg></a></th><th>Trocadéro <a class="abnb" href="https://www.airbnb.dk/rooms/1645879859559196531?adults=3&amp;check_in=2026-10-06&amp;check_out=2026-10-09" target="_blank" rel="noopener" title="Åbn på Airbnb" aria-label="Åbn på Airbnb"><svg><use href="#abnb-icon"/></svg></a></th><th>Sacré-Cœur <a class="abnb" href="https://www.airbnb.dk/rooms/1674581832293601653?adults=3&amp;check_in=2026-10-06&amp;check_out=2026-10-09" target="_blank" rel="noopener" title="Åbn på Airbnb" aria-label="Åbn på Airbnb"><svg><use href="#abnb-icon"/></svg></a></th></tr></thead>
     <tbody>
       <tr><td>Eiffeltårnet</td><td>30 min</td><td>25 min</td><td>35 min</td><td>25 min</td><td class="good">15 min gang</td><td>35 min</td></tr>
       <tr><td>Louvre</td><td>20 min</td><td>20 min</td><td>20 min</td><td>25 min</td><td>20 min</td><td>20 min</td></tr>
@@ -575,19 +595,19 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 var apts = [
-  {n:1, name:"🥇 11. arr. — 8,5/10", info:"4.819 kr · 5,0★ (45) · Muji-sovesofa, balkon, aircon", lat:48.8597, lng:2.3722, id:"apt-arr11"},
-  {n:2, name:"🥈 Workshop Alésia — 7,5/10", info:"4.204 kr · 4,86★ (551) · aircon + opvaskemaskine, studio", lat:48.8281, lng:2.3270, id:"apt-alesia"},
-  {n:3, name:"🥉 Suite République — 7,2/10", info:"4.563 kr · 4,7★ (383) · 27 m², 1½ bad, kanalen om hjørnet", lat:48.8700, lng:2.3705, id:"apt-republique"},
-  {n:4, name:"15. arr. m. balkon — 5,9/10", info:"5.141 kr · 4,86★ (130) · ⚠️ 3. seng er alm. sofa", lat:48.8330, lng:2.3050, id:"apt-arr15"},
-  {n:5, name:"Trocadéro — 5,1/10", info:"4.371 kr · 4,8★ (10) · ⚠️ sofa 'ikke til at sove på'", lat:48.8590, lng:2.2880, id:"apt-trocadero"},
-  {n:6, name:"Sacré-Cœur — 4,9/10", info:"4.042 kr · nyt opslag · ⚠️ kun 1 seng", lat:48.8865, lng:2.3430, id:"apt-sacrecoeur"}
+  {n:1, name:"🥇 11. arr. — 8,5/10", info:"4.819 kr · 5,0★ (45) · Muji-sovesofa, balkon, aircon", lat:48.8597, lng:2.3722, id:"apt-arr11", room:"1120183965838403602"},
+  {n:2, name:"🥈 Workshop Alésia — 7,5/10", info:"4.204 kr · 4,86★ (551) · aircon + opvaskemaskine, studio", lat:48.8281, lng:2.3270, id:"apt-alesia", room:"23495264"},
+  {n:3, name:"🥉 Suite République — 7,2/10", info:"4.563 kr · 4,7★ (383) · 27 m², 1½ bad, kanalen om hjørnet", lat:48.8700, lng:2.3705, id:"apt-republique", room:"47862961"},
+  {n:4, name:"15. arr. m. balkon — 5,9/10", info:"5.141 kr · 4,86★ (130) · ⚠️ 3. seng er alm. sofa", lat:48.8330, lng:2.3050, id:"apt-arr15", room:"899755328165068761"},
+  {n:5, name:"Trocadéro — 5,1/10", info:"4.371 kr · 4,8★ (10) · ⚠️ sofa 'ikke til at sove på'", lat:48.8590, lng:2.2880, id:"apt-trocadero", room:"1645879859559196531"},
+  {n:6, name:"Sacré-Cœur — 4,9/10", info:"4.042 kr · nyt opslag · ⚠️ kun 1 seng", lat:48.8865, lng:2.3430, id:"apt-sacrecoeur", room:"1674581832293601653"}
 ];
 apts.forEach(function(a){
   var icon = L.divIcon({className:'', html:
     '<div style="background:#1f6feb;color:#fff;border:2px solid #fff;border-radius:50%;width:30px;height:30px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;box-shadow:0 2px 6px rgba(0,0,0,.4)">'+a.n+'</div>',
     iconSize:[30,30], iconAnchor:[15,15]});
   L.marker([a.lat,a.lng],{icon:icon, zIndexOffset:1000}).addTo(map)
-    .bindPopup('<strong>'+a.name+'</strong><br>'+a.info+'<br><em>Omtrentlig placering</em><br><a href="#'+a.id+'">Se vurderingen ↓</a>');
+    .bindPopup('<strong>'+a.name+'</strong><br>'+a.info+'<br><em>Omtrentlig placering</em><br><a href="#'+a.id.replace('apt-','')+'-x" style="display:none"></a><a href="#'+a.id+'">Se vurderingen ↓</a> · <a href="https://www.airbnb.dk/rooms/'+a.room+'?adults=3" target="_blank" rel="noopener">Airbnb ↗</a>');
 });
 
 var sights = [
