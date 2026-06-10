@@ -112,6 +112,7 @@
   <div class="tablewrap"><table>
     <thead><tr><th>Sted</th><th>Gåtid</th><th>Hvorfor</th><th></th></tr></thead>
     <tbody>
+      <tr><td><strong><a href="https://www.google.com/maps/search/?api=1&query=Le%20Marais%2C%20Paris" target="_blank" rel="noopener">Le Marais (hele kvarteret)</a></strong></td><td style="white-space:nowrap">🚶 12 min.</td><td>Jeres nabokvarter: middelaldergader, palæer, gallerier, falafel og butikker — alt det nedenfor ligger i eller ved det. Levende dag og aften.</td><td><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=Le%20Marais%2C%20Paris&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></td></tr>
       <tr><td><strong><a href="https://www.google.com/maps/search/?api=1&query=Place%20des%20Vosges%2C%20Paris" target="_blank" rel="noopener">Place des Vosges</a></strong></td><td style="white-space:nowrap">🚶 13 min.</td><td>Paris' smukkeste plads (1612) med arkader og Victor Hugos hus (gratis museum).</td><td><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8556,2.3655&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></td></tr>
       <tr><td><strong><a href="https://www.google.com/maps/search/?api=1&query=Mus%C3%A9e%20Carnavalet%2C%20Paris" target="_blank" rel="noopener">Musée Carnavalet (gratis!)</a></strong></td><td style="white-space:nowrap">🚶 15 min.</td><td>Paris' byhistorie i to palæer — gratis fast samling og en oase af en gård. Lukket mandag.</td><td><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8576,2.3622&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></td></tr>
       <tr><td><strong><a href="https://www.google.com/maps/search/?api=1&query=Mus%C3%A9e%20Picasso%2C%20Paris" target="_blank" rel="noopener">Musée Picasso</a></strong></td><td style="white-space:nowrap">🚶 17 min.</td><td>Verdens største Picasso-samling i smukke Hôtel Salé. Lukket mandag.</td><td><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8598,2.3622&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></td></tr>
@@ -220,6 +221,7 @@ var home = L.divIcon({className:'', html:'<div style="background:#1f2a44;color:#
 L.marker(APT, {icon:home, zIndexOffset:1000}).addTo(map).bindPopup('<strong>Jeres lejlighed</strong><br>' + ADDR + '<br><a href="https://www.google.com/maps/search/?api=1&query=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris%2C%20Paris" target="_blank" rel="noopener">Åbn i Google Maps ↗</a>');
 var COL = {'sev':'#c0392b','mad':'#b45309','park':'#1e7d4f','metro':'#1f6feb'};
 var pois = [
+  ["Le Marais (hele kvarteret!)", 12, 48.857, 2.359, "sev"],
   ["Marché Bastille (torsdag 7–14.30!)", 7, 48.8551, 2.3698, "mad"],
   ["Rue Oberkampf & Café Charbon", 8, 48.8649, 2.3705, "mad"],
   ["Rue de Charonne", 12, 48.8536, 2.3795, "mad"],
