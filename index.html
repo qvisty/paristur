@@ -640,7 +640,7 @@
   <p class="sub">Omtrentlig rejsetid i minutter med metro/til fods fra lejlighed til seværdighed (dør til dør, afrundet). Grøn = gåafstand.</p>
   <div class="tablewrap">
   <table>
-    <thead><tr><th>Lejlighed</th><th>Eiffeltårnet</th><th>Louvre</th><th>Notre-Dame</th><th>Sacré-Cœur</th><th>Marais</th><th>Canal St-Martin</th><th>Katakomberne</th></tr></thead>
+    <thead><tr><th>Lejlighed</th><th><a href="https://www.google.com/maps/search/?api=1&query=Eiffelt%C3%A5rnet%2C%20Paris" target="_blank" rel="noopener" style="color:#fff">Eiffeltårnet ↗</a></th><th><a href="https://www.google.com/maps/search/?api=1&query=Louvre%2C%20Paris" target="_blank" rel="noopener" style="color:#fff">Louvre ↗</a></th><th><a href="https://www.google.com/maps/search/?api=1&query=Notre-Dame%20de%20Paris%2C%20Paris" target="_blank" rel="noopener" style="color:#fff">Notre-Dame ↗</a></th><th><a href="https://www.google.com/maps/search/?api=1&query=Sacr%C3%A9-C%C5%93ur%2C%20Paris" target="_blank" rel="noopener" style="color:#fff">Sacré-Cœur ↗</a></th><th><a href="https://www.google.com/maps/search/?api=1&query=Le%20Marais%2C%20Paris" target="_blank" rel="noopener" style="color:#fff">Marais ↗</a></th><th><a href="https://www.google.com/maps/search/?api=1&query=Canal%20Saint-Martin%2C%20Paris" target="_blank" rel="noopener" style="color:#fff">Canal St-Martin ↗</a></th><th><a href="https://www.google.com/maps/search/?api=1&query=Catacombes%20de%20Paris%2C%20Paris" target="_blank" rel="noopener" style="color:#fff">Katakomberne ↗</a></th></tr></thead>
     <tbody>
       <tr data-slug="arr11"><td>🥇 11. arr.</td><td>30</td><td>20</td><td>20</td><td>30</td><td class="good">gå 10</td><td class="good">gå 15</td><td>25</td></tr>
       <tr data-slug="alesia"><td>🥈 Alésia</td><td>25</td><td>20</td><td>15</td><td>35</td><td>25</td><td>35</td><td class="good">gå 10</td></tr>
@@ -843,9 +843,12 @@ var sights = [
   ["Canal Saint-Martin",48.8710,2.3658],["Centre Pompidou",48.8607,2.3522],["Opéra Garnier",48.8720,2.3316],
   ["Père Lachaise",48.8614,2.3933]
 ];
+function gmaps(name){
+  return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(name.replace(/\s*\(.*?\)/g,'') + ', Paris');
+}
 sights.forEach(function(s){
   L.circleMarker([s[1],s[2]],{radius:7,color:'#fff',weight:2,fillColor:'#c0392b',fillOpacity:0.95})
-    .addTo(map).bindPopup('<strong>'+s[0]+'</strong>');
+    .addTo(map).bindPopup('<strong><a href="'+gmaps(s[0])+'" target="_blank" rel="noopener">'+s[0]+' ↗</a></strong><br><span style="font-size:11px;color:#6b7280">Åbner i Google Maps</span>');
 });
 } catch(e) {
   document.getElementById('map').innerHTML =
