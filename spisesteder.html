@@ -191,6 +191,8 @@
   <h2>☕ Kaffe, brunch & søde sager</h2>
   <p class="sub">Morgenbrød, specialkaffe og konditori i verdensklasse.</p>
   <div class="recs" style="grid-template-columns:repeat(auto-fit,minmax(270px,1fr))">
+    <div class="rest"><h4>Carette</h4><div class="meta">🚶 13 min. (Place des Vosges) · €€ · Drop-in/kø</div><p>Den klassiske parisiske salon de thé (1927) — berømt for macarons, mille-feuille og en varm chokolade så tyk, at skeen næsten står selv. Afdelingen under <strong>arkaderne på Place des Vosges</strong> er jeres nærmeste; originalen ligger på <strong>Place du Trocadéro</strong> og passer perfekt til torsdagens Eiffel-aften.</p>
+    <div class="lnk"><a href="https://www.google.com/maps/search/?api=1&query=Carette%20Place%20des%20Vosges%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a href="https://www.tripadvisor.dk/Search?q=Carette%20Paris" target="_blank" rel="noopener">⭐ Tripadvisor</a><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8553,2.365&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></div></div>
     <div class="rest"><h4>Du Pain et des Idées</h4><div class="meta">🚶 15 min. · € · Drop-in</div><p>Et af byens mest berømte bagerier (ved kanalen) — prøv "escargot" med pistacie. Åbent man–fre, lukket weekend!</p>
     <div class="lnk"><a href="https://www.google.com/maps/search/?api=1&query=Du%20Pain%20et%20des%20Id%C3%A9es%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a href="https://www.tripadvisor.dk/Search?q=Du%20Pain%20et%20des%20Id%C3%A9es%20Paris" target="_blank" rel="noopener">⭐ Tripadvisor</a><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.871,2.3633&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></div></div>
     <div class="rest"><h4>Utopie</h4><div class="meta">🚶 8 min. · € · Drop-in</div><p>Prisvindende kvarterbageri på Rue Jean-Pierre Timbaud — sort sesam-specialiteter og perfekte croissanter.</p>
@@ -254,6 +256,7 @@ var home = L.divIcon({className:'', html:'<div style="background:#1f2a44;color:#
 L.marker([48.8598, 2.3718], {icon:home, zIndexOffset:1000}).addTo(map).bindPopup('<strong>Jeres lejlighed</strong><br>' + ADDR);
 var COL = {'mad':'#b45309','perle':'#7c3aed'};
 var steder = [
+  ["Carette (Place des Vosges)", 13, 48.8553, 2.3650, "mad"],
   ["Ober Mamma", 3, 48.8645, 2.369, "mad"],
   ["Clown Bar", 6, 48.8633, 2.367, "mad"],
   ["Café Charbon", 8, 48.8649, 2.3705, "mad"],
