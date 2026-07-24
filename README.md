@@ -15,3 +15,5 @@ Familiens **ferie-hjælper** for turen til Paris — med base i lejligheden på
 - 🧳 **Praktisk** (`praktisk.html`) — lufthavn ↔ lejlighed, billetter, vejr, nødnumre, apps og pakkeliste
 
 `*.mhtml`-filen er det gemte Airbnb-opslag for lejligheden.
+
+> Tip: Åbn siden på telefonen og vælg "Føj til hjemmeskærm" — så virker den som en app med eget ikon.
