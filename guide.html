@@ -183,7 +183,12 @@
     h2{break-after:avoid}
     h2,h3,h4{page-break-after:avoid}
     section{padding:14px 0 4px}
-    .rec,.rest,.wish,.panel,.pcard,.chk,.callout,figure,.step,.imgs{break-inside:avoid;page-break-inside:avoid}
+    .rec,.rest,.wish,.panel,.pcard,.callout,figure,.step,.imgs{break-inside:avoid;page-break-inside:avoid}
+    .chk{break-inside:auto;page-break-inside:auto}
+    .chk label{break-inside:avoid;page-break-inside:avoid}
+    .day{break-inside:auto;page-break-inside:auto}
+    .day .dhead{break-after:avoid-page;page-break-after:avoid}
+    .h2wrap{break-inside:avoid;page-break-inside:avoid;break-after:avoid-page;page-break-after:avoid}
     .day .dhead{-webkit-print-color-adjust:exact;print-color-adjust:exact}
     .chapnum,.badge{-webkit-print-color-adjust:exact;print-color-adjust:exact}
     .wbtns,.lnk{display:none !important}
@@ -257,8 +262,7 @@
 
 
 <section>
-  <h2>✅ Tjekliste inden afrejse</h2>
-  <p class="sub">Krydser gemmes i din browser, så I kan tage listen i etaper.</p>
+  <div class="h2wrap"><div class="h2wrap"><h2>✅ Tjekliste inden afrejse</h2></div><p class="sub">Krydser gemmes i din browser, så I kan tage listen i etaper.</p></div>
   <div class="chk" id="chk">
     <label><input type="checkbox" data-c="0"> <span>Book tidsbillet til Louvre (onsdag 7. okt. — lukket tirsdag!)</span></label>
     <label><input type="checkbox" data-c="1"> <span>Book gratis tidsbillet til Notre-Dame (appen 'Notre-Dame de Paris')</span></label>
@@ -279,8 +283,7 @@
 <section class="chapter" id="kap2">
 <div class="chaphead"><span class="chapnum">Kapitel 2</span><h1>📍 Kvarteret</h1></div>
 <section>
-  <h2>🗺️ Paris-overblikket</h2>
-  <p class="sub">Sådan hænger byen sammen: arrondissementerne snor sig som et sneglehus ud fra Louvre. <strong>I bor i 11'eren</strong> — på tegningen er det lige mellem Bastille-søjlen og Canal Saint-Martin.</p>
+  <div class="h2wrap"><div class="h2wrap"><h2>🗺️ Paris-overblikket</h2></div><p class="sub">Sådan hænger byen sammen: arrondissementerne snor sig som et sneglehus ud fra Louvre. <strong>I bor i 11'eren</strong> — på tegningen er det lige mellem Bastille-søjlen og Canal Saint-Martin.</p></div>
   <figure style="margin:0">
     <a href="img/paris-tegnekort.png" target="_blank" rel="noopener"><img src="img/paris-tegnekort.png" alt="Illustreret oversigtskort over Paris med arrondissementer" style="width:100%;max-width:720px;display:block;margin:0 auto;border-radius:14px;border:1px solid var(--line);background:#fff"></a>
     <figcaption class="small" style="text-align:center;margin-top:6px">Tryk på kortet for fuld størrelse — godt til at få børn (og voksne) til at forstå "sneglehuset".</figcaption>
@@ -291,7 +294,7 @@
 
 
 <section>
-  <h2>🗼 Seværdigheder</h2>
+  <div class="h2wrap"><h2>🗼 Seværdigheder</h2></div>
   <div class="tablewrap"><table>
     <thead><tr><th>Sted</th><th>Gåtid</th><th>Hvorfor</th><th></th></tr></thead>
     <tbody>
@@ -311,7 +314,7 @@
 </section>
 
 <section>
-  <h2>🥐 Mad &amp; markeder</h2>
+  <div class="h2wrap"><h2>🥐 Mad &amp; markeder</h2></div>
   <div class="tablewrap"><table>
     <thead><tr><th>Sted</th><th>Gåtid</th><th>Hvorfor</th><th></th></tr></thead>
     <tbody>
@@ -348,7 +351,7 @@
 </section>
 
 <section>
-  <h2>🌳 Parker &amp; vand</h2>
+  <div class="h2wrap"><h2>🌳 Parker &amp; vand</h2></div>
   <div class="tablewrap"><table>
     <thead><tr><th>Sted</th><th>Gåtid</th><th>Hvorfor</th><th></th></tr></thead>
     <tbody>
@@ -360,7 +363,7 @@
 </section>
 
 <section>
-  <h2>🚇 Jeres metrostationer</h2>
+  <div class="h2wrap"><h2>🚇 Jeres metrostationer</h2></div>
   <div class="tablewrap"><table>
     <thead><tr><th>Sted</th><th>Gåtid</th><th>Hvorfor</th><th></th></tr></thead>
     <tbody>
@@ -373,7 +376,7 @@
 </section>
 
 <section>
-  <h2>🚶 Tre gåture fra hoveddøren</h2>
+  <div class="h2wrap"><h2>🚶 Tre gåture fra hoveddøren</h2></div>
   <div class="grid2">
     <div class="panel"><h4>1) Marais-sløjfen (1½–2 t)</h4>
       <p style="font-size:14.5px">Ned ad boulevarden → Bastille → Rue Saint-Antoine → <strong>Place des Vosges</strong> (kig ind hos Victor Hugo) → Rue des Francs-Bourgeois (butikker) → <strong>Carnavalet</strong> → Rue des Rosiers (falafel) → tilbage gennem Rue de Turenne. <a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8556,2.3655&travelmode=walking" target="_blank" rel="noopener">🧭 Start ruten</a></p></div>
@@ -387,8 +390,7 @@
 <section class="chapter" id="kap3">
 <div class="chaphead"><span class="chapnum">Kapitel 3</span><h1>🎡 Oplevelser & Det sker</h1></div>
 <section>
-  <h2>📝 Jeres ønskeliste</h2>
-  <p class="sub">De otte punkter fra notesblokken. Tre kræver booking i god tid: <strong>Moulin Rouge</strong>, <strong>Louvre</strong> og <strong>toppen af Eiffeltårnet</strong> — gør det nu, og kryds af på <a href="index.html">tjeklisten</a>.</p>
+  <div class="h2wrap"><div class="h2wrap"><h2>📝 Jeres ønskeliste</h2></div><p class="sub">De otte punkter fra notesblokken. Tre kræver booking i god tid: <strong>Moulin Rouge</strong>, <strong>Louvre</strong> og <strong>toppen af Eiffeltårnet</strong> — gør det nu, og kryds af på <a href="index.html">tjeklisten</a>.</p></div>
 <div class="wish">
   <div class="whead"><span class="num">1</span><h3>⛪ Sainte-Chapelle (glaskapel)</h3></div>
   <div class="badges" style="display:flex;gap:6px;flex-wrap:wrap"><span class="badge gold">Book tidsbillet</span><span class="badge">ca. 13 €</span><span class="badge">~45 min. besøg</span></div>
@@ -491,7 +493,7 @@
 </section>
 
 <section>
-  <h2>🗓️ Sådan passer ønskelisten ind i dagsplanerne</h2>
+  <div class="h2wrap"><h2>🗓️ Sådan passer ønskelisten ind i dagsplanerne</h2></div>
   <div class="tablewrap"><table style="min-width:520px">
     <thead><tr><th>Dag</th><th>Ønskeliste-punkter</th></tr></thead>
     <tbody>
@@ -505,8 +507,7 @@
 </section>
 
 <section id="detsker">
-  <h2>🎪 Det sker, mens I er der</h2>
-  <p class="sub">Tidsbegrænsede events og udstillinger, der rammer netop 6.–9. oktober 2026 — fundet og datotjekket juli 2026. Dobbelttjek altid på de officielle sider, inden I booker.</p>
+  <div class="h2wrap"><div class="h2wrap"><h2>🎪 Det sker, mens I er der</h2></div><p class="sub">Tidsbegrænsede events og udstillinger, der rammer netop 6.–9. oktober 2026 — fundet og datotjekket juli 2026. Dobbelttjek altid på de officielle sider, inden I booker.</p></div>
   <div class="recs">
     <div class="rec"><h4>🍇 Fête des Vendanges — Montmartre</h4><p class="small">7.–11. oktober · gratis · rammer onsdag–fredag af jeres tur</p><p>Vinhøstfestens 93. udgave er <strong>bekræftet til netop jeres uge</strong>: gourmet-rute med smagsboder, "Décibels"-koncerter, vinmarksbesøg i Clos Montmartre kl. 11 og åbningsaften onsdag den 7. på 18. arrondissements rådhus. Torsdagsplanen ligger midt i festen. <em>OBS: den store parade er først lørdag den 10. — dagen efter jeres hjemrejse, så nyd boderne og koncerterne i stedet.</em></p><div class="wbtns"><a class="btn" href="https://fetedesvendangesdemontmartre.com" target="_blank" rel="noopener">🎟️ Officiel side</a></div></div>
     <div class="rec"><h4>🖼️ Mary Cassatt åbner på Musée d'Orsay</h4><p class="small">Åbner 6. oktober — jeres ankomstdag!</p><p>Orsays store efterårssatsning "Mary Cassatt — uafhængighedens valg" med ca. 80 værker af den amerikanske impressionist åbner <strong>præcis den dag, I lander</strong>. Book tidsbillet til torsdag, og få den splinternye udstilling med i Orsay-besøget — sammen med Bartholdi/Frihedsgudinde-udstillingen (fra 15. sep.).</p><div class="wbtns"><a class="btn" href="https://www.musee-orsay.fr/en" target="_blank" rel="noopener">🎟️ Officiel side</a></div></div>
@@ -522,8 +523,7 @@
 </section>
 
 <section>
-  <h2>🌿 Anderledes oplevelser — jeres liste nr. 2</h2>
-  <p class="sub">De syv punkter fra blog-listen, oversat til jeres base — plus Latinerkvarteret som nr. 8. Det meste er gratis og kan flettes ind som afstikkere.</p>
+  <div class="h2wrap"><div class="h2wrap"><h2>🌿 Anderledes oplevelser — jeres liste nr. 2</h2></div><p class="sub">De syv punkter fra blog-listen, oversat til jeres base — plus Latinerkvarteret som nr. 8. Det meste er gratis og kan flettes ind som afstikkere.</p></div>
   <div class="recs">
     <div class="rec"><h4>1. Gåtur i Parc Rives de Seine</h4><p class="small">20 min. gang · gratis</p><p>Seinens bilfri bredder: gå fra Hôtel de Ville langs vandet mod Bastille (eller modsat mod Orsay) mellem flydende haver, liggestole og barer i pramme. Oplagt forlængelse af onsdagsturen — eller fredagens afskedsgåtur.</p><div class="wbtns"><a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=Parc%20Rives%20de%20Seine%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a class="btn ghost" href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=Parc%20Rives%20de%20Seine%2C%20Paris&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></div></div>
     <div class="rec"><h4>2. De skjulte, charmerende gader</h4><p class="small">Allerede klar til jer!</p><p>Listens "hemmelige gader" har I dækket: pastelgaden <strong>Rue Crémieux</strong>, gyden <strong>Cour Damoye</strong>, <strong>Passage Lhomme</strong> og <strong>Cité du Figuier</strong> ligger alle som "små perler" med kort og ruter på spisesteds-siden.</p><div class="wbtns"><a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=Rue%20Cr%C3%A9mieux%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a class="btn ghost" href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=Rue%20Cr%C3%A9mieux%2C%20Paris&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a><a class="btn ghost" href="spisesteder.html">💎 Se perlerne</a></div></div>
@@ -537,8 +537,7 @@
 </section>
 
 <section id="jazz">
-  <h2>🎷 Jazz-aften — tre gode muligheder</h2>
-  <p class="sub">Paris er Europas jazzhovedstad, og de bedste klubber ligger 20–30 minutter fra jeres dør. Alle tre herunder ligger typisk og stabilt omkring <strong>4,5★</strong> hos Google/Tripadvisor (tjek selv via knapperne). Oktober-programmerne offentliggøres løbende hen over sensommeren — kig forbi program-linkene et par uger før afrejse.</p>
+  <div class="h2wrap"><div class="h2wrap"><h2>🎷 Jazz-aften — tre gode muligheder</h2></div><p class="sub">Paris er Europas jazzhovedstad, og de bedste klubber ligger 20–30 minutter fra jeres dør. Alle tre herunder ligger typisk og stabilt omkring <strong>4,5★</strong> hos Google/Tripadvisor (tjek selv via knapperne). Oktober-programmerne offentliggøres løbende hen over sensommeren — kig forbi program-linkene et par uger før afrejse.</p></div>
   <div class="recs">
     <div class="rec"><h4>Duc des Lombards <span style="font-weight:400;color:var(--muted)">(den fine klub)</span></h4><p class="small">Rue des Lombards, 1. arr. · to sæt pr. aften, ca. 19.30 og 21.30 · fra ca. 30–40 €</p>
     <p><strong>Klubben:</strong> Byens mest prestigefyldte jazzklub: lille, mørk sal med knivskarp akustik, hvor internationale navne og franske stjerner spiller tæt på publikum. Bordopstilling med mulighed for et glas — det er "sidde stille og lytte"-jazz i verdensklasse. Book online; de bedste borde går først.</p>
@@ -560,8 +559,7 @@
 </section>
 
 <section>
-  <h2>💡 Flere anbefalinger</h2>
-  <p class="sub">Udvalgt, så det passer til jeres base og uge — det meste er i gåafstand eller én metrolinje væk.</p>
+  <div class="h2wrap"><div class="h2wrap"><h2>💡 Flere anbefalinger</h2></div><p class="sub">Udvalgt, så det passer til jeres base og uge — det meste er i gåafstand eller én metrolinje væk.</p></div>
   <div class="recs">
 <div class="rec" style="grid-column:1/-1;border:2px solid var(--gold)"><h4>🏘️ Le Marais — jeres nabokvarter og en oplevelse i sig selv</h4><p class="small">10–15 min. gang fra døren · gratis · bedst til fods</p><p>Paris' bedst bevarede historiske kvarter begynder reelt, hvor jeres boulevard slutter: middelaldergader, adelspalæer, det jødiske kvarter omkring <strong>Rue des Rosiers</strong> (falafel!), gallerier, vintage-butikker og byens fineste plads, <strong>Place des Vosges</strong>. Det er også her, I finder gratis-museerne <strong>Carnavalet</strong> (Paris' historie) og <strong>Maison de Victor Hugo</strong> samt <strong>Musée Picasso</strong>. Kvarteret er levende både dag og aften — og I går derhen på et kvarter.</p><p><strong>Sådan bruger I det:</strong> Onsdagsplanen går gennem Marais (frokost + museer), men kvarteret tåler sagtens et genbesøg — fx fredagens afskedsfrokost eller en aftengåtur under arkaderne på Place des Vosges. Den færdige <a href="kvarteret.html">Marais-sløjfe på kvarter-siden</a> (1½–2 timer) rammer alle højdepunkterne.</p><div class="wbtns"><a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=Le%20Marais%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a class="btn ghost" href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=Place%20des%20Vosges%2C%20Paris&travelmode=walking" target="_blank" rel="noopener">🧭 Rute fra lejligheden</a><a class="btn ghost" href="kvarteret.html">🚶 Marais-sløjfen</a></div></div>
 <div class="rec" style="grid-column:1/-1;border:2px solid var(--gold)"><h4>⛰️ Montmartre — hele landsbyen på bakken</h4><p class="small">Metro 5 → Gare du Nord → 2 → Anvers (ca. 25 min.) · torsdagens hovednummer</p><p>Montmartre er meget mere end Sacré-Cœur: en hel landsby på Paris' højeste bakke med kunstnerhistorie i hver gade. Saml det hele i én sløjfe: op ad trapperne (eller kabelbanen) til <strong>Sacré-Cœur</strong> → portrætmalerne på <strong>Place du Tertre</strong> → byens egen lille vinmark <strong>Clos Montmartre</strong> og det lyserøde <strong>La Maison Rose</strong> på Rue de l'Abreuvoir → ned ad <strong>Rue Lepic</strong> (Amélies café Les Deux Moulins!) til <strong>Abbesses</strong> med <strong>kærlighedsmuren</strong> og frokostgaderne — og slut ved foden af bakken ved <strong>Moulin Rouge</strong> i Pigalle.</p><p><strong>I jeres uge:</strong> <em>Fête des Vendanges</em>, vinhøstfestivalen, fylder netop disse gader med boder og optog — torsdagsplanen er bygget om det. Kom om formiddagen (færrest mennesker), hold på tasken på trapperne, og spis dér, hvor de lokale gør: bag bakken ved Abbesses/Rue Lepic, ikke på Place du Tertre.</p><div class="wbtns"><a class="btn" href="https://www.fetedesvendangesdemontmartre.com" target="_blank" rel="noopener">🍇 Festivalprogram</a><a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=Montmartre%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a class="btn ghost" href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=Basilique%20du%20Sacr%C3%A9-C%C5%93ur%2C%20Paris&travelmode=transit" target="_blank" rel="noopener">🧭 Rute fra lejligheden</a><a class="btn ghost" href="dagsplaner.html">📅 Torsdagsplanen</a></div></div>
@@ -594,8 +592,7 @@
 <section class="chapter" id="kap4">
 <div class="chaphead"><span class="chapnum">Kapitel 4</span><h1>🍽️ Spisesteder & små perler</h1></div>
 <section>
-  <h2>🏠 Lige om hjørnet (0–10 min.)</h2>
-  <p class="sub">Det nære: steder, I kan beslutte jer for kl. 19 og sidde ved bordet 19.15.</p>
+  <div class="h2wrap"><div class="h2wrap"><h2>🏠 Lige om hjørnet (0–10 min.)</h2></div><p class="sub">Det nære: steder, I kan beslutte jer for kl. 19 og sidde ved bordet 19.15.</p></div>
   <div class="recs" style="grid-template-columns:repeat(auto-fit,minmax(270px,1fr))">
     <div class="rest"><h4>Ober Mamma</h4><div class="meta">🚶 3 min. · €€ · Book/kø</div><p>Big Mamma-gruppens brusende italiener — på jeres egen boulevard (nr. 107)! Frisk pasta, træovnspizza og festlig stemning. Book online, eller kom til tidlig aftensmad og tag køen.</p>
     <div class="lnk"><a href="https://www.google.com/maps/search/?api=1&query=Ober%20Mamma%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a href="https://www.tripadvisor.dk/Search?q=Ober%20Mamma%20Paris" target="_blank" rel="noopener">⭐ Tripadvisor</a><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8645,2.369&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></div></div>
@@ -612,8 +609,7 @@
   </div>
 </section>
 <section>
-  <h2>🍷 Klassiske bistroer</h2>
-  <p class="sub">Ternede duge, tavlemenuer og det køkken, man rejser til Paris for.</p>
+  <div class="h2wrap"><div class="h2wrap"><h2>🍷 Klassiske bistroer</h2></div><p class="sub">Ternede duge, tavlemenuer og det køkken, man rejser til Paris for.</p></div>
   <div class="recs" style="grid-template-columns:repeat(auto-fit,minmax(270px,1fr))">
     <div class="rest"><h4>Chez Paul</h4><div class="meta">🚶 12 min. · €€ · Book</div><p>Old-school Bastille-institution i skæve lokaler fra 1900 — and confit, bøf og stemning som i en fransk film.</p>
     <div class="lnk"><a href="https://www.google.com/maps/search/?api=1&query=Chez%20Paul%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a href="https://www.tripadvisor.dk/Search?q=Chez%20Paul%20Paris" target="_blank" rel="noopener">⭐ Tripadvisor</a><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8527,2.3727&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></div></div>
@@ -624,8 +620,7 @@
   </div>
 </section>
 <section>
-  <h2>⭐ Til den store aften</h2>
-  <p class="sub">Kvarteret omkring Rue de Charonne er et af Europas bedste madkvarterer — her er flagskibene.</p>
+  <div class="h2wrap"><div class="h2wrap"><h2>⭐ Til den store aften</h2></div><p class="sub">Kvarteret omkring Rue de Charonne er et af Europas bedste madkvarterer — her er flagskibene.</p></div>
   <div class="recs" style="grid-template-columns:repeat(auto-fit,minmax(270px,1fr))">
     <div class="rest"><h4>Septime</h4><div class="meta">🚶 12 min. · €€€€ · Book NU</div><p>Michelin-stjerne og verdensberømmelse på Rue de Charonne. Skal bookes ugevis frem — slots åbner løbende online.</p>
     <div class="lnk"><a href="https://www.google.com/maps/search/?api=1&query=Septime%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a href="https://www.tripadvisor.dk/Search?q=Septime%20Paris" target="_blank" rel="noopener">⭐ Tripadvisor</a><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8531,2.3805&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></div></div>
@@ -636,8 +631,7 @@
   </div>
 </section>
 <section>
-  <h2>🥙 Hurtigt & uformelt</h2>
-  <p class="sub">Frokost på farten eller afslappet aftensmad uden reservation.</p>
+  <div class="h2wrap"><div class="h2wrap"><h2>🥙 Hurtigt & uformelt</h2></div><p class="sub">Frokost på farten eller afslappet aftensmad uden reservation.</p></div>
   <div class="recs" style="grid-template-columns:repeat(auto-fit,minmax(270px,1fr))">
     <div class="rest"><h4>L'As du Fallafel</h4><div class="meta">🚶 16 min. · € · Kø, men hurtig</div><p>Den legendariske falafel i Rue des Rosiers — tag den to go og spis på Place des Vosges. Lukket fredag aften/lørdag.</p>
     <div class="lnk"><a href="https://www.google.com/maps/search/?api=1&query=L%27As%20du%20Fallafel%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a href="https://www.tripadvisor.dk/Search?q=L%27As%20du%20Fallafel%20Paris" target="_blank" rel="noopener">⭐ Tripadvisor</a><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8572,2.359&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></div></div>
@@ -650,8 +644,7 @@
   </div>
 </section>
 <section>
-  <h2>☕ Kaffe, brunch & søde sager</h2>
-  <p class="sub">Morgenbrød, specialkaffe og konditori i verdensklasse.</p>
+  <div class="h2wrap"><div class="h2wrap"><h2>☕ Kaffe, brunch & søde sager</h2></div><p class="sub">Morgenbrød, specialkaffe og konditori i verdensklasse.</p></div>
   <div class="recs" style="grid-template-columns:repeat(auto-fit,minmax(270px,1fr))">
     <div class="rest"><h4>Carette</h4><div class="meta">🚶 13 min. (Place des Vosges) · €€ · Drop-in/kø</div><p>Den klassiske parisiske salon de thé (1927) — berømt for macarons, mille-feuille og en varm chokolade så tyk, at skeen næsten står selv. Afdelingen under <strong>arkaderne på Place des Vosges</strong> er jeres nærmeste; originalen ligger på <strong>Place du Trocadéro</strong> og passer perfekt til torsdagens Eiffel-aften.</p>
     <div class="lnk"><a href="https://www.google.com/maps/search/?api=1&query=Carette%20Place%20des%20Vosges%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a href="https://www.tripadvisor.dk/Search?q=Carette%20Paris" target="_blank" rel="noopener">⭐ Tripadvisor</a><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8553,2.365&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></div></div>
@@ -668,8 +661,7 @@
   </div>
 </section>
 <section>
-  <h2>🍇 Vinbarer & aftenhygge</h2>
-  <p class="sub">Til den sidste time af aftenen — eller den første.</p>
+  <div class="h2wrap"><div class="h2wrap"><h2>🍇 Vinbarer & aftenhygge</h2></div><p class="sub">Til den sidste time af aftenen — eller den første.</p></div>
   <div class="recs" style="grid-template-columns:repeat(auto-fit,minmax(270px,1fr))">
     <div class="rest"><h4>Duc des Lombards (jazzklub)</h4><div class="meta">🚇 Linje 1 fra Bastille → Châtelet (15 min.) eller 25 min. gang · €€–€€€ · Book!</div><p>Byens mest roste jazzklub — intim sal, fantastisk akustik og internationale navne. Ligger på <strong>Rue des Lombards</strong>, Paris' jazzgade, hvor også <strong>Sunset/Sunside</strong> og <strong>Baiser Salé</strong> ligger dør om dør — er én udsolgt, går I bare til naboen. Typisk to sæt pr. aften (ca. 19.30 og 21.30) — book online, og tag metroen hjem bagefter (linje 1 → Bastille kører til efter midnat). <strong><a href="oplevelser.html#jazz">Se hele jazz-afsnittet med tre klubber →</a></strong></p>
     <div class="lnk"><a href="https://www.ducdeslombards.com/en" target="_blank" rel="noopener">🎷 Program &amp; billetter</a><a href="https://www.google.com/maps/search/?api=1&query=Duc%20des%20Lombards%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a href="https://www.tripadvisor.dk/Search?q=Duc%20des%20Lombards%20Paris" target="_blank" rel="noopener">⭐ Tripadvisor</a><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=Duc%20des%20Lombards%2C%20Paris%2C%20Paris&travelmode=transit" target="_blank" rel="noopener">🧭 Rute</a></div></div>
@@ -681,8 +673,7 @@
 </section>
 
 <section>
-  <h2>💎 Små, hyggelige seværdigheder</h2>
-  <p class="sub">Skjulte passager, stille pladser og kvarterets hemmeligheder — alle gratis og i gåafstand. Perfekte som afstikkere på vej til noget andet.</p>
+  <div class="h2wrap"><div class="h2wrap"><h2>💎 Små, hyggelige seværdigheder</h2></div><p class="sub">Skjulte passager, stille pladser og kvarterets hemmeligheder — alle gratis og i gåafstand. Perfekte som afstikkere på vej til noget andet.</p></div>
   <div class="recs" style="grid-template-columns:repeat(auto-fit,minmax(270px,1fr))">
     <div class="rest gem"><h4>Cour Damoye (skjult gyde)</h4><div class="meta">🚶 8 min. · gratis</div><p>Skjult brostensgyde lige ved Bastille-pladsen — træd ind gennem porten, og larmen forsvinder mellem værksteder og kaffebrænderi.</p>
     <div class="lnk"><a href="https://www.google.com/maps/search/?api=1&query=Cour%20Damoye%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a href="https://www.tripadvisor.dk/Search?q=Cour%20Damoye%20Paris" target="_blank" rel="noopener">⭐ Tripadvisor</a><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.854,2.3697&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></div></div>
@@ -757,7 +748,7 @@
 <section class="chapter" id="kap6">
 <div class="chaphead"><span class="chapnum">Kapitel 6</span><h1>🧳 Praktisk</h1></div>
 <section>
-  <h2>✈️ Lufthavn ↔ lejlighed</h2>
+  <div class="h2wrap"><h2>✈️ Lufthavn ↔ lejlighed</h2></div>
   <div class="grid2">
     <div class="panel">
       <h4>Ankomst tirsdag (lander 13.45)</h4>
@@ -783,7 +774,7 @@
 </section>
 
 <section>
-  <h2>🎫 Billetter &amp; transport i byen</h2>
+  <div class="h2wrap"><h2>🎫 Billetter &amp; transport i byen</h2></div>
   <div class="grid2">
     <div class="panel">
       <h4>Det skal I købe</h4>
@@ -809,7 +800,7 @@
 </section>
 
 <section>
-  <h2>🌤️ Vejr &amp; pakkeliste</h2>
+  <div class="h2wrap"><h2>🌤️ Vejr &amp; pakkeliste</h2></div>
   <div class="grid2">
     <div class="panel">
       <h4>Oktober i Paris</h4>
@@ -833,7 +824,7 @@
 </section>
 
 <section>
-  <h2>🆘 Hvis noget går galt</h2>
+  <div class="h2wrap"><h2>🆘 Hvis noget går galt</h2></div>
   <div class="grid2">
     <div class="panel">
       <h4>Nødnumre</h4>
