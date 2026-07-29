@@ -265,6 +265,8 @@
   <h2>🍇 Vinbarer & aftenhygge</h2>
   <p class="sub">Til den sidste time af aftenen — eller den første.</p>
   <div class="recs" style="grid-template-columns:repeat(auto-fit,minmax(270px,1fr))">
+    <div class="rest"><h4>Duc des Lombards (jazzklub)</h4><div class="meta">🚇 Linje 1 fra Bastille → Châtelet (15 min.) eller 25 min. gang · €€–€€€ · Book!</div><p>Byens mest roste jazzklub — intim sal, fantastisk akustik og internationale navne. Ligger på <strong>Rue des Lombards</strong>, Paris' jazzgade, hvor også <strong>Sunset/Sunside</strong> og <strong>Baiser Salé</strong> ligger dør om dør — er én udsolgt, går I bare til naboen. Typisk to sæt pr. aften (ca. 19.30 og 21.30) — book online, og tag metroen hjem bagefter (linje 1 → Bastille kører til efter midnat).</p>
+    <div class="lnk"><a href="https://www.ducdeslombards.com/en" target="_blank" rel="noopener">🎷 Program &amp; billetter</a><a href="https://www.google.com/maps/search/?api=1&query=Duc%20des%20Lombards%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a href="https://www.tripadvisor.dk/Search?q=Duc%20des%20Lombards%20Paris" target="_blank" rel="noopener">⭐ Tripadvisor</a><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=Duc%20des%20Lombards%2C%20Paris%2C%20Paris&travelmode=transit" target="_blank" rel="noopener">🧭 Rute</a></div></div>
     <div class="rest"><h4>Septime La Cave</h4><div class="meta">🚶 12 min. · €€ · Drop-in</div><p>Septimes lille vinbar rundt om hjørnet — naturvin og småplader, når I ikke fik bord hos storebror.</p>
     <div class="lnk"><a href="https://www.google.com/maps/search/?api=1&query=Septime%20La%20Cave%2C%20Paris" target="_blank" rel="noopener">📍 Google Maps</a><a href="https://www.tripadvisor.dk/Search?q=Septime%20La%20Cave%20Paris" target="_blank" rel="noopener">⭐ Tripadvisor</a><a href="https://www.google.com/maps/dir/?api=1&origin=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris&destination=48.8534,2.38&travelmode=walking" target="_blank" rel="noopener">🧭 Rute</a></div></div>
     <div class="rest"><h4>Le Barav</h4><div class="meta">🚶 12 min. · €€ · Book/kø</div><p>Vinbar med egen vinhandel i Marais-kanten — vælg flasken i butikken og drik den til ostebrættet.</p>
@@ -312,6 +314,7 @@ var home = L.divIcon({className:'', html:'<div style="background:#1f2a44;color:#
 L.marker([48.8598, 2.3718], {icon:home, zIndexOffset:1000}).addTo(map).bindPopup('<strong>Jeres lejlighed</strong><br>' + ADDR);
 var COL = {'mad':'#b45309','perle':'#7c3aed'};
 var steder = [
+  ["Duc des Lombards (jazzklub)", 25, 48.8595, 2.3480, "mad"],
   ["Carette (Place des Vosges)", 13, 48.8553, 2.3650, "mad"],
   ["Ober Mamma", 3, 48.8645, 2.369, "mad"],
   ["Clown Bar", 6, 48.8633, 2.367, "mad"],
