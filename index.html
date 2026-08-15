@@ -12,7 +12,6 @@
 
 <title>Mathildes Paris-tur · uge 41</title>
 <meta name="description" content="Mathildes Paris-tur 6.-9. oktober 2026 — ferie-hjælper med base på 67 Bd Richard-Lenoir.">
-<link rel="stylesheet" href="vendor/leaflet.css">
 <style>
   :root{--navy:#1f2a44;--navy2:#2c3a5c;--cream:#faf7f2;--card:#fff;--red:#c0392b;--gold:#b08d2f;--green:#1e7d4f;--amber:#b45309;--ink:#26303f;--muted:#6b7280;--line:#e6e0d6}
   *{box-sizing:border-box}
@@ -173,7 +172,6 @@
     <a class="btn green" href="dagsplaner.html">📅 Se dagsplanerne</a>
     <a class="btn ghost" href="guide.html">🖨️ Print-guide</a>
   </div>
-  <div class="callout green"><strong>🎪 Det sker i jeres uge:</strong> Vinhøstfesten i Montmartre er bekræftet 7.–11. okt., Orsays store <em>Mary Cassatt</em>-udstilling åbner på selve ankomstdagen, og Grand Palais viser efterårets Cézanne-blockbuster. <a href="oplevelser.html#detsker"><strong>Se hele "Det sker"-listen →</strong></a></div>
 
   <div class="grid2">
     <div>
@@ -183,24 +181,26 @@
       </div>
     </div>
     <div class="panel">
-      <h4>🏠 Lejligheden — det skal I huske</h4>
+      <h4>🏠 Lejligheden</h4>
       <ul>
-        <li><strong>Adresse:</strong> 67 Boulevard Richard-Lenoir, lejl. 45, 75011 Paris (7. sal, 2 elevatorer)</li>
-        <li><strong>Indtjekning:</strong> fra kl. 15 (vi lander 13.45 — det passer perfekt, se <a href="dagsplaner.html">tirsdagsplanen</a>)</li>
-        <li><strong>Udtjekning:</strong> kl. 12 — flyet går først 20.40, så aftal bagageopbevaring med France</li>
-        <li><strong>Senge:</strong> dobbeltseng i alkoven + Muji-sovesofa i stuen</li>
-        <li><strong>Udstyr:</strong> balkon, aircondition, vaskemaskine, køkken — og velkomstjuice/snacks iflg. gæsterne 😄</li>
-        <li><strong>Vært:</strong> Antoine &amp; France — svarer inden for få timer; skriv via <a href="https://www.airbnb.dk/rooms/1120183965838403602?adults=3&check_in=2026-10-06&check_out=2026-10-09" target="_blank" rel="noopener">Airbnb</a></li>
+        <li><strong>67 Bd Richard-Lenoir, lejl. 45</strong> (7. sal, elevator + balkon)</li>
+        <li>Indtjek kl. 15 · udtjek kl. 12 — flyet går først 20.40, så aftal bagageopbevaring</li>
+        <li>Metro Richard-Lenoir (linje 5) — 1 minut fra døren</li>
+        <li>Vært: Antoine &amp; France — skriv via Airbnb</li>
       </ul>
     </div>
   </div>
 </section>
 
 <section>
-  <h2>🗺️ Kvarteret omkring jer</h2>
-  <p class="sub">Klik på markørerne: alle har link til Google Maps og gårute fra lejligheden. Hele kortet og meget mere på <a href="kvarteret.html">kvarter-siden</a>.</p>
-  <div id="map"></div>
-  <div class="legend"><span><span class="dot" style="background:#1f2a44"></span>🏠 Lejligheden</span><span><span class="dot" style="background:#c0392b"></span>Seværdigheder</span><span><span class="dot" style="background:#b45309"></span>Mad & markeder</span><span><span class="dot" style="background:#1e7d4f"></span>Parker & vand</span><span><span class="dot" style="background:#1f6feb"></span>Metro</span></div>
+  <h2>📅 Ugen i overblik</h2>
+  <div class="grid2">
+    <div class="panel"><h4>Tirsdag · ankomst</h4><p style="font-size:14px;margin:4px 0">Lander 13.45 → indtjek kl. 15 → kvarterstur og middag på Rue de Charonne.</p></div>
+    <div class="panel"><h4>Onsdag · Louvre &amp; Latinerkvarteret</h4><p style="font-size:14px;margin:4px 0">Louvre (book!) → Marais-frokost → rundtur med Diptyque og vinyl → evt. jazz.</p></div>
+    <div class="panel"><h4>Torsdag · Montmartre &amp; Eiffeltårnet</h4><p style="font-size:14px;margin:4px 0">Marked → Montmartre + vinfest → Carette → sejltur med funklende tårn kl. 20.</p></div>
+    <div class="panel"><h4>Fredag · vinyl &amp; hjemrejse</h4><p style="font-size:14px;margin:4px 0">Rue Keller-vinyl → udtjek 12 → Marais → CDG kl. 17, fly 20.40.</p></div>
+  </div>
+  <p style="margin-top:10px"><a class="btn green" href="dagsplaner.html">📅 Se dagsplanerne</a> <a class="btn ghost" href="kvarteret.html">🗺️ Se kortet</a></p>
 </section>
 
 <section>
@@ -219,18 +219,13 @@
   <h2>✅ Tjekliste inden afrejse</h2>
   <p class="sub">Krydser gemmes i din browser, så I kan tage listen i etaper.</p>
   <div class="chk" id="chk">
-    <label><input type="checkbox" data-c="0"> <span>Book tidsbillet til Louvre (onsdag 7. okt. — lukket tirsdag!)</span></label>
-    <label><input type="checkbox" data-c="1"> <span>Book gratis tidsbillet til Notre-Dame (appen 'Notre-Dame de Paris')</span></label>
-    <label><input type="checkbox" data-c="3"> <span>Vil I på fin restaurant (fx Septime)? Book NU — uger i forvejen</span></label>
-    <label><input type="checkbox" data-c="11"> <span>Book Moulin Rouge (onsdag kl. 21 — udsolgt uger frem!)</span></label>
-    <label><input type="checkbox" data-c="12"> <span>Book evt. toppen af Eiffeltårnet og Seine-sejltur</span></label>
-    <label><input type="checkbox" data-c="4"> <span>Skriv til France/Antoine: kan vi stille bagage fredag indtil ca. kl. 17?</span></label>
-    <label><input type="checkbox" data-c="5"> <span>Tjek programmet for Fête des Vendanges (Montmartre, netop uge 41)</span></label>
-    <label><input type="checkbox" data-c="6"> <span>Blåt EU-sygesikringskort + rejseforsikring til alle tre</span></label>
-    <label><input type="checkbox" data-c="7"> <span>Download offline-kort over Paris i Google Maps</span></label>
-    <label><input type="checkbox" data-c="8"> <span>Installér appen Île-de-France Mobilités og køb billetter hjemmefra (<a href="https://apps.apple.com/dk/app/%C3%AEle-de-france-mobilit%C3%A9s/id484527651" target="_blank" rel="noopener">iPhone</a> / <a href="https://play.google.com/store/apps/details?id=com.applidium.vianavigo" target="_blank" rel="noopener">Android</a>)</span></label>
-    <label><input type="checkbox" data-c="9"> <span>Gem adressen + Airbnb-koderne offline (skærmbillede)</span></label>
-    <label><input type="checkbox" data-c="10"> <span>Pak lag-på-lag + regnjakke (oktober: 9–17 °C)</span></label>
+    <label><input type="checkbox" data-c="0"> <span>Book Louvre-tidsbillet til onsdag kl. 9.30</span></label>
+    <label><input type="checkbox" data-c="1"> <span>Book Seine-sejlturen (afgang ved Eiffeltårnet, torsdag ca. 19.45)</span></label>
+    <label><input type="checkbox" data-c="2"> <span>Evt.: jazz (38Riv) og/eller Moulin Rouge — udsolgt uger frem</span></label>
+    <label><input type="checkbox" data-c="3"> <span>Skriv til France: bagageopbevaring fredag til ca. kl. 17</span></label>
+    <label><input type="checkbox" data-c="4"> <span>Installér IDF Mobilités-appen og køb billetter (lufthavn 14 €)</span></label>
+    <label><input type="checkbox" data-c="5"> <span>Blåt EU-sygesikringskort + rejseforsikring til alle tre</span></label>
+    <label><input type="checkbox" data-c="6"> <span>Pak lag-på-lag + regnjakke + gå-sko (9–17 °C)</span></label>
   </div>
   <div class="callout red" style="margin-top:18px"><strong>Vigtigste dato:</strong> Gratis afbestilling af lejligheden udløber <strong>6. september</strong> (delvis refusion frem til 29. september) — efter det er pengene bundet.</div>
 </section>
@@ -241,51 +236,8 @@
   <a href="https://www.airbnb.dk/rooms/1120183965838403602?adults=3&check_in=2026-10-06&check_out=2026-10-09" target="_blank" rel="noopener">Airbnb-opslaget ↗</a></p>
   <p>Lavet til familiens Paris-tur · <a href="https://github.com/qvisty/paristur">github.com/qvisty/paristur</a></p>
 </div></footer>
-<script src="vendor/leaflet.js"></script>
 <script>
 
-try {
-var L = window.leaflet || window.L;
-var APT = [48.8598, 2.3718];
-var ADDR = '67 Boulevard Richard-Lenoir, 75011 Paris';
-var map = L.map('map').setView([48.858, 2.368], 14.4);
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:19, attribution:'&copy; OpenStreetMap-bidragydere'}).addTo(map);
-var home = L.divIcon({className:'', html:'<div style="background:#1f2a44;color:#fff;border:3px solid #fff;border-radius:50%;width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-size:19px;box-shadow:0 2px 8px rgba(0,0,0,.45)">🏠</div>', iconSize:[38,38], iconAnchor:[19,19]});
-L.marker(APT, {icon:home, zIndexOffset:1000}).addTo(map).bindPopup('<strong>Jeres lejlighed</strong><br>' + ADDR + '<br><a href="https://www.google.com/maps/search/?api=1&query=67%20Boulevard%20Richard-Lenoir%2C%2075011%20Paris%2C%20Paris" target="_blank" rel="noopener">Åbn i Google Maps ↗</a>');
-var COL = {'sev':'#c0392b','mad':'#b45309','park':'#1e7d4f','metro':'#1f6feb'};
-var pois = [
-  ["Le Marais (hele kvarteret!)", 12, 48.857, 2.359, "sev"],
-  ["Marché Bastille (torsdag 7–14.30!)", 7, 48.8551, 2.3698, "mad"],
-  ["Rue Oberkampf & Café Charbon (barstrøg)", 8, 48.8649, 2.3705, "mad"],
-  ["Rue de Charonne (restaurantgade)", 12, 48.8536, 2.3795, "mad"],
-  ["Marché des Enfants Rouges (overdækket marked)", 17, 48.8627, 2.3622, "mad"],
-  ["Marché d'Aligre (marked)", 20, 48.8487, 2.3786, "mad"],
-  ["Place des Vosges (historisk plads)", 13, 48.8556, 2.3655, "sev"],
-  ["Musée Carnavalet (gratis!)", 15, 48.8576, 2.3622, "sev"],
-  ["Musée Picasso (kunstmuseum)", 17, 48.8598, 2.3622, "sev"],
-  ["Rue des Rosiers (falafel!)", 16, 48.8572, 2.359, "sev"],
-  ["Place de la Bastille & Operaen", 12, 48.8532, 2.3692, "sev"],
-  ["Port de l'Arsenal (lystbådehavn)", 14, 48.8508, 2.368, "park"],
-  ["Coulée verte René-Dumont (højbanepark)", 15, 48.8493, 2.3715, "park"],
-  ["Square Maurice-Gardette (lokal park)", 7, 48.8615, 2.377, "park"],
-  ["Cirque d'Hiver (cirkusbygning)", 6, 48.8632, 2.3674, "sev"],
-  ["Place de la République (plads)", 12, 48.8675, 2.3633, "sev"],
-  ["Canal Saint-Martin (kanal)", 14, 48.871, 2.3658, "park"],
-  ["Père Lachaise (kirkegård)", 25, 48.8614, 2.3933, "sev"],
-  ["Centre Pompidou-området (moderne kunst)", 20, 48.8607, 2.3522, "sev"],
-  ["Île de la Cité & Notre-Dame", 27, 48.853, 2.3499, "sev"],
-  ["Metro Richard-Lenoir (linje 5)", 1, 48.8599, 2.3719, "metro"],
-  ["Metro Bréguet-Sabin (linje 5)", 5, 48.8562, 2.3702, "metro"],
-  ["Metro Saint-Ambroise (linje 9)", 6, 48.8614, 2.3738, "metro"],
-  ["Metro Oberkampf (linje 5+9)", 8, 48.8646, 2.3683, "metro"]
-];
-pois.forEach(function(p){
-  var q = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(p[0].replace(/\s*\(.*?\)/g,'') + ', Paris');
-  var rute = 'https://www.google.com/maps/dir/?api=1&origin=' + encodeURIComponent(ADDR) + '&destination=' + p[2] + ',' + p[3] + '&travelmode=walking';
-  L.circleMarker([p[2],p[3]], {radius:8, color:'#fff', weight:2, fillColor:COL[p[4]], fillOpacity:.95}).addTo(map)
-    .bindPopup('<strong><a href="'+q+'" target="_blank" rel="noopener">'+p[0]+' ↗</a></strong><br>🚶 ca. '+p[1]+' min. til fods · <a href="'+rute+'" target="_blank" rel="noopener">🧭 Rute</a>');
-});
-} catch(e) { document.getElementById('map').innerHTML = '<div style="padding:30px;text-align:center;color:#6b7280">Kortet kunne ikke indlæses.</div>'; }
 
 // nedtælling
 (function(){
