@@ -12,6 +12,7 @@ Familiens **ferie-hjælper** for turen til Paris — med base i lejligheden på
 - 🎡 **Oplevelser** (`oplevelser.html`) — familiens ønskeliste med booking-info, priser og links + flere anbefalinger
 - 🍽️ **Spisesteder** (`spisesteder.html`) — kvarterets bedste spisesteder grupperet efter anledning + små skjulte perler
 - 📅 **Dagsplaner** (`dagsplaner.html`) — time-for-time-forslag for alle fire dage, bygget om flyene (lander 6/10 kl. 13.45, hjemrejse 9/10 kl. 20.40)
+- 🗣️ **Parlør** (`parloer.html`) — dansk-fransk med udtale: café, butikker, metro, jazzklub og nødsituationer
 - 🧳 **Praktisk** (`praktisk.html`) — lufthavn ↔ lejlighed, billetter, vejr, nødnumre, apps og pakkeliste
 - 🖨️ **Print-guide** (`guide.html`) — hele sitet samlet som printbar rejseguide med forside, indholdsfortegnelse og sideskift pr. kapitel
 

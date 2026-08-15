@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#1f2a44">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="img/icon-192.png">
+<link rel="apple-touch-icon" href="img/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<title>Parlør · Mathildes Paris-tur</title>
+<meta name="description" content="Dansk-fransk parlør til Mathildes Paris-tur: café, butikker, metro, jazzklub og nødsituationer — med udtale.">
+<style>
+  :root{--navy:#1f2a44;--navy2:#2c3a5c;--cream:#faf7f2;--card:#fff;--red:#c0392b;--gold:#b08d2f;--green:#1e7d4f;--amber:#b45309;--ink:#26303f;--muted:#6b7280;--line:#e6e0d6}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--cream);color:var(--ink);line-height:1.55}
+  a{color:var(--red)}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 18px}
+  header.hero{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;padding:38px 0 26px}
+  header.hero h1{margin:0 0 6px;font-size:clamp(24px,4vw,38px)}
+  header.hero p{margin:4px 0;color:#d8dceb;font-size:16px}
+  .facts{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+  .fact{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);padding:6px 12px;border-radius:999px;font-size:14px}
+  nav.toc{position:sticky;top:0;z-index:1000;background:var(--navy);box-shadow:0 2px 8px rgba(0,0,0,.25)}
+  nav.toc .wrap{display:flex;gap:2px;flex-wrap:wrap;justify-content:center;padding:2px 18px}
+  nav.toc a{color:#e8eaf2;text-decoration:none;padding:11px 13px;font-size:14.5px;white-space:nowrap}
+  nav.toc a:hover{background:rgba(255,255,255,.1)}
+  nav.toc a.on{background:rgba(255,255,255,.16);font-weight:700}
+  section{padding:34px 0 6px}
+  h2{font-size:25px;margin:0 0 4px;color:var(--navy)}
+  h3{color:var(--navy);margin:20px 0 8px}
+  .sub{color:var(--muted);margin:0 0 16px;font-size:15px}
+  .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+  .panel h4{margin:0 0 8px;color:var(--navy)}
+  .panel ul{margin:6px 0;padding-left:20px;font-size:14.5px}
+  .panel li{margin:5px 0}
+  .callout{background:#fdf3e3;border-left:4px solid var(--gold);padding:12px 16px;border-radius:0 10px 10px 0;margin:16px 0;font-size:15px}
+  .callout.green{background:#e9f5ee;border-color:var(--green)}
+  .callout.red{background:#fbeae7;border-color:var(--red)}
+  .btn{display:inline-block;background:var(--red);color:#fff;text-decoration:none;padding:9px 15px;border-radius:8px;font-size:14.5px;font-weight:600}
+  .btn:hover{filter:brightness(1.08)}
+  .btn.ghost{background:transparent;color:var(--navy);border:1px solid var(--navy)}
+  .btn.green{background:var(--green)}
+  .quick{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+  .tablewrap{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-top:10px}
+  table{border-collapse:collapse;width:100%;font-size:14px;min-width:600px}
+  th,td{padding:9px 10px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  thead th{background:var(--navy);color:#fff;font-weight:600}
+  thead th a{color:#fff}
+  tbody tr:nth-child(even){background:#faf8f4}
+  .small{font-size:12.5px;color:var(--muted)}
+  .badge{font-size:12px;padding:3px 9px;border-radius:999px;background:#eef1f7;color:var(--navy);font-weight:600}
+  .badge.gold{background:#f6ecd4;color:#8a6d1f}
+  .badge.green{background:#e2f2e9;color:var(--green)}
+  #map,.bigmap{height:520px;border-radius:12px;border:1px solid var(--line);z-index:1}
+  .legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px;font-size:14px}
+  .dot{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:5px;vertical-align:-1px}
+  .day{background:var(--card);border:1px solid var(--line);border-radius:14px;margin:18px 0;overflow:hidden}
+  .day .dhead{background:var(--navy);color:#fff;padding:12px 18px;font-size:17px;font-weight:700}
+  .day .dbody{padding:6px 18px 14px}
+  .step{display:grid;grid-template-columns:64px 1fr;gap:12px;padding:10px 0;border-bottom:1px dashed var(--line)}
+  .step:last-child{border-bottom:none}
+  .step .tid{font-weight:800;color:var(--navy);font-size:14.5px;padding-top:2px}
+  .step p{margin:0;font-size:14.5px}
+  .step .small{display:block;margin-top:3px}
+  .chk{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px}
+  .chk label{display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px dashed var(--line);font-size:15px;cursor:pointer}
+  .chk label:last-child{border-bottom:none}
+  .chk input{transform:scale(1.25);accent-color:var(--green);margin-top:3px}
+  .chk input:checked + span{text-decoration:line-through;color:var(--muted)}
+  .imgs{display:grid;grid-template-columns:2fr 1fr;gap:4px;border-radius:12px;overflow:hidden}
+  .imgs img{width:100%;height:100%;object-fit:cover;display:block}
+  .imgs .side{display:grid;grid-template-rows:1fr 1fr;gap:4px}
+  .pages{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:14px}
+  .pcard{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;text-decoration:none;color:var(--ink);display:block}
+  .pcard:hover{border-color:var(--navy);box-shadow:0 4px 12px rgba(31,42,68,.12)}
+  .pcard .ic{font-size:30px}
+  .pcard b{display:block;color:var(--navy);font-size:17px;margin:6px 0 4px}
+  .pcard span{font-size:13.5px;color:var(--muted)}
+  #countdown{font-size:15px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);border-radius:10px;display:inline-block;padding:8px 14px;margin-top:12px;font-weight:600}
+  footer{margin-top:42px;padding:24px 0;background:var(--navy);color:#cfd5e6;font-size:13.5px}
+  footer a{color:#fff}
+  @media(max-width:640px){
+    nav.toc{position:static} nav.toc a{padding:8px 9px;font-size:13px}
+    section{padding:24px 0 4px} h2{font-size:21px}
+    #map,.bigmap{height:380px} header.hero{padding:28px 0 20px}
+    .fact{font-size:12.5px;padding:5px 10px} table{font-size:13px}
+    .step{grid-template-columns:52px 1fr}
+  }
+
+  /* ---------- mobil-først ---------- */
+  .tabbar{display:none;position:fixed;left:0;right:0;bottom:0;z-index:1200;background:var(--navy);box-shadow:0 -2px 10px rgba(0,0,0,.3);justify-content:space-around;padding:6px 4px calc(6px + env(safe-area-inset-bottom))}
+  .tabbar a{color:#cfd5e6;text-decoration:none;font-size:10.5px;display:flex;flex-direction:column;align-items:center;gap:2px;min-width:46px;padding:3px 5px;border-radius:9px}
+  .tabbar a .ti{font-size:21px;line-height:1.15}
+  .tabbar a.on{color:#fff;background:rgba(255,255,255,.16);font-weight:700}
+  @media(max-width:768px){
+    nav.toc{display:none}
+    body{padding-bottom:calc(66px + env(safe-area-inset-bottom))}
+    .tabbar{display:flex}
+    header.hero{padding:20px 0 14px}
+    header.hero h1{font-size:21px}
+    header.hero p{font-size:13.5px;line-height:1.45}
+    .facts{gap:6px;margin-top:10px}
+    .fact{font-size:11.5px;padding:4px 9px}
+    #countdown{font-size:13.5px;padding:6px 11px;margin-top:9px}
+    section{padding:20px 0 4px}
+    h2{font-size:19px}
+    .sub{font-size:13.5px;margin-bottom:12px}
+    .wrap{padding:0 14px}
+    .quick{gap:8px}
+    .quick .btn{flex:1 1 46%;text-align:center;padding:11px 8px;font-size:13.5px}
+    .btn{padding:10px 13px}
+    .wbtns a,.rest .lnk a{padding:9px 12px}
+    .rest .lnk{gap:8px}
+    .rest .lnk a{background:#f4f1ea;border-radius:8px;font-size:13px}
+    .grid2{gap:12px}
+    .panel{padding:13px 14px}
+    .pages{grid-template-columns:1fr 1fr;gap:10px}
+    .pcard{padding:13px}
+    .pcard .ic{font-size:24px}
+    .pcard b{font-size:15px}
+    .pcard span{font-size:12px}
+    .day .dhead{font-size:15px;padding:10px 14px}
+    .day .dbody{padding:4px 14px 10px}
+    .wish{padding:14px}
+    .wish h3{font-size:16.5px}
+    .rec{padding:13px}
+    #map,.bigmap{height:340px}
+    /* tabeller bliver til kort i stedet for sidelæns scroll */
+    .tablewrap{overflow:visible;border:none;background:none;border-radius:0}
+    .tablewrap table{min-width:0 !important;display:block;width:100%}
+    .tablewrap thead{display:none}
+    .tablewrap tbody{display:block}
+    .tablewrap tbody tr{display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;margin:9px 0;padding:10px 13px}
+    .tablewrap tbody tr:nth-child(even){background:var(--card)}
+    .tablewrap tbody td{display:block;border:none;padding:2px 0;position:static !important;box-shadow:none !important;background:none !important}
+    .tablewrap tbody td:first-child{font-weight:700;color:var(--navy);font-size:15px}
+  }
+
+  .parl{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:10px}
+  .pr{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line)}
+  .pr:last-child{border-bottom:none}
+  .pr:nth-child(even){background:#faf8f4}
+  .pr > div{padding:10px 14px;font-size:14.5px}
+  .pr .fr{border-left:1px solid var(--line);font-weight:600;color:var(--navy)}
+  .pr .fr .udtale{display:block;font-weight:400;font-size:12px;color:var(--muted);font-style:italic;margin-top:1px}
+  .pr.head{background:var(--navy);color:#fff;font-weight:700}
+  .pr.head > div{font-size:15px}
+  .pr.head .fr{border-left-color:rgba(255,255,255,.25);color:#fff}
+  @media(max-width:768px){
+    .pr > div{padding:8px 10px;font-size:13px}
+    .pr .fr .udtale{font-size:11px}
+  }
+  @media print{
+    .pr{break-inside:avoid;page-break-inside:avoid}
+    .parl{break-inside:auto}
+  }
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+  <h1>🗣️ Dansk–fransk parlør</h1>
+  <p>Sætningerne, I faktisk får brug for — café, vinylbutik, parfumebutik, metro og jazzkælder. Udtalen står i [klammer] med dansk lydskrift; TRYK på store bogstaver. Reglen over alle regler: begynd ALTID med "Bonjour".</p>
+</div></header>
+<nav class="toc"><div class="wrap">
+  <a href="index.html">🏠 Hjem</a>
+  <a href="kvarteret.html">📍 Kvarteret</a>
+  <a href="oplevelser.html">🎡 Oplevelser</a>
+  <a href="spisesteder.html">🍽️ Spisesteder</a>
+  <a href="dagsplaner.html">📅 Dagsplaner</a>
+  <a href="parloer.html" class="on">🗣️ Parlør</a>
+  <a href="praktisk.html">🧳 Praktisk</a>
+</div></nav>
+<div class="wrap">
+
+<section>
+  <h2>👋 Basis & høflighed</h2>
+  <p class="sub">Franskmændene sætter enorm pris på, at man begynder på fransk — bare et "bonjour" ændrer hele mødet.</p>
+  <div class="parl">
+    <div class="pr head"><div>🇩🇰 Dansk</div><div class="fr">🇫🇷 Fransk</div></div>
+    <div class="pr"><div>Goddag / Hej</div><div class="fr">Bonjour<span class="udtale">[bon-SJUR]</span></div></div>
+    <div class="pr"><div>Godaften</div><div class="fr">Bonsoir<span class="udtale">[bon-SUAR]</span></div></div>
+    <div class="pr"><div>Farvel</div><div class="fr">Au revoir<span class="udtale">[å-røv-UAR]</span></div></div>
+    <div class="pr"><div>Tak / Mange tak</div><div class="fr">Merci / Merci beaucoup<span class="udtale">[mær-SI boh-KU]</span></div></div>
+    <div class="pr"><div>Ja / Nej</div><div class="fr">Oui / Non<span class="udtale">[ui / non]</span></div></div>
+    <div class="pr"><div>Undskyld (fange opmærksomhed)</div><div class="fr">Excusez-moi<span class="udtale">[æks-ky-se-MUA]</span></div></div>
+    <div class="pr"><div>Undskyld (beklager)</div><div class="fr">Pardon / Désolé<span class="udtale">[par-DON / de-so-LE]</span></div></div>
+    <div class="pr"><div>Vær så venlig</div><div class="fr">S'il vous plaît<span class="udtale">[sil-vu-PLÆ]</span></div></div>
+    <div class="pr"><div>Taler De engelsk?</div><div class="fr">Parlez-vous anglais ?<span class="udtale">[par-le vu ang-LÆ]</span></div></div>
+    <div class="pr"><div>Jeg forstår det ikke</div><div class="fr">Je ne comprends pas<span class="udtale">[sjø nø kom-prang PA]</span></div></div>
+    <div class="pr"><div>Jeg taler ikke fransk</div><div class="fr">Je ne parle pas français<span class="udtale">[sjø nø parl pa frang-SÆ]</span></div></div>
+    <div class="pr"><div>Kan De hjælpe mig?</div><div class="fr">Pouvez-vous m’aider ?<span class="udtale">[pu-ve vu mæ-DE]</span></div></div>
+    <div class="pr"><div>Det gør ikke noget / helt fint</div><div class="fr">Ce n’est pas grave<span class="udtale">[sø næ pa GRAV]</span></div></div>
+    <div class="pr"><div>Hyggeligt at møde Dem</div><div class="fr">Enchanté(e)<span class="udtale">[ang-sjang-TE]</span></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>🍽️ På café & restaurant</h2>
+  <p class="sub">Sig "Bonjour, une table pour trois" i døren — så er I allerede halvvejs.</p>
+  <div class="parl">
+    <div class="pr head"><div>🇩🇰 Dansk</div><div class="fr">🇫🇷 Fransk</div></div>
+    <div class="pr"><div>Et bord til tre, tak</div><div class="fr">Une table pour trois, s’il vous plaît<span class="udtale">[yn TA-blø pur TRUA, sil-vu-PLÆ]</span></div></div>
+    <div class="pr"><div>Har I et ledigt bord?</div><div class="fr">Avez-vous une table libre ?<span class="udtale">[a-ve vu yn ta-blø LI-brø]</span></div></div>
+    <div class="pr"><div>Menuen, tak</div><div class="fr">La carte, s’il vous plaît<span class="udtale">[la KART, sil-vu-PLÆ]</span></div></div>
+    <div class="pr"><div>Hvad anbefaler De?</div><div class="fr">Qu’est-ce que vous recommandez ?<span class="udtale">[kæs-kø vu rø-ko-mang-DE]</span></div></div>
+    <div class="pr"><div>Jeg vil gerne have …</div><div class="fr">Je voudrais …<span class="udtale">[sjø vu-DRÆ]</span></div></div>
+    <div class="pr"><div>En kande postevand, tak</div><div class="fr">Une carafe d’eau, s’il vous plaît<span class="udtale">[yn ka-RAF DOH, sil-vu-PLÆ]</span></div></div>
+    <div class="pr"><div>To glas vin / tre øl</div><div class="fr">Deux verres de vin / trois bières<span class="udtale">[dø vær dø VÆN / trua bi-ÆR]</span></div></div>
+    <div class="pr"><div>En varm chokolade</div><div class="fr">Un chocolat chaud<span class="udtale">[øn sjo-ko-la SJOH]</span></div></div>
+    <div class="pr"><div>Det smager dejligt!</div><div class="fr">C’est délicieux !<span class="udtale">[sæ de-li-si-Ø]</span></div></div>
+    <div class="pr"><div>Regningen, tak</div><div class="fr">L’addition, s’il vous plaît<span class="udtale">[la-di-si-ON, sil-vu-PLÆ]</span></div></div>
+    <div class="pr"><div>Kan vi betale med kort?</div><div class="fr">On peut payer par carte ?<span class="udtale">[on pø pæ-JE par KART]</span></div></div>
+    <div class="pr"><div>Jeg er allergisk over for …</div><div class="fr">Je suis allergique à …<span class="udtale">[sjø sui a-lær-SJIK a]</span></div></div>
+    <div class="pr"><div>Uden … , tak</div><div class="fr">Sans … , s’il vous plaît<span class="udtale">[sang]</span></div></div>
+    <div class="pr"><div>En croissant og en café créme</div><div class="fr">Un croissant et un café crème<span class="udtale">[øn krua-SANG e øn ka-fe KRÆM]</span></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>🛍️ I butikker — vinyl & parfume</h2>
+  <p class="sub">Til Rue Keller og Diptyque: butiksfolk hilser altid — hils igen, ellers er man "den uhøflige turist".</p>
+  <div class="parl">
+    <div class="pr head"><div>🇩🇰 Dansk</div><div class="fr">🇫🇷 Fransk</div></div>
+    <div class="pr"><div>Jeg kigger bare, tak</div><div class="fr">Je regarde seulement, merci<span class="udtale">[sjø rø-GARD søl-MANG, mær-SI]</span></div></div>
+    <div class="pr"><div>Hvad koster den/det?</div><div class="fr">Ça coûte combien ?<span class="udtale">[sa kut kom-bi-ÆN]</span></div></div>
+    <div class="pr"><div>Har I plader med …?</div><div class="fr">Avez-vous des vinyles de … ?<span class="udtale">[a-ve vu de vi-NIL dø]</span></div></div>
+    <div class="pr"><div>Hvor står jazzpladerne?</div><div class="fr">Où sont les vinyles de jazz ?<span class="udtale">[u son le vi-NIL dø DJAZ]</span></div></div>
+    <div class="pr"><div>Må jeg lytte til den?</div><div class="fr">Je peux l’écouter ?<span class="udtale">[sjø pø le-ku-TE]</span></div></div>
+    <div class="pr"><div>Kan De anbefale en fransk plade?</div><div class="fr">Vous pouvez recommander un disque français ?<span class="udtale">[vu pu-ve rø-ko-mang-DE øn disk frang-SÆ]</span></div></div>
+    <div class="pr"><div>Må jeg dufte til den?</div><div class="fr">Je peux le sentir ?<span class="udtale">[sjø pø lø sang-TIR]</span></div></div>
+    <div class="pr"><div>Jeg leder efter en gave</div><div class="fr">Je cherche un cadeau<span class="udtale">[sjø sjærsj øn ka-DOH]</span></div></div>
+    <div class="pr"><div>Den tager jeg!</div><div class="fr">Je le prends !<span class="udtale">[sjø lø PRANG]</span></div></div>
+    <div class="pr"><div>Kan De pakke det ind som gave?</div><div class="fr">Vous pouvez faire un paquet cadeau ?<span class="udtale">[vu pu-ve fær øn pa-kæ ka-DOH]</span></div></div>
+    <div class="pr"><div>Har I den i en mindre størrelse?</div><div class="fr">Vous l’avez en plus petit ?<span class="udtale">[vu la-ve ang ply pø-TI]</span></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>🚇 Transport & på gaden</h2>
+  <p class="sub">Til metroen, billetautomaten og når Google Maps driller.</p>
+  <div class="parl">
+    <div class="pr head"><div>🇩🇰 Dansk</div><div class="fr">🇫🇷 Fransk</div></div>
+    <div class="pr"><div>Hvor er metroen?</div><div class="fr">Où est le métro ?<span class="udtale">[u æ lø me-TROH]</span></div></div>
+    <div class="pr"><div>Hvilken retning mod …?</div><div class="fr">Quelle direction pour … ?<span class="udtale">[kæl di-ræk-si-ON pur]</span></div></div>
+    <div class="pr"><div>En billet / tre billetter, tak</div><div class="fr">Un ticket / trois tickets, s’il vous plaît<span class="udtale">[øn ti-KÆ / trua ti-KÆ]</span></div></div>
+    <div class="pr"><div>Hvor er toilettet?</div><div class="fr">Où sont les toilettes ?<span class="udtale">[u son le tua-LÆT]</span></div></div>
+    <div class="pr"><div>Er det her vej til …?</div><div class="fr">C’est par ici pour … ?<span class="udtale">[sæ par i-SI pur]</span></div></div>
+    <div class="pr"><div>Til venstre / til højre / ligeud</div><div class="fr">À gauche / à droite / tout droit<span class="udtale">[a GOSJ / a DRUAT / tu DRUA]</span></div></div>
+    <div class="pr"><div>Hvornår lukker I?</div><div class="fr">Vous fermez à quelle heure ?<span class="udtale">[vu fær-ME a kæl ØR]</span></div></div>
+    <div class="pr"><div>Stopper bussen ved …?</div><div class="fr">Ce bus s’arrête à … ?<span class="udtale">[sø bys sa-RÆT a]</span></div></div>
+    <div class="pr"><div>Vi skal til lufthavnen</div><div class="fr">Nous allons à l’aéroport<span class="udtale">[nu-sa-LON a la-e-ro-POR]</span></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>🎷 På jazzklubben</h2>
+  <p class="sub">Til 38Riv og de andre kældre fra Mathildes seddel.</p>
+  <div class="parl">
+    <div class="pr head"><div>🇩🇰 Dansk</div><div class="fr">🇫🇷 Fransk</div></div>
+    <div class="pr"><div>Hvornår begynder koncerten?</div><div class="fr">Le concert commence à quelle heure ?<span class="udtale">[lø kon-SÆR ko-MANGS a kæl ØR]</span></div></div>
+    <div class="pr"><div>Er der stadig billetter?</div><div class="fr">Il reste des places ?<span class="udtale">[il ræst de PLAS]</span></div></div>
+    <div class="pr"><div>Tre billetter til i aften, tak</div><div class="fr">Trois places pour ce soir, s’il vous plaît<span class="udtale">[trua PLAS pur sø SUAR]</span></div></div>
+    <div class="pr"><div>Hvem spiller i aften?</div><div class="fr">Qui joue ce soir ?<span class="udtale">[ki SJU sø SUAR]</span></div></div>
+    <div class="pr"><div>Det var en fantastisk koncert!</div><div class="fr">C’était un concert magnifique !<span class="udtale">[se-TÆ øn kon-SÆR man-ji-FIK]</span></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>🆘 Hjælp & nødsituationer</h2>
+  <p class="sub">Forhåbentlig aldrig brug for — men godt at have på papir.</p>
+  <div class="parl">
+    <div class="pr head"><div>🇩🇰 Dansk</div><div class="fr">🇫🇷 Fransk</div></div>
+    <div class="pr"><div>Hjælp!</div><div class="fr">Au secours !<span class="udtale">[å sø-KUR]</span></div></div>
+    <div class="pr"><div>Ring efter en ambulance!</div><div class="fr">Appelez une ambulance !<span class="udtale">[a-ple yn am-by-LANGS]</span></div></div>
+    <div class="pr"><div>Jeg har brug for en læge</div><div class="fr">J’ai besoin d’un médecin<span class="udtale">[sje bø-SUÆN døn med-SÆN]</span></div></div>
+    <div class="pr"><div>Hvor er nærmeste apotek?</div><div class="fr">Où est la pharmacie la plus proche ?<span class="udtale">[u æ la far-ma-SI la ply PROSJ]</span></div></div>
+    <div class="pr"><div>Jeg har mistet min taske/telefon</div><div class="fr">J’ai perdu mon sac / mon téléphone<span class="udtale">[sje pær-DY mon SAK / mon te-le-FON]</span></div></div>
+    <div class="pr"><div>Man har stjålet min pung</div><div class="fr">On m’a volé mon portefeuille<span class="udtale">[on ma vo-LE mon port-FØJ]</span></div></div>
+    <div class="pr"><div>Hvor er politistationen?</div><div class="fr">Où est le commissariat ?<span class="udtale">[u æ lø ko-mi-sa-ri-A]</span></div></div>
+    <div class="pr"><div>Jeg er faret vild</div><div class="fr">Je suis perdu(e)<span class="udtale">[sjø sui pær-DY]</span></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>🔢 Tal & småord</h2>
+  <p class="sub">Nok til priser, klokkeslæt og bordbestilling.</p>
+  <div class="parl">
+    <div class="pr head"><div>🇩🇰 Dansk</div><div class="fr">🇫🇷 Fransk</div></div>
+    <div class="pr"><div>1 · 2 · 3 · 4 · 5</div><div class="fr">un · deux · trois · quatre · cinq<span class="udtale">[øn · dø · trua · KA-trø · sænk]</span></div></div>
+    <div class="pr"><div>6 · 7 · 8 · 9 · 10</div><div class="fr">six · sept · huit · neuf · dix<span class="udtale">[sis · sæt · uit · nøf · dis]</span></div></div>
+    <div class="pr"><div>20 · 50 · 100</div><div class="fr">vingt · cinquante · cent<span class="udtale">[væn · sæn-KANGT · sang]</span></div></div>
+    <div class="pr"><div>I dag / i morgen</div><div class="fr">Aujourd'hui / demain<span class="udtale">[å-sjur-DUI / dø-MÆN]</span></div></div>
+    <div class="pr"><div>Klokken otte om aftenen</div><div class="fr">À vingt heures<span class="udtale">[a vænt ØR]</span></div></div>
+    <div class="pr"><div>Lidt / meget</div><div class="fr">Un peu / beaucoup<span class="udtale">[øn PØ / boh-KU]</span></div></div>
+    <div class="pr"><div>Skål!</div><div class="fr">Santé !<span class="udtale">[sang-TE]</span></div></div>
+  </div>
+</section>
+
+<section>
+  <div class="callout green"><strong>💡 Tre gyldne regler:</strong> ① "Bonjour" FØR alt andet — i butikker, caféer og metroskranker. ② "S'il vous plaît" og "merci" kan aldrig overdoseres. ③ Prøv på fransk først — selv radbrækket — og de fleste parisere skifter smilende til engelsk for at redde jer.</div>
+</section>
+
+</div>
+<footer><div class="wrap">
+  <p><strong>Basen:</strong> 67 Boulevard Richard-Lenoir, lejl. 45 · Mathildes Paris-tur · 6.–9. oktober 2026</p>
+  <p>Parløren er også med i <a href="guide.html">print-guiden</a>, så den kan ligge i lommen. Bonne chance ! 🥖</p>
+</div></footer>
+<nav class="tabbar"><a href="index.html"><span class="ti">🏠</span>Hjem</a><a href="kvarteret.html"><span class="ti">📍</span>Kvarter</a><a href="oplevelser.html"><span class="ti">🎡</span>Oplev</a><a href="spisesteder.html"><span class="ti">🍽️</span>Mad</a><a href="dagsplaner.html"><span class="ti">📅</span>Planer</a><a href="parloer.html" class="on"><span class="ti">🗣️</span>Parlør</a><a href="praktisk.html"><span class="ti">🧳</span>Info</a></nav>
+</body>
+</html>
