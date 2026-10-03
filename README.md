@@ -19,3 +19,5 @@ Familiens **ferie-hjælper** for turen til Paris — med base i lejligheden på
 `*.mhtml`-filen er det gemte Airbnb-opslag for lejligheden.
 
 > Tip: Åbn siden på telefonen og vælg "Føj til hjemmeskærm" — så virker den som en app med eget ikon.
+
+`tools/gen_guide.py` genererer print-guiden (`guide.html`) ud fra de andre sider — kør `python3 tools/gen_guide.py` fra repo-roden efter ændringer.
